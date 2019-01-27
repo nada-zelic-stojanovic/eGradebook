@@ -33,5 +33,19 @@ namespace eGradebook.Services.ConvertToAndFromDTO.Convet_Users
             //teacher.TeachesCourses = teacherDTO.TeachesCourses;
 
         }
+
+        public Teacher TeacherDTOToTeacher(TeacherDTO teacherDTO)
+        {
+            Teacher teacher = new Teacher();
+
+            teacher.Id = teacherDTO.Id;
+            teacher.FirstName = teacherDTO.FirstName;
+            teacher.LastName = teacherDTO.LastName;
+            teacher.UserName = teacherDTO.UserName;
+            teacher.Email = teacherDTO.Email;
+            //teacher.TeachesCourses = teacherDTO.TeachesCourses;
+
+            return teacher;
+        }
     }
 }

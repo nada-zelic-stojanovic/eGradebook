@@ -91,6 +91,29 @@ namespace eGradebook.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = "admin")]
+        [Route("register/student")]
+        [HttpPost]
+        public async Task<IHttpActionResult> PostStudent(UserDTO userModel)
+        {
+            logger.Info("Register student");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var result = await userService.RegisterStudent(userModel);
+
+            if (result == null)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return Ok(result);
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

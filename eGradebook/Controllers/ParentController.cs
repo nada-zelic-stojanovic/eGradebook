@@ -12,66 +12,66 @@ using System.Web.Http.Description;
 
 namespace eGradebook.Controllers
 {
-    [RoutePrefix("api/teachers")]
-    public class TeacherController : ApiController
+    [RoutePrefix("api/parents")]
+    public class ParentController : ApiController
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
-        private ITeacherService teacherService;
-        public TeacherController(ITeacherService teacherService)
+        private IParentService parentService;
+        public ParentController(IParentService parentService)
         {
-            this.teacherService = teacherService;
+            this.parentService = parentService;
         }
 
+      
         [Route("")]
         [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult Get()
         {
-            logger.Info("Requesting teachers info");
-            return Ok(teacherService.Get());
+            logger.Info("Requesting parents info");
+            return Ok(parentService.Get());
         }
 
         [Route("{id}")]
-        [Authorize(Roles = "admin, teacher")]
+        [Authorize(Roles = "admin, parent")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(string id)
         {
-            logger.Info("Requesting teacher info by id");
+            logger.Info("Requesting student info by id");
 
-            //authentification for teacher
-            bool isTeacher = RequestContext.Principal.IsInRole("teacher");
+            //authentification for parent
+            bool isParent = RequestContext.Principal.IsInRole("parent");
             bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
-            string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
-            if (teacherId != id)
+            string parentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (parentId != id)
             {
                 return Unauthorized();
             }
 
-            return Ok(teacherService.GetByID(id));
+            return Ok(parentService.GetByID(id));
         }
 
         [Route("{id}")]
         [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
-        public IHttpActionResult Put(string id, TeacherDTO teacherDTO)
+        public IHttpActionResult Put(string id, ParentDTO parentDTO)
         {
-            logger.Info("Updating teacher");
+            logger.Info("Updating parent");
 
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-
-            TeacherDTO teacherUpdated = teacherService.Update(id, teacherDTO);
-            if (teacherUpdated == null)
+            ParentDTO parentUpdated = parentService.Update(id, parentDTO);
+            if (parentUpdated == null)
             {
                 return NotFound();
             }
-            return Ok(teacherUpdated);
+            return Ok(parentUpdated);
         }
 
         [Route("{id}")]
@@ -80,15 +80,15 @@ namespace eGradebook.Controllers
         [HttpDelete]
         public IHttpActionResult Delete(string id)
         {
-            logger.Info("Deleting teacher");
+            logger.Info("Deleting parent");
 
-            TeacherDTO teacher = teacherService.GetByID(id);
-            if (teacher == null)
+            ParentDTO parent = parentService.GetByID(id);
+            if (parent == null)
             {
                 return NotFound();
             }
-            teacherService.Delete(teacher.Id);
-            return Ok(teacher);
+            parentService.Delete(id);
+            return Ok(parent);
         }
     }
 }

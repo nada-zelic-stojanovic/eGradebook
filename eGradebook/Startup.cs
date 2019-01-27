@@ -83,9 +83,9 @@ namespace eGradebook
             container.RegisterType<IUserService, UserService>();
             container.RegisterType<IAdminService, AdminService>();
             container.RegisterType<ITeacherService, TeacherService>();
-            /*container.RegisterType<IStudentService, StudentService>();
+            container.RegisterType<IStudentService, StudentService>();
             container.RegisterType<IParentService, ParentService>();
-            container.RegisterType<ISubjectService, SubjectService>();
+            /*container.RegisterType<ISubjectService, SubjectService>();
             container.RegisterType<IMarkService, MarkService>();
             container.RegisterType<ISchoolYearService, SchoolYearService>();
             container.RegisterType<ISchoolClassService, SchoolClassService>();
@@ -93,6 +93,8 @@ namespace eGradebook
 
             container.RegisterType<IAdminConverter, AdminConverter>();
             container.RegisterType<ITeacherConverter, TeacherConverter>();
+            container.RegisterType<IParentConverter, ParentConverter>();
+            container.RegisterType<IStudentConverter, StudentConverter>();
             return container;
         }
     }

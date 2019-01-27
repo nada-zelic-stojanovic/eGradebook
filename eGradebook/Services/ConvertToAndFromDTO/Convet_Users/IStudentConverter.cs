@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace eGradebook.Services.ConvertToAndFromDTO.Convet_Users
 {
-    public interface ITeacherConverter
+    public interface IStudentConverter
     {
-        TeacherDTO TeacherToTeacherDTO(Teacher teacher);
-        void UpdateTeacherWithTeacherDTO(Teacher teacher, TeacherDTO teacherDTO);
-        Teacher TeacherDTOToTeacher(TeacherDTO teacherDTO);
+        StudentDTO StudentToStudentDTO(Student student);
+        void UpdateStudentWithStudentDTO(Student student, StudentDTO studentDTO);
+        Student StudentDTOToStudent(StudentDTO studentDTO);
     }
 }
