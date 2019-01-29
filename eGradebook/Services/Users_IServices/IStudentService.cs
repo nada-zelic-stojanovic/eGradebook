@@ -12,8 +12,8 @@ namespace eGradebook.Services.Users_IServices
         IEnumerable<StudentDTO> Get();
         StudentDTO GetByID(string id);
         StudentDTO Update(string id, StudentDTO studentDTO);
-        StudentDTO Delete(string id);
+        void Delete(string id);
 
-        StudentDTO AddParentToStudent(string studentId, string parentId);
+        StudentDTO UpdateStudentWithParent(string studentId, string parentId);
     }
 }

@@ -22,7 +22,7 @@ namespace eGradebook.Infrastructure
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Parent> Parents { get; set; }
-        public DbSet<Course> Courses { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
         public DbSet<Mark> Marks { get; set; }
         public DbSet<SchoolClass> SchoolClasses { get; set; }
         public DbSet<TeacherTeachesCourse> TeacherTeachesCourse { get; set; }
@@ -38,7 +38,7 @@ namespace eGradebook.Infrastructure
             modelBuilder.Entity<Parent>().ToTable("Parent");
             modelBuilder.Entity<SchoolYear>().ToTable("SchoolYear");
             modelBuilder.Entity<Mark>().ToTable("Mark");
-            modelBuilder.Entity<Course>().ToTable("Course");
+            modelBuilder.Entity<Subject>().ToTable("Subject");
             modelBuilder.Entity<SchoolClass>().ToTable("SchoolClass");
             modelBuilder.Entity<TeacherTeachesCourse>().ToTable("Teacher_Teaches_Course");
             modelBuilder.Entity<StudentTakesCourse>().ToTable("Student_Takes_Courses");

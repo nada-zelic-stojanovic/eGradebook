@@ -10,7 +10,7 @@ namespace eGradebook.Models
     {
         public int Id { get; set; }
         public virtual Student Student { get; set; }
-        public virtual TeacherTeachesCourse Course_Teacher { get; set; }
+        public virtual TeacherTeachesCourse Course { get; set; }
         public virtual ICollection<Mark> StudentsMarksFromCourse { get; set; }
 
         public StudentTakesCourse()

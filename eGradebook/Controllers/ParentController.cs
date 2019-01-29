@@ -41,7 +41,7 @@ namespace eGradebook.Controllers
         public IHttpActionResult GetById(string id)
         {
             logger.Info("Requesting student info by id");
-
+            /*
             //authentification for parent
             bool isParent = RequestContext.Principal.IsInRole("parent");
             bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
@@ -50,8 +50,13 @@ namespace eGradebook.Controllers
             {
                 return Unauthorized();
             }
-
-            return Ok(parentService.GetByID(id));
+            */
+            var parent = parentService.GetByID(id);
+            if (parent == null)
+            {
+                return NotFound();
+            }
+            return Ok(parent);
         }
 
         [Route("{id}")]
@@ -88,7 +93,7 @@ namespace eGradebook.Controllers
                 return NotFound();
             }
             parentService.Delete(id);
-            return Ok(parent);
+            return Ok();
         }
     }
 }

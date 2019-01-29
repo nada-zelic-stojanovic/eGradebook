@@ -10,7 +10,7 @@ namespace eGradebook.Models.DTOs
     {
         public int Id { get; set; }
         public virtual StudentDTO Student { get; set; }
-        public virtual TeacherTeachesCourseDTO Course_Teacher { get; set; }
+        public virtual TeacherTeachesCourseDTO Course { get; set; }
         public virtual ICollection<MarkDTO> StudentsMarksFromCourse { get; set; }
     }
 }

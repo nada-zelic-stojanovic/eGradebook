@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace eGradebook.Services.ConvertToAndFromDTO.Convet_Users
+namespace eGradebook.Services.ConvertToAndFromDTO
 {
-    public class AdminConverter : IAdminConverter
+    public class AdminConverter
     {
-        public AdminDTO AdminToAdminDTO(Admin admin)
+        public static AdminDTO AdminToAdminDTO(Admin admin)
         {
             AdminDTO adminDTO = new AdminDTO();
 
@@ -21,7 +21,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO.Convet_Users
             return adminDTO;
         }
 
-        public void UpdateAdminWithAdminDTO(Admin admin, AdminDTO adminDTO)
+        public static void UpdateAdminWithAdminDTO(Admin admin, AdminDTO adminDTO)
         {
             //admin.Id = adminDTO.Id;
             admin.FirstName = adminDTO.FirstName;

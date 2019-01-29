@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace eGradebook.Services.ConvertToAndFromDTO.Convet_Users
+namespace eGradebook.Services.ConvertToAndFromDTO
 {
-    public class TeacherConverter : ITeacherConverter
+    public class TeacherConverter
     {
-        public TeacherDTO TeacherToTeacherDTO(Teacher teacher)
+        public static TeacherDTO TeacherToTeacherDTO(Teacher teacher)
         {
             TeacherDTO teacherDTO = new TeacherDTO();
 
@@ -23,7 +23,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO.Convet_Users
             return teacherDTO;
         }
 
-        public void UpdateTeacherWithTeacherDTO(Teacher teacher, TeacherDTO teacherDTO)
+        public static void UpdateTeacherWithTeacherDTO(Teacher teacher, TeacherDTO teacherDTO)
         {
             //teacher.Id = teacherDTO.Id;
             teacher.FirstName = teacherDTO.FirstName;
@@ -34,7 +34,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO.Convet_Users
 
         }
 
-        public Teacher TeacherDTOToTeacher(TeacherDTO teacherDTO)
+        public static Teacher TeacherDTOToTeacher(TeacherDTO teacherDTO)
         {
             Teacher teacher = new Teacher();
 

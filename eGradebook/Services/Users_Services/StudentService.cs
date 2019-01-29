@@ -1,7 +1,7 @@
 ﻿using eGradebook.Models.UserModels;
 using eGradebook.Models.UserModels.UserDTOs;
 using eGradebook.Repositories;
-using eGradebook.Services.ConvertToAndFromDTO.Convet_Users;
+using eGradebook.Services.ConvertToAndFromDTO;
 using eGradebook.Services.Users_IServices;
 using System;
 using System.Collections.Generic;
@@ -13,13 +13,11 @@ namespace eGradebook.Services.Users_Services
     public class StudentService : IStudentService
     {
         private IUnitOfWork db;
-        private IStudentConverter converter;
         private IParentService parentService;
 
-        public StudentService(IUnitOfWork db, IStudentConverter converter, IParentService parentService)
+        public StudentService(IUnitOfWork db, IParentService parentService)
         {
             this.db = db;
-            this.converter = converter;
             this.parentService = parentService;
         }
 
@@ -33,7 +31,7 @@ namespace eGradebook.Services.Users_Services
             var studentDTOs = new List<StudentDTO>();
             foreach (Student student in students)
             {
-                studentDTOs.Add(converter.StudentToStudentDTO(student));
+                studentDTOs.Add(StudentConverter.StudentToStudentDTO(student));
             }
             return studentDTOs;
         }
@@ -45,34 +43,33 @@ namespace eGradebook.Services.Users_Services
             {
                 return null;
             }
-            return converter.StudentToStudentDTO(student);
+            return StudentConverter.StudentToStudentDTO(student);
         }
 
         public StudentDTO Update(string id, StudentDTO studentDTO)
         {
             Student student = db.StudentsRepository.GetByID(id);
-            converter.UpdateStudentWithStudentDTO(student, studentDTO);
+            StudentConverter.UpdateStudentWithStudentDTO(student, studentDTO);
             db.StudentsRepository.Update(student);
             db.Save();
-            return converter.StudentToStudentDTO(student);
+            return StudentConverter.StudentToStudentDTOBasic(student);
         }
 
-        public StudentDTO Delete(string id)
+        public void Delete(string id)
         {
             Student student = db.StudentsRepository.GetByID(id);
             db.StudentsRepository.Delete(student);
             db.Save();
-            return converter.StudentToStudentDTO(student);
         }
 
-        public StudentDTO AddParentToStudent(string studentId, string parentId)
+        public StudentDTO UpdateStudentWithParent(string studentId, string parentId)
         {
             Student student = db.StudentsRepository.GetByID(studentId);
             Parent parent = db.ParentsRepository.GetByID(parentId);
             student.Parent = parent;
             db.StudentsRepository.Update(student);
             db.Save();
-            return converter.StudentToStudentDTO(student);
+            return StudentConverter.StudentToStudentDTO(student);
         }
     }
 }

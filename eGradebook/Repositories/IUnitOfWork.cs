@@ -18,7 +18,7 @@ namespace eGradebook.Repositories
         IGenericRepository<Teacher> TeachersRepository { get; }
         IGenericRepository<Admin> AdminsRepository { get; }
         IGenericRepository<Mark> MarksRepository { get; }
-        IGenericRepository<Course> CoursesRepository { get; }
+        IGenericRepository<Subject> SubjectsRepository { get; }
         IGenericRepository<SchoolClass> SchoolClassesRepository { get; }
         IGenericRepository<SchoolYear> SchoolYearsRepository { get; }
         IGenericRepository<TeacherTeachesCourse> TeacherTeachesCourseRepository { get; }

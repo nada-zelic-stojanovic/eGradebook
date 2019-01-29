@@ -1,36 +1,24 @@
-2019-01-27 15:57:45.8646|INFO|eGradebook.Controllers.AdminController|Requesting admins info
-2019-01-27 15:58:43.7419|INFO|eGradebook.Controllers.AdminController|Requesting admin info by id
-2019-01-27 15:59:15.2907|INFO|eGradebook.Controllers.AdminController|Requesting admins info
-2019-01-27 16:00:18.2533|INFO|eGradebook.Controllers.AdminController|Requesting admin info by id
-2019-01-27 16:04:38.0891|INFO|eGradebook.Controllers.AccountController|Register admin
-2019-01-27 16:05:34.6254|INFO|eGradebook.Controllers.AdminController|Requesting admins info
-2019-01-27 16:08:00.0637|INFO|eGradebook.Controllers.AdminController|Updating admin
-2019-01-27 16:09:14.7500|INFO|eGradebook.Controllers.AdminController|Updating admin
-2019-01-27 16:19:03.6587|INFO|eGradebook.Controllers.AdminController|Updating admin
-2019-01-27 16:25:08.6285|INFO|eGradebook.Controllers.AdminController|Updating admin
-2019-01-27 16:31:18.8147|INFO|eGradebook.Controllers.AdminController|Updating admin
-2019-01-27 16:34:11.6946|INFO|eGradebook.Controllers.AdminController|Updating admin
-2019-01-27 16:37:23.0245|INFO|eGradebook.Controllers.AdminController|Requesting admins info
-2019-01-27 16:38:14.6915|INFO|eGradebook.Controllers.AdminController|Updating admin
-2019-01-27 16:39:01.8092|INFO|eGradebook.Controllers.AdminController|Requesting admins info
-2019-01-27 16:42:01.1594|INFO|eGradebook.Controllers.AdminController|Requesting admin info by id
-2019-01-27 16:42:54.6345|INFO|eGradebook.Controllers.AccountController|Register admin
-2019-01-27 16:43:28.3484|INFO|eGradebook.Controllers.AdminController|Deleting admin
-2019-01-27 16:44:30.7900|INFO|eGradebook.Controllers.AdminController|Requesting admins info
-2019-01-27 16:47:01.0276|INFO|eGradebook.Controllers.AdminController|Requesting admins info
-2019-01-27 16:49:46.8971|INFO|eGradebook.Controllers.AccountController|Register teacher
-2019-01-27 16:54:22.9169|INFO|eGradebook.Controllers.AccountController|Register student and parent
-2019-01-27 17:51:02.3283|INFO|eGradebook.Controllers.AdminController|Requesting admins info
-2019-01-27 17:51:43.2886|INFO|eGradebook.Controllers.TeacherController|Requesting teachers info
-2019-01-27 17:53:19.4711|INFO|eGradebook.Controllers.TeacherController|Requesting teacher info by id
-2019-01-27 17:55:44.4234|INFO|eGradebook.Controllers.TeacherController|Updating teacher
-2019-01-27 17:56:39.8586|INFO|eGradebook.Controllers.TeacherController|Deleting teacher
-2019-01-27 17:56:46.3320|INFO|eGradebook.Controllers.TeacherController|Requesting teachers info
-2019-01-27 18:00:30.6538|INFO|eGradebook.Controllers.TeacherController|Requesting teacher info by id
-2019-01-27 18:01:43.0100|INFO|eGradebook.Controllers.TeacherController|Requesting teachers info
-2019-01-27 18:26:37.9705|INFO|eGradebook.Controllers.TeacherController|Requesting teachers info
-2019-01-27 18:28:50.8081|INFO|eGradebook.Controllers.TeacherController|Requesting teacher info by id
-2019-01-27 18:29:01.6607|INFO|eGradebook.Controllers.TeacherController|Requesting teacher info by id
-2019-01-27 20:53:53.6778|INFO|eGradebook.Controllers.AdminController|Requesting admins info
-2019-01-27 20:54:14.4270|INFO|eGradebook.Controllers.StudentController|Requesting students info
-2019-01-27 20:57:04.4807|INFO|eGradebook.Controllers.StudentController|Requesting students info
+2019-01-29 14:55:49.9426|INFO|eGradebook.Controllers.AdminController|Requesting admins info
+2019-01-29 14:56:46.0206|INFO|eGradebook.Controllers.AdminController|Requesting admins info
+2019-01-29 14:57:40.3577|INFO|eGradebook.Controllers.AdminController|Requesting admins info
+2019-01-29 14:59:04.5327|INFO|eGradebook.Controllers.AdminController|Requesting admins info
+2019-01-29 15:00:11.3022|INFO|eGradebook.Controllers.AdminController|Requesting admins info
+2019-01-29 15:01:06.6715|INFO|eGradebook.Controllers.SchoolYearController|Requesting school years' info
+2019-01-29 15:03:07.8434|INFO|eGradebook.Controllers.SchoolYearController|Requesting a school year's info
+2019-01-29 15:04:04.4131|INFO|eGradebook.Controllers.SchoolYearController|Updating school year
+2019-01-29 15:05:01.6168|INFO|eGradebook.Controllers.SchoolYearController|Creating a new school year
+2019-01-29 15:05:32.1763|WARN|eGradebook.Controllers.SchoolYearController|Deleting a school year
+2019-01-29 15:05:48.1495|WARN|eGradebook.Controllers.SchoolYearController|Deleting a school year
+2019-01-29 15:07:10.3347|INFO|eGradebook.Controllers.SchoolClassController|Requesting school classes info
+2019-01-29 15:08:49.3660|INFO|eGradebook.Controllers.SchoolClassController|Requesting a school class' info
+2019-01-29 15:10:02.7263|INFO|eGradebook.Controllers.SchoolClassController|Updating a school class
+2019-01-29 15:11:03.0972|INFO|eGradebook.Controllers.SchoolClassController|Updating a school class
+2019-01-29 15:11:32.8075|INFO|eGradebook.Controllers.SchoolClassController|Creating a new school class
+2019-01-29 15:12:04.9022|INFO|eGradebook.Controllers.SchoolClassController|Deleting a school class
+2019-01-29 15:12:16.9942|INFO|eGradebook.Controllers.SchoolClassController|Deleting a school class
+2019-01-29 15:12:56.1297|INFO|eGradebook.Controllers.SchoolClassController|Requesting school classes info
+2019-01-29 15:13:32.7954|INFO|eGradebook.Controllers.SchoolClassController|Creating a new school class
+2019-01-29 15:14:00.0085|INFO|eGradebook.Controllers.SchoolClassController|Deleting a school class
+2019-01-29 15:15:19.0838|INFO|eGradebook.Controllers.SchoolClassController|Requesting school classes info
+2019-01-29 15:19:53.3023|INFO|eGradebook.Controllers.SchoolClassController|Creating a new school class
+2019-01-29 15:20:06.2069|INFO|eGradebook.Controllers.SchoolClassController|Deleting a school class

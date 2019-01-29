@@ -3,7 +3,8 @@ using eGradebook.Models;
 using eGradebook.Models.UserModels;
 using eGradebook.Providers;
 using eGradebook.Repositories;
-using eGradebook.Services.ConvertToAndFromDTO.Convet_Users;
+using eGradebook.Services;
+using eGradebook.Services.IServices;
 using eGradebook.Services.Users_IServices;
 using eGradebook.Services.Users_Services;
 using Microsoft.Owin;
@@ -73,7 +74,7 @@ namespace eGradebook
             container.RegisterType<IGenericRepository<Teacher>, GenericRepository<Teacher>>();
             container.RegisterType<IGenericRepository<Parent>, GenericRepository<Parent>>();
             container.RegisterType<IGenericRepository<Admin>, GenericRepository<Admin>>();
-            container.RegisterType<IGenericRepository<Course>, GenericRepository<Course>>();
+            container.RegisterType<IGenericRepository<Subject>, GenericRepository<Subject>>();
             container.RegisterType<IGenericRepository<Mark>, GenericRepository<Mark>>();
             container.RegisterType<IGenericRepository<SchoolYear>, GenericRepository<SchoolYear>>();
             container.RegisterType<IGenericRepository<SchoolClass>, GenericRepository<SchoolClass>>();
@@ -85,16 +86,14 @@ namespace eGradebook
             container.RegisterType<ITeacherService, TeacherService>();
             container.RegisterType<IStudentService, StudentService>();
             container.RegisterType<IParentService, ParentService>();
-            /*container.RegisterType<ISubjectService, SubjectService>();
-            container.RegisterType<IMarkService, MarkService>();
+            container.RegisterType<ISubjectService, SubjectService>();
+            //container.RegisterType<IMarkService, MarkService>();
             container.RegisterType<ISchoolYearService, SchoolYearService>();
             container.RegisterType<ISchoolClassService, SchoolClassService>();
-            */
+            container.RegisterType<ITeacherTeachesCourseService, TeacherTeachesCourseService>();
+            container.RegisterType<IStudentTakesCourseService, StudentTakesCourseService>();
 
-            container.RegisterType<IAdminConverter, AdminConverter>();
-            container.RegisterType<ITeacherConverter, TeacherConverter>();
-            container.RegisterType<IParentConverter, ParentConverter>();
-            container.RegisterType<IStudentConverter, StudentConverter>();
+
             return container;
         }
     }

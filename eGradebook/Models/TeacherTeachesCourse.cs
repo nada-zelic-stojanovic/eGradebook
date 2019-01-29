@@ -12,7 +12,7 @@ namespace eGradebook.Models
 
         public virtual Teacher Teacher { get; set; }
 
-        public virtual Course Course { get; set; }
+        public virtual Subject Subject { get; set; }
 
         public TeacherTeachesCourse() { }
     }

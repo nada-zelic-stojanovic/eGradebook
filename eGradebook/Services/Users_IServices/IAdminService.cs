@@ -12,6 +12,6 @@ namespace eGradebook.Services.Users_IServices
         IEnumerable<AdminDTO> Get();
         AdminDTO GetByID(string id);
         AdminDTO Update(string id, AdminDTO adminDTO);
-        AdminDTO Delete(string id);
+        void Delete(string id);
     }
 }

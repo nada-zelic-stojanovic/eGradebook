@@ -40,7 +40,7 @@ namespace eGradebook.Controllers
         public IHttpActionResult GetById(string id)
         {
             logger.Info("Requesting teacher info by id");
-
+            /*
             //authentification for teacher
             bool isTeacher = RequestContext.Principal.IsInRole("teacher");
             bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
@@ -49,8 +49,13 @@ namespace eGradebook.Controllers
             {
                 return Unauthorized();
             }
-
-            return Ok(teacherService.GetByID(id));
+            */
+            var teacher = teacherService.GetByID(id);
+            if (teacher == null)
+            {
+                return NotFound();
+            }
+            return Ok(teacher);
         }
 
         [Route("{id}")]
@@ -88,7 +93,7 @@ namespace eGradebook.Controllers
                 return NotFound();
             }
             teacherService.Delete(teacher.Id);
-            return Ok(teacher);
+            return Ok();
         }
     }
 }

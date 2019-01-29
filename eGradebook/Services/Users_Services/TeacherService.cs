@@ -1,7 +1,7 @@
 ﻿using eGradebook.Models.UserModels;
 using eGradebook.Models.UserModels.UserDTOs;
 using eGradebook.Repositories;
-using eGradebook.Services.ConvertToAndFromDTO.Convet_Users;
+using eGradebook.Services.ConvertToAndFromDTO;
 using eGradebook.Services.Users_IServices;
 using System;
 using System.Collections.Generic;
@@ -13,12 +13,10 @@ namespace eGradebook.Services.Users_Services
     public class TeacherService : ITeacherService
     {
         private IUnitOfWork db;
-        private ITeacherConverter converter;
 
-        public TeacherService(IUnitOfWork db, ITeacherConverter converter)
+        public TeacherService(IUnitOfWork db)
         {
             this.db = db;
-            this.converter = converter;
         }
 
         public IEnumerable<TeacherDTO> Get()
@@ -31,7 +29,7 @@ namespace eGradebook.Services.Users_Services
             var teacherDTOs = new List<TeacherDTO>();
             foreach (Teacher teacher in teachers)
             {
-                teacherDTOs.Add(converter.TeacherToTeacherDTO(teacher));
+                teacherDTOs.Add(TeacherConverter.TeacherToTeacherDTO(teacher));
             }
             return teacherDTOs;
         }
@@ -43,24 +41,23 @@ namespace eGradebook.Services.Users_Services
             {
                 return null;
             }
-            return converter.TeacherToTeacherDTO(teacher);
+            return TeacherConverter.TeacherToTeacherDTO(teacher);
         }
 
         public TeacherDTO Update(string id, TeacherDTO teacherDTO)
         {
             Teacher teacher = db.TeachersRepository.GetByID(id);
-            converter.UpdateTeacherWithTeacherDTO(teacher, teacherDTO);
+            TeacherConverter.UpdateTeacherWithTeacherDTO(teacher, teacherDTO);
             db.TeachersRepository.Update(teacher);
             db.Save();
-            return converter.TeacherToTeacherDTO(teacher);
+            return TeacherConverter.TeacherToTeacherDTO(teacher);
         }
 
-        public TeacherDTO Delete(string id)
+        public void Delete(string id)
         {
             Teacher teacher = db.TeachersRepository.GetByID(id);
             db.TeachersRepository.Delete(teacher);
             db.Save();
-            return converter.TeacherToTeacherDTO(teacher);
         }
     }
 }

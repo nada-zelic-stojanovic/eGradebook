@@ -113,6 +113,27 @@ namespace eGradebook.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = "admin")]
+        [Route("register/parent")]
+        [HttpPost]
+        public async Task<IHttpActionResult> PostParent(ParentRegisterDTO userModel)
+        {
+            logger.Info("Register parent");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var result = await userService.RegisterParent(userModel);
+
+            if (result == null)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return Ok(result);
+        }
 
         protected override void Dispose(bool disposing)
         {

@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace eGradebook.Services.ConvertToAndFromDTO.Convet_Users
+namespace eGradebook.Services.ConvertToAndFromDTO
 {
-    public class ParentConverter : IParentConverter
+    public class ParentConverter
     {
-        public ParentDTO ParentToParentDTO(Parent parent)
+        public static ParentDTO ParentToParentDTO(Parent parent)
         {
             ParentDTO parentDTO = new ParentDTO();
 
@@ -23,7 +23,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO.Convet_Users
             return parentDTO;
         }
 
-        public void UpdateParentWithParentDTO(Parent parent, ParentDTO parentDTO)
+        public static void UpdateParentWithParentDTO(Parent parent, ParentDTO parentDTO)
         {
             parent.FirstName = parentDTO.FirstName;
             parent.LastName = parentDTO.LastName;
@@ -32,7 +32,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO.Convet_Users
             //parent.Children = parentDTO.Children;
         }
 
-        public Parent ParentDTOToParent(ParentDTO parentDTO)
+        public static Parent ParentDTOToParent(ParentDTO parentDTO)
         {
             Parent parent = new Parent();
 

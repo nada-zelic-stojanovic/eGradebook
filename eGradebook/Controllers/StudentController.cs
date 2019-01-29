@@ -48,6 +48,7 @@ namespace eGradebook.Controllers
             {
                 return NotFound();
             }
+            /*
             //authentification for parent
             bool isParent = RequestContext.Principal.IsInRole("parent");
             bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
@@ -65,8 +66,9 @@ namespace eGradebook.Controllers
             {
                 return Unauthorized();
             }
+            */
 
-            return Ok(studentDTO);
+            return Ok(studentDTO); 
         }
 
 
@@ -104,7 +106,8 @@ namespace eGradebook.Controllers
                 return NotFound();
             }
             studentService.Delete(id);
-            return Ok(student);
+            //parentService.Delete(student.Parent.Id);
+            return Ok();
         }
 
 
@@ -114,14 +117,14 @@ namespace eGradebook.Controllers
         [HttpPut]
         public IHttpActionResult PutStudentParent(string studentId, string parentId)
         {
-            logger.Info("Adding a parent to a student");
+            logger.Info("Updating Student's Parent");
 
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            studentService.AddParentToStudent(studentId, parentId);
+            studentService.UpdateStudentWithParent(studentId, parentId);
 
             return Ok();
         }

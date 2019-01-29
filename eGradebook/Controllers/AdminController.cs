@@ -39,7 +39,12 @@ namespace eGradebook.Controllers
         public IHttpActionResult GetById(string id)
         {
             logger.Info("Requesting admin info by id");
-            return Ok(adminService.GetByID(id));
+            var admin = adminService.GetByID(id);
+            if (admin == null)
+            {
+                return NotFound();
+            }
+            return Ok(admin);
         }
 
         [Route("{id}")]
@@ -76,7 +81,7 @@ namespace eGradebook.Controllers
                 return NotFound();
             }
             adminService.Delete(admin.Id);
-            return Ok(admin);
+            return Ok();
         }
     }
 }

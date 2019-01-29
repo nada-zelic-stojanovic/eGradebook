@@ -41,7 +41,7 @@ namespace eGradebook.Repositories
         public IGenericRepository<Mark> MarksRepository { get; set; }
 
         [Dependency]
-        public IGenericRepository<Course> CoursesRepository { get; set; }
+        public IGenericRepository<Subject> SubjectsRepository { get; set; }
 
         [Dependency]
         public IGenericRepository<SchoolClass> SchoolClassesRepository { get; set; }
