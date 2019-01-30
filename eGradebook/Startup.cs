@@ -87,7 +87,7 @@ namespace eGradebook
             container.RegisterType<IStudentService, StudentService>();
             container.RegisterType<IParentService, ParentService>();
             container.RegisterType<ISubjectService, SubjectService>();
-            //container.RegisterType<IMarkService, MarkService>();
+            container.RegisterType<IMarkService, MarkService>();
             container.RegisterType<ISchoolYearService, SchoolYearService>();
             container.RegisterType<ISchoolClassService, SchoolClassService>();
             container.RegisterType<ITeacherTeachesCourseService, TeacherTeachesCourseService>();

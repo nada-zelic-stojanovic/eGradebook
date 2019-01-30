@@ -75,5 +75,7 @@ namespace eGradebook.Services
             db.StudentTakesCourseRepository.Delete(studentCourse);
             db.Save();
         }
+
+        //public StudentTakesCourseDTO UpdateWithCourse(int id, int courseId)
     }
 }

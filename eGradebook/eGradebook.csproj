@@ -168,10 +168,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\MarkController.cs" />
     <Compile Include="Controllers\ParentController.cs" />
     <Compile Include="Controllers\SchoolClassController.cs" />
     <Compile Include="Controllers\SchoolYearController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentTakesCourseController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Controllers\TeacherTeachesCourseController.cs" />
@@ -224,8 +226,10 @@
     <Compile Include="Services\ConvertToAndFromDTO\StudentTakesCourseConverter.cs" />
     <Compile Include="Services\ConvertToAndFromDTO\TeacherConverter.cs" />
     <Compile Include="Services\ConvertToAndFromDTO\TeacherTeachesCourseConverter.cs" />
+    <Compile Include="Services\IServices\IMarkService.cs" />
     <Compile Include="Services\IServices\IStudentTakesCourseService.cs" />
     <Compile Include="Services\IServices\ITeacherTeachesCourseService.cs" />
+    <Compile Include="Services\MarkService.cs" />
     <Compile Include="Services\StudentTakesCourseService.cs" />
     <Compile Include="Services\SubjectService.cs" />
     <Compile Include="Services\IServices\ISubjectService.cs" />
