@@ -1,13 +1,11 @@
-﻿using eGradebook.Models.UserModels.UserDTOs;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace eGradebook.Models.DTOs
 {
-    public class SchoolClassDTO
+    public class SchoolClassBasicDTO
     {
         public int Id { get; set; }
 
@@ -17,11 +15,5 @@ namespace eGradebook.Models.DTOs
         public string Section { get; set; }
 
         public virtual SchoolYearDTO SchoolYear { get; set; }
-
-
-        public virtual IEnumerable<StudentBasicDTO> Students { get; set; }
-
-
-        public virtual IEnumerable<TeacherTeachesCourseDTO> Courses { get; set; }
     }
 }

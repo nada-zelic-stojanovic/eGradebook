@@ -9,9 +9,9 @@ namespace eGradebook.Services.Users_IServices
 {
     public interface IParentService
     {
-        IEnumerable<ParentDTO> Get();
+        IEnumerable<ParentBasicDTO> Get();
         ParentDTO GetByID(string id);
-        ParentDTO Update(string id, ParentDTO parentDTO);
+        ParentUpdateDTO Update(string id, ParentUpdateDTO parentDTO);
         void Delete(string id);
     }
 }

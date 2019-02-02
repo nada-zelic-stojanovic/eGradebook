@@ -47,22 +47,22 @@ namespace eGradebook.Services
         }
 
 
-        public SchoolClassDTO Update(int id, SchoolClassDTO schoolClassDTO)
+        public SchoolClassBasicDTO Update(int id, SchoolClassBasicDTO schoolClassDTO)
         {
             SchoolClass schoolClass = db.SchoolClassesRepository.GetByID(id);
             SchoolClassConverter.UpdateSchoolClassWithSchoolClassDTO(schoolClass, schoolClassDTO);
             db.SchoolClassesRepository.Update(schoolClass);
             db.Save();
-            return SchoolClassConverter.SchoolClassToSchoolClassDTOBasic(schoolClass);
+            return SchoolClassConverter.SchoolClassToSchoolClassBasicDTO(schoolClass);
         }
 
 
-        public SchoolClassDTO Create(SchoolClassDTO schoolClassDTO)
+        public SchoolClassBasicDTO Create(SchoolClassDTO schoolClassDTO)
         {
             SchoolClass schoolClass = SchoolClassConverter.SchoolClassDTOToSchoolClass(schoolClassDTO);
             db.SchoolClassesRepository.Insert(schoolClass);
             db.Save();
-            return SchoolClassConverter.SchoolClassToSchoolClassDTOBasic(schoolClass);
+            return SchoolClassConverter.SchoolClassToSchoolClassBasicDTO(schoolClass);
         }
 
 

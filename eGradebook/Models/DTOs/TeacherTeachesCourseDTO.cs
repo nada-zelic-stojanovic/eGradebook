@@ -10,7 +10,7 @@ namespace eGradebook.Models.DTOs
     {
         public int Id { get; set; }
 
-        public virtual TeacherDTO Teacher { get; set; }
+        public virtual TeacherBasicDTO Teacher { get; set; }
 
         public virtual SubjectDTO Subject { get; set; }
     }

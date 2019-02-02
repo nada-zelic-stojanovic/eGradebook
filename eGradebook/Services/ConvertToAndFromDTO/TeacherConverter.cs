@@ -1,4 +1,6 @@
-﻿using eGradebook.Models.UserModels;
+﻿using eGradebook.Models;
+using eGradebook.Models.DTOs;
+using eGradebook.Models.UserModels;
 using eGradebook.Models.UserModels.UserDTOs;
 using System;
 using System.Collections.Generic;
@@ -18,20 +20,16 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             teacherDTO.LastName = teacher.LastName;
             teacherDTO.UserName = teacher.UserName;
             teacherDTO.Email = teacher.Email;
-            //teacherDTO.TeachesCourses = teacher.TeachesCourses;
 
             return teacherDTO;
         }
 
         public static void UpdateTeacherWithTeacherDTO(Teacher teacher, TeacherDTO teacherDTO)
         {
-            //teacher.Id = teacherDTO.Id;
             teacher.FirstName = teacherDTO.FirstName;
             teacher.LastName = teacherDTO.LastName;
             teacher.UserName = teacherDTO.UserName;
             teacher.Email = teacherDTO.Email;
-            //teacher.TeachesCourses = teacherDTO.TeachesCourses;
-
         }
 
         public static Teacher TeacherDTOToTeacher(TeacherDTO teacherDTO)
@@ -43,7 +41,26 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             teacher.LastName = teacherDTO.LastName;
             teacher.UserName = teacherDTO.UserName;
             teacher.Email = teacherDTO.Email;
-            //teacher.TeachesCourses = teacherDTO.TeachesCourses;
+
+            return teacher;
+        }
+
+        public static TeacherBasicDTO TeacherToTeacherBasicDTO(Teacher teacher)
+        {
+            TeacherBasicDTO teacherDTO = new TeacherBasicDTO();
+            teacherDTO.Id = teacher.Id;
+            teacherDTO.FirstName = teacher.FirstName;
+            teacherDTO.LastName = teacher.LastName;
+            return teacherDTO;
+        }
+
+        public static Teacher TeacherBasicDTOToTeacher(TeacherBasicDTO teacherDTO)
+        {
+            Teacher teacher = new Teacher();
+
+            teacher.Id = teacherDTO.Id;
+            teacher.FirstName = teacherDTO.FirstName;
+            teacher.LastName = teacherDTO.LastName;
 
             return teacher;
         }

@@ -11,17 +11,17 @@ namespace eGradebook.Models.DTOs
     {
         public int Id { get; set; }
 
-        [JsonRequired]
-        public virtual StudentTakesCourseDTO Student_Course { get; set; }
+        //[JsonRequired]
+        //public virtual StudentTakesCourseDTO Student_Course { get; set; }
 
         // [JsonRequired]
         // public virtual TeacherTeachesCourse Teacher_Course { get; set; }
 
-        [JsonRequired]
-        [JsonConverter(typeof(StringEnumConverter))]
+        //[JsonRequired]
+        //[JsonConverter(typeof(StringEnumConverter))]
         public StudentMark Value { get; set; }
 
-        [JsonRequired]
+        //[JsonRequired]
         public DateTime DateAdded { get; set; }
     }
 }

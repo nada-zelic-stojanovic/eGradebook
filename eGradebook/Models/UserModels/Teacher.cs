@@ -11,9 +11,6 @@ namespace eGradebook.Models.UserModels
 {
     public class Teacher : User
     {
-        [JsonIgnore]
-        public virtual ICollection<TeacherTeachesCourse> TeachesCourses { get; set; }
-
 
         public override async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

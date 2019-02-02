@@ -19,17 +19,17 @@ namespace eGradebook.Services.Users_Services
             this.db = db;
         }
 
-        public IEnumerable<TeacherDTO> Get()
+        public IEnumerable<TeacherBasicDTO> Get()
         {
             var teachers = db.TeachersRepository.Get();
             if (teachers == null)
             {
                 return null;
             }
-            var teacherDTOs = new List<TeacherDTO>();
+            var teacherDTOs = new List<TeacherBasicDTO>();
             foreach (Teacher teacher in teachers)
             {
-                teacherDTOs.Add(TeacherConverter.TeacherToTeacherDTO(teacher));
+                teacherDTOs.Add(TeacherConverter.TeacherToTeacherBasicDTO(teacher));
             }
             return teacherDTOs;
         }

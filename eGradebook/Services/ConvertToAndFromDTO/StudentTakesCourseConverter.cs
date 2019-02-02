@@ -14,16 +14,16 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             StudentTakesCourseDTO stcDTO = new StudentTakesCourseDTO();
 
             stcDTO.Id = stc.Id;
-            stcDTO.Student = StudentConverter.StudentToStudentDTO(stc.Student);
+            stcDTO.Student = StudentConverter.StudentToStudentBasicDTO(stc.Student);
             stcDTO.Course = TeacherTeachesCourseConverter.TeacherTeachescourseToTeacherTeachesCourseDTO(stc.Course);
-            //stcDTO.StudentsMarksFromCourse = stc.StudentsMarksFromCourse;
+            stcDTO.Marks = stc.StudentsMarksFromCourse.Select(m => MarkConverter.MarkoToMarkDTO(m));
 
             return stcDTO;
         }
 
         public static void UpdateStudentTakesCourseWithStudentTakesCourseDTO(StudentTakesCourse stc, StudentTakesCourseDTO stcDTO)
         {
-            stc.Student = StudentConverter.StudentDTOToStudent(stcDTO.Student);
+            stc.Student = StudentConverter.StudentBasicDTOToStudent(stcDTO.Student);
             stc.Course = TeacherTeachesCourseConverter.TeacherTeachesCourseDTOtoTeacherTeachesCourse(stcDTO.Course);
             //stc.StudentsMarksFromCourse = stcDTO.StudentsMarksFromCourse;
         }
@@ -33,7 +33,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             StudentTakesCourse stc = new StudentTakesCourse();
 
             stc.Id = stcDTO.Id;
-            stc.Student = StudentConverter.StudentDTOToStudent(stcDTO.Student);
+            stc.Student = StudentConverter.StudentBasicDTOToStudent(stcDTO.Student);
             stc.Course = TeacherTeachesCourseConverter.TeacherTeachesCourseDTOtoTeacherTeachesCourse(stcDTO.Course);
             //stc.StudentsMarksFromCourse = stcDTO.StudentsMarksFromCourse;
 

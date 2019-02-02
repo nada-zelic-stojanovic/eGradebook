@@ -12,6 +12,7 @@ using System.Web.Http.Description;
 
 namespace eGradebook.Controllers
 {
+    //teacher controller for admins
     [RoutePrefix("api/teachers")]
     public class TeacherController : ApiController
     {
@@ -24,32 +25,23 @@ namespace eGradebook.Controllers
         }
 
         [Route("")]
-        [Authorize(Roles = "admin")]
+       // [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult Get()
         {
-            logger.Info("Requesting teachers info");
+            logger.Info("Admin requesting teachers info");
             return Ok(teacherService.Get());
         }
 
         [Route("{id}")]
-        [Authorize(Roles = "admin, teacher")]
+       // [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(string id)
         {
             logger.Info("Requesting teacher info by id");
-            /*
-            //authentification for teacher
-            bool isTeacher = RequestContext.Principal.IsInRole("teacher");
-            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
-            string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
-            if (teacherId != id)
-            {
-                return Unauthorized();
-            }
-            */
+
             var teacher = teacherService.GetByID(id);
             if (teacher == null)
             {
@@ -59,7 +51,7 @@ namespace eGradebook.Controllers
         }
 
         [Route("{id}")]
-        [Authorize(Roles = "admin")]
+       // [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
         public IHttpActionResult Put(string id, TeacherDTO teacherDTO)
@@ -80,7 +72,7 @@ namespace eGradebook.Controllers
         }
 
         [Route("{id}")]
-        [Authorize(Roles = "admin")]
+       // [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpDelete]
         public IHttpActionResult Delete(string id)

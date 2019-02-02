@@ -14,15 +14,16 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             TeacherTeachesCourseDTO ttcDTO = new TeacherTeachesCourseDTO();
 
             ttcDTO.Id = ttc.Id;
-            ttcDTO.Teacher = TeacherConverter.TeacherToTeacherDTO(ttc.Teacher);
+            ttcDTO.Teacher = TeacherConverter.TeacherToTeacherBasicDTO(ttc.Teacher);
             ttcDTO.Subject = SubjectConverter.SubjectToSubjectDTO(ttc.Subject);
+            //ttcDTO.subjectName = ttc.Subject.Name;
 
             return ttcDTO;
         }
 
         public static void UpdateTeacherTeachesCourseWithTeacherTeachesCourseDTO(TeacherTeachesCourse ttc, TeacherTeachesCourseDTO ttcDTO)
         {
-            ttc.Teacher = TeacherConverter.TeacherDTOToTeacher(ttcDTO.Teacher);
+            ttc.Teacher = TeacherConverter.TeacherBasicDTOToTeacher(ttcDTO.Teacher);
             ttc.Subject = SubjectConverter.SubjectDTOToSubject(ttcDTO.Subject);
         }
 
@@ -30,10 +31,18 @@ namespace eGradebook.Services.ConvertToAndFromDTO
         {
             TeacherTeachesCourse ttc = new TeacherTeachesCourse();
             ttc.Id = ttcDTO.Id;
-            ttc.Teacher = TeacherConverter.TeacherDTOToTeacher(ttcDTO.Teacher);
+            ttc.Teacher = TeacherConverter.TeacherBasicDTOToTeacher(ttcDTO.Teacher);
             ttc.Subject = SubjectConverter.SubjectDTOToSubject(ttcDTO.Subject);
 
             return ttc;
+        }
+
+        public TeacherTeachesCourseBasicDTO TeacherTeachesCourseBasicDTO(TeacherTeachesCourse ttc)
+        {
+            TeacherTeachesCourseBasicDTO ttcDTO = new TeacherTeachesCourseBasicDTO();
+            ttcDTO.Id = ttc.Id;
+            ttcDTO.courseName = ttc.Subject.Name;
+            return ttcDTO;
         }
     }
 }

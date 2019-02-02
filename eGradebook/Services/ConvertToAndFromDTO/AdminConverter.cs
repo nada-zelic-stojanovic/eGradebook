@@ -1,4 +1,5 @@
 ﻿using eGradebook.Models.UserModels;
+using eGradebook.Models.UserModels.UserDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,17 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             admin.UserName = adminDTO.UserName;
             admin.Email = adminDTO.Email;
 
+        }
+
+        public static AdminBasicDTO AdminToAdminBasicDTO(Admin admin)
+        {
+            AdminBasicDTO adminDTO = new AdminBasicDTO();
+
+            adminDTO.Id = admin.Id;
+            adminDTO.FirstName = admin.FirstName;
+            adminDTO.LastName = admin.LastName;
+
+            return adminDTO;
         }
     }
 }

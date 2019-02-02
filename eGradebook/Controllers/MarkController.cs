@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 
 namespace eGradebook.Controllers
 {
+    
     [RoutePrefix("api/marks")]
     public class MarkController : ApiController
     {
@@ -24,7 +25,7 @@ namespace eGradebook.Controllers
 
         //get
         [Route("")]
-        [Authorize(Roles = "admin, teacher")]
+        //[Authorize(Roles = "admin, teacher")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult Get()
@@ -35,7 +36,7 @@ namespace eGradebook.Controllers
 
         //getbyid
         [Route("{id}")]
-        [Authorize(Roles = "admin, teacher")]
+        //[Authorize(Roles = "admin, teacher")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(int id)
@@ -52,7 +53,7 @@ namespace eGradebook.Controllers
 
         //put
         [Route("{id}")]
-        [Authorize(Roles = "admin, teacher")]
+        //[Authorize(Roles = "admin, teacher")]
         [ResponseType(typeof(void))]
         [HttpPut]
         public IHttpActionResult Put(int id, MarkDTO markUpdate)
@@ -74,7 +75,7 @@ namespace eGradebook.Controllers
 
         //post
         [Route("")]
-        [Authorize(Roles = "admin, teacher")]
+        //[Authorize(Roles = "admin, teacher")]
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult Post(MarkDTO newMark)
@@ -91,7 +92,7 @@ namespace eGradebook.Controllers
 
         //delete
         [Route("{id}")]
-        [Authorize(Roles = "admin, teacher")]
+        //[Authorize(Roles = "admin, teacher")]
         [ResponseType(typeof(void))]
         [HttpDelete]
         public IHttpActionResult DeleteMark(int id)
@@ -107,4 +108,5 @@ namespace eGradebook.Controllers
             return Ok();
         }
     }
+    
 }

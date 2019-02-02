@@ -63,7 +63,7 @@ namespace eGradebook.Controllers
         [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
-        public IHttpActionResult Put(string id, ParentDTO parentDTO)
+        public IHttpActionResult Put(string id, ParentUpdateDTO parentDTO)
         {
             logger.Info("Updating parent");
 
@@ -71,7 +71,7 @@ namespace eGradebook.Controllers
             {
                 return BadRequest();
             }
-            ParentDTO parentUpdated = parentService.Update(id, parentDTO);
+            ParentUpdateDTO parentUpdated = parentService.Update(id, parentDTO);
             if (parentUpdated == null)
             {
                 return NotFound();

@@ -12,8 +12,8 @@ namespace eGradebook.Models
     {
         public int Id { get; set; }
 
-        [JsonRequired]
-        public virtual StudentTakesCourse Student_Course { get; set; }
+        //[JsonRequired]
+        //public virtual StudentTakesCourse Student_Course { get; set; }
 
         [JsonRequired]
         [JsonConverter(typeof(StringEnumConverter))]

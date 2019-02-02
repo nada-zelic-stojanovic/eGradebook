@@ -14,7 +14,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             MarkDTO markDTO = new MarkDTO();
 
             markDTO.Id = mark.Id;
-            markDTO.Student_Course = StudentTakesCourseConverter.StudentTakesCourseToStudentTakesCourseDTO(mark.Student_Course);
+           // markDTO.Student_Course = StudentTakesCourseConverter.StudentTakesCourseToStudentTakesCourseDTO(mark.Student_Course);
             markDTO.Value = mark.Value;
             markDTO.DateAdded = mark.DateAdded;
 
@@ -23,7 +23,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO
 
         public static void UpdateMarkWithMarkDTO(Mark mark, MarkDTO markDTO)
         {
-            mark.Student_Course = StudentTakesCourseConverter.StudentTakesCourseDTOToStudentTakesCourse(markDTO.Student_Course);
+            //mark.Student_Course = StudentTakesCourseConverter.StudentTakesCourseDTOToStudentTakesCourse(markDTO.Student_Course);
             mark.Value = markDTO.Value;
             mark.DateAdded = markDTO.DateAdded;
         }
@@ -33,7 +33,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             Mark mark = new Mark();
 
             mark.Id = markDTO.Id;
-            mark.Student_Course = StudentTakesCourseConverter.StudentTakesCourseDTOToStudentTakesCourse(markDTO.Student_Course);
+            //mark.Student_Course = StudentTakesCourseConverter.StudentTakesCourseDTOToStudentTakesCourse(markDTO.Student_Course);
             mark.Value = markDTO.Value;
             mark.DateAdded = markDTO.DateAdded;
 

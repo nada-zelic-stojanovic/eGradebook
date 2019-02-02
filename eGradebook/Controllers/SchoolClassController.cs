@@ -25,7 +25,7 @@ namespace eGradebook.Controllers
 
         //get
         [Route("")]
-        [Authorize(Roles = "admin, teacher")]
+        //[Authorize(Roles = "admin, teacher")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult Get()
@@ -36,7 +36,7 @@ namespace eGradebook.Controllers
 
         //getbyid
         [Route("{id}")]
-        [Authorize(Roles = "admin, teacher")]
+        //[Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(int id)
@@ -53,10 +53,10 @@ namespace eGradebook.Controllers
 
         //put
         [Route("{id}")]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
-        public IHttpActionResult Put(int id, SchoolClassDTO schoolClassDTO)
+        public IHttpActionResult Put(int id, SchoolClassBasicDTO schoolClassDTO)
         {
             logger.Info("Updating a school class");
 
@@ -65,7 +65,7 @@ namespace eGradebook.Controllers
                 return BadRequest(ModelState);
             }
 
-            SchoolClassDTO schoolClass = schoolClassService.Update(id, schoolClassDTO);
+            SchoolClassBasicDTO schoolClass = schoolClassService.Update(id, schoolClassDTO);
             if (schoolClass == null)
             {
                 return NotFound();
@@ -75,7 +75,7 @@ namespace eGradebook.Controllers
 
         //post
         [Route("")]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult Post(SchoolClassDTO schoolClassDTO)
@@ -85,13 +85,13 @@ namespace eGradebook.Controllers
             {
                 return BadRequest(ModelState);
             }
-            SchoolClassDTO schoolClass = schoolClassService.Create(schoolClassDTO);
+            SchoolClassBasicDTO schoolClass = schoolClassService.Create(schoolClassDTO);
             return Ok(schoolClass);
         }
 
         //delete
         [Route("{id}")]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpDelete]
         public IHttpActionResult Delete(int id)

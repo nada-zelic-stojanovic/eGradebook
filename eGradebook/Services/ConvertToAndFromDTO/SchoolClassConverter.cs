@@ -17,30 +17,18 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             schoolClassDTO.Grade = schoolClass.Grade;
             schoolClassDTO.Section = schoolClass.Section;
             schoolClassDTO.SchoolYear = SchoolYearConverter.SchoolYearToSchoolYearDTO(schoolClass.SchoolYear);
-            //schoolClassDTO.Students = schoolClass.Students;
-            //schoolClassDTO.Courses_Teachers = schoolClass.Courses_Teachers;
+            schoolClassDTO.Students = schoolClass.Students.Select(s => StudentConverter.StudentToStudentBasicDTO(s));
+            schoolClassDTO.Courses = schoolClass.Courses.Select(c => TeacherTeachesCourseConverter.TeacherTeachescourseToTeacherTeachesCourseDTO(c));
 
             return schoolClassDTO;
         }
 
-        public static SchoolClassDTO SchoolClassToSchoolClassDTOBasic(SchoolClass schoolClass)
-        {
-            SchoolClassDTO schoolClassDTO = new SchoolClassDTO();
 
-            schoolClassDTO.Id = schoolClass.Id;
-            schoolClassDTO.Grade = schoolClass.Grade;
-            schoolClassDTO.Section = schoolClass.Section;
-
-            return schoolClassDTO;
-        }
-
-        public static void UpdateSchoolClassWithSchoolClassDTO(SchoolClass schoolClass, SchoolClassDTO schoolClassDTO)
+        public static void UpdateSchoolClassWithSchoolClassDTO(SchoolClass schoolClass, SchoolClassBasicDTO schoolClassDTO)
         {
             schoolClass.Grade = schoolClassDTO.Grade;
             schoolClass.Section = schoolClassDTO.Section;
-            //schoolClass.SchoolYear = SchoolYearConverter.SchoolYearDTOToSchoolYear(schoolClassDTO.SchoolYear);
-            //schoolClass.Students = schoolClassDTO.Students;
-            //schoolClass.Courses_Teachers = schoolClassDTO.Courses_Teachers;
+            schoolClass.SchoolYear = SchoolYearConverter.SchoolYearDTOToSchoolYear(schoolClassDTO.SchoolYear);
         }
 
         public static SchoolClass SchoolClassDTOToSchoolClass(SchoolClassDTO schoolClassDTO)
@@ -55,6 +43,16 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             //schoolClass.Courses_Teachers = schoolClassDTO.Courses_Teachers;
 
             return schoolClass;
+        }
+
+        public static SchoolClassBasicDTO SchoolClassToSchoolClassBasicDTO(SchoolClass schoolClass)
+        {
+            SchoolClassBasicDTO schoolClassDTO = new SchoolClassBasicDTO();
+            schoolClassDTO.Id = schoolClass.Id;
+            schoolClassDTO.Grade = schoolClass.Grade;
+            schoolClassDTO.Section = schoolClass.Section;
+            schoolClassDTO.SchoolYear = SchoolYearConverter.SchoolYearToSchoolYearDTO(schoolClass.SchoolYear);
+            return schoolClassDTO;
         }
     }
 }

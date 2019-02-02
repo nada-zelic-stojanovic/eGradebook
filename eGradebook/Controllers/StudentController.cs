@@ -27,7 +27,7 @@ namespace eGradebook.Controllers
 
         //DTOs
         [Route("")]
-        [Authorize(Roles = "admin, teacher")]
+        //[Authorize(Roles = "admin, teacher")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult Get()
@@ -37,7 +37,7 @@ namespace eGradebook.Controllers
         }
 
         [Route("{id}")]
-        [Authorize(Roles = "admin, teacher, student, parent")]
+        //[Authorize(Roles = "admin, teacher, student, parent")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(string id)
@@ -73,10 +73,10 @@ namespace eGradebook.Controllers
 
 
         [Route("{id}")]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
-        public IHttpActionResult Put(string id, StudentDTO studentDTO)
+        public IHttpActionResult Put(string id, StudentUpdateDTO studentDTO)
         {
             logger.Info("Updating student");
 
@@ -84,7 +84,7 @@ namespace eGradebook.Controllers
             {
                 return BadRequest();
             }
-            StudentDTO studentUpdated = studentService.Update(id, studentDTO);
+            StudentUpdateDTO studentUpdated = studentService.Update(id, studentDTO);
             if (studentUpdated == null)
             {
                 return NotFound();
@@ -93,7 +93,7 @@ namespace eGradebook.Controllers
         }
 
         [Route("{id}")]
-        [Authorize(Roles = "admin")]
+       // [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpDelete]
         public IHttpActionResult Delete(string id)
@@ -112,7 +112,7 @@ namespace eGradebook.Controllers
 
 
         [Route("{studentId}/parent/{parentId}")]
-        [Authorize(Roles = "admin")]
+       // [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
         public IHttpActionResult PutStudentParent(string studentId, string parentId)

@@ -21,17 +21,17 @@ namespace eGradebook.Services.Users_Services
             this.parentService = parentService;
         }
 
-        public IEnumerable<StudentDTO> Get()
+        public IEnumerable<StudentBasicDTO> Get()
         {
             var students = db.StudentsRepository.Get();
             if (students == null)
             {
                 return null;
             }
-            var studentDTOs = new List<StudentDTO>();
+            var studentDTOs = new List<StudentBasicDTO>();
             foreach (Student student in students)
             {
-                studentDTOs.Add(StudentConverter.StudentToStudentDTO(student));
+                studentDTOs.Add(StudentConverter.StudentToStudentBasicDTO(student));
             }
             return studentDTOs;
         }
@@ -46,13 +46,13 @@ namespace eGradebook.Services.Users_Services
             return StudentConverter.StudentToStudentDTO(student);
         }
 
-        public StudentDTO Update(string id, StudentDTO studentDTO)
+        public StudentUpdateDTO Update(string id, StudentUpdateDTO studentDTO)
         {
             Student student = db.StudentsRepository.GetByID(id);
             StudentConverter.UpdateStudentWithStudentDTO(student, studentDTO);
             db.StudentsRepository.Update(student);
             db.Save();
-            return StudentConverter.StudentToStudentDTOBasic(student);
+            return StudentConverter.StudentToStudentUpdateDTO(student);
         }
 
         public void Delete(string id)

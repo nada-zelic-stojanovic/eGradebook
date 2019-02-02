@@ -283,19 +283,19 @@ namespace eGradebook.Models
                     IList<Mark> marks = new List<Mark>();
 
                     Mark m1 = new Mark();
-                    m1.Student_Course = shs1;
+                    //m1.Student_Course = shs1;
                     m1.Value = StudentMark.INSUFFICIENT;
                     m1.DateAdded = new DateTime(2019, 1, 25);
                     marks.Add(m1);
 
                     Mark m2 = new Mark();
-                    m2.Student_Course = shs1;
+                   //m2.Student_Course = shs1;
                     m2.Value = StudentMark.BELOW_AVERAGE;
                     m2.DateAdded = new DateTime(2019, 1, 15);
                     marks.Add(m2);
 
                     Mark m3 = new Mark();
-                    m3.Student_Course = shs3;
+                    //m3.Student_Course = shs3;
                     m3.Value = StudentMark.ABOVE_AVERAGE;
                     m3.DateAdded = new DateTime(2018, 12, 14);
                     marks.Add(m3);
@@ -307,6 +307,8 @@ namespace eGradebook.Models
                     shs1.StudentsMarksFromCourse.Add(m1);
                     shs1.StudentsMarksFromCourse.Add(m2);
                     shs3.StudentsMarksFromCourse.Add(m3);
+                    base.Seed(context);
+
                 }
 
             }

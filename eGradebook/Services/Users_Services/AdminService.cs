@@ -1,4 +1,5 @@
 ﻿using eGradebook.Models.UserModels;
+using eGradebook.Models.UserModels.UserDTOs;
 using eGradebook.Repositories;
 using eGradebook.Services.ConvertToAndFromDTO;
 using eGradebook.Services.Users_IServices;
@@ -18,17 +19,17 @@ namespace eGradebook.Services.Users_Services
             this.db = db;
         }
 
-        public IEnumerable<AdminDTO> Get()
+        public IEnumerable<AdminBasicDTO> Get()
         {
             var admins = db.AdminsRepository.Get();
             if (admins == null)
             {
                 return null;
             }
-            var adminDTOs = new List<AdminDTO>();
+            var adminDTOs = new List<AdminBasicDTO>();
             foreach(Admin admin in admins)
             {
-                adminDTOs.Add(AdminConverter.AdminToAdminDTO(admin));
+                adminDTOs.Add(AdminConverter.AdminToAdminBasicDTO(admin));
             }
             return adminDTOs;
         }

@@ -23,7 +23,7 @@ namespace eGradebook.Controllers
         }
 
         [Route("")]
-        [Authorize(Roles = "admin")]
+       // [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult Get()
@@ -33,7 +33,7 @@ namespace eGradebook.Controllers
         }
 
         [Route("{id}")]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(string id)
@@ -48,7 +48,7 @@ namespace eGradebook.Controllers
         }
 
         [Route("{id}")]
-        [Authorize(Roles = "admin")]
+      //  [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
         public IHttpActionResult Put(string id, AdminDTO adminDTO)
@@ -68,7 +68,7 @@ namespace eGradebook.Controllers
         }
 
         [Route("{id}")]
-        [Authorize(Roles = "admin")]
+       // [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpDelete]
         public IHttpActionResult Delete(string id)

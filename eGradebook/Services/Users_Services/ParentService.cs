@@ -19,17 +19,17 @@ namespace eGradebook.Services.Users_Services
             this.db = db;
         }
 
-        public IEnumerable<ParentDTO> Get()
+        public IEnumerable<ParentBasicDTO> Get()
         {
             var parents = db.ParentsRepository.Get();
             if (parents == null)
             {
                 return null;
             }
-            var parentDTOs = new List<ParentDTO>();
+            var parentDTOs = new List<ParentBasicDTO>();
             foreach (Parent parent in parents)
             {
-                parentDTOs.Add(ParentConverter.ParentToParentDTO(parent));
+                parentDTOs.Add(ParentConverter.ParentToParentBasicDTO(parent));
             }
             return parentDTOs;
         }
@@ -46,13 +46,13 @@ namespace eGradebook.Services.Users_Services
         }
 
 
-        public ParentDTO Update(string id, ParentDTO parentDTO)
+        public ParentUpdateDTO Update(string id, ParentUpdateDTO parentDTO)
         {
             Parent parent = db.ParentsRepository.GetByID(id);
             ParentConverter.UpdateParentWithParentDTO(parent, parentDTO);
             db.ParentsRepository.Update(parent);
             db.Save();
-            return ParentConverter.ParentToParentDTO(parent);
+            return ParentConverter.ParentToParentUpdateDTO(parent);
         }
 
 
