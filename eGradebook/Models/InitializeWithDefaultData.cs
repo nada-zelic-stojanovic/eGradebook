@@ -300,6 +300,9 @@ namespace eGradebook.Models
                     student4Courses.Add(shs4);
                     student4.StudentTakesCourses = student4Courses;
 
+                    context.Students.Attach(student1);
+                    context.Students.Attach(student4);
+                    context.SaveChanges();
                     base.Seed(context);
 
 

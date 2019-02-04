@@ -37,13 +37,13 @@ namespace eGradebook.Services
         {
             var schoolClasses = db.SchoolClassesRepository.Get();
             var teacherClasses = new List<SchoolClass>();
-            foreach (SchoolClass sc in schoolClasses)
+            foreach (SchoolClass schoolClass in schoolClasses)
             {
-                foreach (TeacherTeachesCourse tc in sc.Courses)
+                foreach (TeacherTeachesCourse tc in schoolClass.Courses)
                 {
                     if (tc.Teacher.Id == teacherId)
                     {
-                        teacherClasses.Add(sc);
+                        teacherClasses.Add(schoolClass);
                     }
                 }
             }

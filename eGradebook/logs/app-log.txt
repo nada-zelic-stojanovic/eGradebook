@@ -80,3 +80,17 @@
 2019-02-04 20:27:22.1216|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
 2019-02-04 21:16:08.3492|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
 2019-02-04 21:17:26.4666|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
+2019-02-04 21:39:38.8682|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 21:42:48.5676|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 21:43:18.6974|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
+2019-02-04 21:44:07.8831|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
+2019-02-04 21:53:40.6090|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 21:53:52.4927|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
+2019-02-04 21:58:18.5179|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 21:58:59.9193|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 21:59:43.9388|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 22:00:19.3658|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 22:01:47.1799|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
+2019-02-04 22:14:25.5012|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 22:14:48.6076|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
+2019-02-04 22:17:00.8371|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades

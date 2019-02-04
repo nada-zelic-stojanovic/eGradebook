@@ -24,6 +24,16 @@ namespace eGradebook.Services
         public StudentGradebookDTO GetStudentGradebook(string studentId)
         {
             Student sg = db.StudentsRepository.GetByID(studentId);
+            var courses = db.StudentTakesCourseRepository.Get();
+            var studentCourses = new List<StudentTakesCourse>();
+            foreach (StudentTakesCourse course in courses)
+            {
+                if (course.Student.Id == studentId)
+                {
+                    studentCourses.Add(course);
+                }
+            }
+            sg.StudentTakesCourses = studentCourses;
 
             return StudentGradebookConverter.StudentTakesCourseToStudentGradebookDTO(sg);
         }
