@@ -224,6 +224,7 @@ namespace eGradebook.Models
                     sc1.Courses.Add(tts1);
                     sc1.Courses.Add(tts3);
                     sc.Add(sc1);
+                    
 
                     SchoolClass sc2 = new SchoolClass();
                     sc2.Grade = Grade.FIFTH;
@@ -235,6 +236,7 @@ namespace eGradebook.Models
                     sc2.Courses.Add(tts1);
                     sc2.Courses.Add(tts3);
                     sc.Add(sc2);
+                    
 
                     SchoolClass sc3 = new SchoolClass();
                     sc3.Grade = Grade.SEVENTH;
@@ -246,36 +248,58 @@ namespace eGradebook.Models
                     sc3.Courses.Add(tts2);
                     sc3.Courses.Add(tts4);
                     sc.Add(sc3);
+                    
 
                     foreach (SchoolClass sc0 in sc)
                         context.SchoolClasses.Add(sc0);
                     base.Seed(context);
 
-                    //student has subject
-                    IList<StudentTakesCourse> shs = new List<StudentTakesCourse>();
+                    /*
+                    student5.SchoolClass = sc1;
+                    student4.SchoolClass = sc2;
+                    student1.SchoolClass = sc3;
+                    student2.SchoolClass = sc3;
+                    student3.SchoolClass = sc3;
+                    base.Seed(context);
+                    */
+
+                    //student takes course
+                    IList<StudentTakesCourse> studentTakesCourses = new List<StudentTakesCourse>();
 
                     StudentTakesCourse shs1 = new StudentTakesCourse();
                     shs1.Student = student1;
                     shs1.Course = tts2;
-                    shs.Add(shs1);
+                    studentTakesCourses.Add(shs1);
+                   
 
                     StudentTakesCourse shs2 = new StudentTakesCourse();
                     shs2.Student = student1;
                     shs2.Course = tts4;
-                    shs.Add(shs2);
+                    studentTakesCourses.Add(shs2);
 
                     StudentTakesCourse shs3 = new StudentTakesCourse();
                     shs3.Student = student4;
                     shs3.Course = tts1;
-                    shs.Add(shs3);
+                    studentTakesCourses.Add(shs3);
 
                     StudentTakesCourse shs4 = new StudentTakesCourse();
                     shs4.Student = student4;
-                    shs4.Course = tts1;
-                    shs.Add(shs4);
+                    shs4.Course = tts4;
+                    studentTakesCourses.Add(shs4);
 
-                    foreach (StudentTakesCourse shs0 in shs)
+                    foreach (StudentTakesCourse shs0 in studentTakesCourses)
                         context.StudentTakesCourse.Add(shs0);
+
+                    List<StudentTakesCourse> student1Courses = new List<StudentTakesCourse>();
+                    student1Courses.Add(shs1);
+                    student1Courses.Add(shs2);
+                    student1.StudentTakesCourses = student1Courses;
+
+                    List<StudentTakesCourse> student4Courses = new List<StudentTakesCourse>();
+                    student4Courses.Add(shs3);
+                    student4Courses.Add(shs4);
+                    student4.StudentTakesCourses = student4Courses;
+
                     base.Seed(context);
 
 

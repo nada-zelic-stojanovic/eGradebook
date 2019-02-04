@@ -94,6 +94,7 @@ namespace eGradebook
             container.RegisterType<IStudentTakesCourseService, StudentTakesCourseService>();
 
             container.RegisterType<ITeacherGradebookService, TeacherGradebookService>();
+            container.RegisterType<IStudentGradebookService, StudentGradebookService>();
 
             return container;
         }

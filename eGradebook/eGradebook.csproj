@@ -171,6 +171,7 @@
     <Compile Include="Controllers\MarkController.cs" />
     <Compile Include="Controllers\ParentController.cs" />
     <Compile Include="Controllers\SchoolClassController.cs" />
+    <Compile Include="Controllers\StudentGradebookController.cs" />
     <Compile Include="Controllers\TeacherGradebookController.cs" />
     <Compile Include="Controllers\SchoolYearController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -184,6 +185,8 @@
     </Compile>
     <Compile Include="Infrastructure\eGradebookContext.cs" />
     <Compile Include="Models\DTOs\SchoolClassBasicDTO.cs" />
+    <Compile Include="Models\DTOs\StudentGradebookDTO.cs" />
+    <Compile Include="Models\DTOs\StudentTakesCourseBasicDTO.cs" />
     <Compile Include="Models\DTOs\SubjectDTO.cs" />
     <Compile Include="Models\DTOs\MarkDTO.cs" />
     <Compile Include="Models\DTOs\SchoolClassDTO.cs" />
@@ -226,6 +229,7 @@
     <Compile Include="Repositories\IUnitOfWork.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Services\ConvertToAndFromDTO\AdminConverter.cs" />
+    <Compile Include="Services\ConvertToAndFromDTO\StudentGradebookConverter.cs" />
     <Compile Include="Services\ConvertToAndFromDTO\SubjectConverter.cs" />
     <Compile Include="Services\ConvertToAndFromDTO\MarkConverter.cs" />
     <Compile Include="Services\ConvertToAndFromDTO\ParentConverter.cs" />
@@ -242,7 +246,7 @@
     <Compile Include="Services\IServices\ITeacherTeachesCourseService.cs" />
     <Compile Include="Services\MarkService.cs" />
     <Compile Include="Services\StudentTakesCourseService.cs" />
-    <Compile Include="Services\StudenttGradebookService.cs" />
+    <Compile Include="Services\StudentGradebookService.cs" />
     <Compile Include="Services\SubjectService.cs" />
     <Compile Include="Services\IServices\ISubjectService.cs" />
     <Compile Include="Services\IServices\ISchoolClassService.cs" />

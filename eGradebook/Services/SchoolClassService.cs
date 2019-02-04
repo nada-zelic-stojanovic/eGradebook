@@ -47,7 +47,7 @@ namespace eGradebook.Services
         }
 
 
-        public SchoolClassBasicDTO Update(int id, SchoolClassBasicDTO schoolClassDTO)
+        public SchoolClassBasicDTO Update(int id, SchoolClassDTO schoolClassDTO)
         {
             SchoolClass schoolClass = db.SchoolClassesRepository.GetByID(id);
             SchoolClassConverter.UpdateSchoolClassWithSchoolClassDTO(schoolClass, schoolClassDTO);

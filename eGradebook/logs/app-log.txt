@@ -26,3 +26,57 @@
 2019-02-02 17:55:23.8898|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
 2019-02-02 17:56:49.1977|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
 2019-02-02 17:57:07.2918|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher giving student a mark
+2019-02-04 15:31:43.6487|INFO|eGradebook.Controllers.TeacherTeachesCourseController|Requesting courses info
+2019-02-04 15:32:06.9411|INFO|eGradebook.Controllers.AdminController|Requesting admins info
+2019-02-04 15:32:19.8878|INFO|eGradebook.Controllers.SchoolYearController|Requesting school years' info
+2019-02-04 15:32:26.9492|INFO|eGradebook.Controllers.SchoolClassController|Requesting school classes info
+2019-02-04 15:33:21.4493|INFO|eGradebook.Controllers.TeacherTeachesCourseController|Requesting courses info
+2019-02-04 15:35:11.4776|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher requesting own profile info
+2019-02-04 15:36:34.2907|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher requesting list of schoolclasses that he/she teaches
+2019-02-04 15:37:21.9001|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher requesting a lis of courses he/she teaches
+2019-02-04 15:38:58.5256|INFO|eGradebook.Controllers.StudentController|Requesting students info
+2019-02-04 15:40:33.4946|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher requesting list of a student's marks from a course
+2019-02-04 15:42:46.7440|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher requesting list of a student's marks from a course
+2019-02-04 15:45:03.0062|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher requesting list of a student's marks from a course
+2019-02-04 15:46:08.6420|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher requesting list of a student's marks from a course
+2019-02-04 15:46:25.2987|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher requesting list of a student's marks from a course
+2019-02-04 15:46:45.9082|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher requesting list of a student's marks from a course
+2019-02-04 15:47:27.4433|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher giving student a mark
+2019-02-04 15:48:53.6535|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 15:51:08.7184|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher giving student a mark
+2019-02-04 15:51:31.1243|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher giving student a mark
+2019-02-04 15:51:52.8676|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher giving student a mark
+2019-02-04 16:12:18.3736|INFO|eGradebook.Controllers.StudentController|Requesting students info
+2019-02-04 16:13:14.0582|INFO|eGradebook.Controllers.StudentController|Requesting students info
+2019-02-04 16:13:56.8496|INFO|eGradebook.Controllers.StudentController|Requesting students info
+2019-02-04 16:14:38.7274|INFO|eGradebook.Controllers.StudentController|Requesting students info
+2019-02-04 16:15:00.6190|INFO|eGradebook.Controllers.StudentController|Requesting students info
+2019-02-04 16:15:18.9678|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 16:15:48.9573|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher giving student a mark
+2019-02-04 16:16:02.9031|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher giving student a mark
+2019-02-04 16:18:55.6436|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 16:19:12.0516|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher giving student a mark
+2019-02-04 17:02:45.9157|INFO|eGradebook.Controllers.StudentController|Requesting students info
+2019-02-04 17:04:01.3791|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
+2019-02-04 17:13:49.8447|INFO|eGradebook.Controllers.StudentController|Requesting students info
+2019-02-04 17:14:06.2756|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
+2019-02-04 17:16:49.9331|INFO|eGradebook.Controllers.StudentController|Requesting students info
+2019-02-04 17:17:07.9088|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
+2019-02-04 17:27:31.3305|INFO|eGradebook.Controllers.StudentController|Requesting students info
+2019-02-04 17:27:46.7704|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
+2019-02-04 17:31:22.4576|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 17:55:38.5926|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 17:55:58.4685|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
+2019-02-04 19:57:31.8560|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 19:58:22.9678|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 19:59:46.5703|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 20:11:13.8348|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 20:12:06.1498|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 20:13:08.1284|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
+2019-02-04 20:20:45.0215|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 20:22:05.6206|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 20:23:15.2523|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 20:25:28.9351|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 20:27:22.1216|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades
+2019-02-04 21:16:08.3492|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-04 21:17:26.4666|INFO|eGradebook.Controllers.StudentGradebookController|Student requesting own grades

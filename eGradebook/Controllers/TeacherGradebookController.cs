@@ -136,8 +136,12 @@ namespace eGradebook.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            return Ok(teacherGradebookService.MarkStudent(studentId, courseId, markDTO));
+            var result = teacherGradebookService.MarkStudent(studentId, courseId, markDTO);
+            if (result == null)
+            {
+                return BadRequest();
+            }
+            return Ok(result);
         }
 
         //put/ update a mark

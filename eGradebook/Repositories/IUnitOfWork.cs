@@ -24,6 +24,7 @@ namespace eGradebook.Repositories
         IGenericRepository<TeacherTeachesCourse> TeacherTeachesCourseRepository { get; }
         IGenericRepository<StudentTakesCourse> StudentTakesCourseRepository { get; }
 
+
         void Save();
     }
 }

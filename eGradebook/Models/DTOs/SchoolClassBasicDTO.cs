@@ -14,6 +14,6 @@ namespace eGradebook.Models.DTOs
         //for example: "A", "B", "C", etc.
         public string Section { get; set; }
 
-        public virtual SchoolYearDTO SchoolYear { get; set; }
+        public virtual string SchoolYear { get; set; }
     }
 }

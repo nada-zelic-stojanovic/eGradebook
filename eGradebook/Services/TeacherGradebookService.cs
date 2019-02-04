@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace eGradebook.Services
 {
@@ -88,6 +89,10 @@ namespace eGradebook.Services
             StudentTakesCourse stc = db.StudentTakesCourseRepository
                 .Get()
                 .FirstOrDefault(x => x.Course.Id == courseId && x.Student.Id == studentId);
+            if (stc == null)
+            {
+                return null;
+            }
             stc.StudentsMarksFromCourse.Add(mark);
             db.StudentTakesCourseRepository.Update(stc);
             db.Save();

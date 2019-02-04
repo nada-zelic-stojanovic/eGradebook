@@ -19,7 +19,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             studentDTO.UserName = student.UserName;
             studentDTO.Email = student.Email;
             studentDTO.Parent = ParentConverter.ParentToParentDTO(student.Parent);
-            studentDTO.SchoolClass = SchoolClassConverter.SchoolClassToSchoolClassDTO(student.SchoolClass);
+            studentDTO.SchoolClass = SchoolClassConverter.SchoolClassToSchoolClassBasicDTO(student.SchoolClass);
 
             return studentDTO;
         }
@@ -67,6 +67,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             studentDTO.Id = student.Id;
             studentDTO.FirstName = student.FirstName;
             studentDTO.LastName = student.LastName;
+            studentDTO.SchoolClass = SchoolClassConverter.SchoolClassToSchoolClassBasicDTO(student.SchoolClass);
             return studentDTO;
         }
 

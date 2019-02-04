@@ -11,7 +11,7 @@ namespace eGradebook.Services.IServices
     {
         IEnumerable<SchoolClassDTO> Get();
         SchoolClassDTO GetById(int id);
-        SchoolClassBasicDTO Update(int id, SchoolClassBasicDTO schoolClassDTO);
+        SchoolClassBasicDTO Update(int id, SchoolClassDTO schoolClassDTO);
         SchoolClassBasicDTO Create(SchoolClassDTO schoolClassDTO);
         void Delete(int id);
 

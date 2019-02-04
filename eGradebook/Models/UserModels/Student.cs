@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,13 @@ namespace eGradebook.Models.UserModels
 
         public virtual SchoolClass SchoolClass { get; set; }
 
+        [JsonIgnore]
+        public IEnumerable<StudentTakesCourse> StudentTakesCourses { get; set; }
+
         //constructor
         public Student()
         {
-
+            StudentTakesCourses = new List<StudentTakesCourse>();
         }
 
         public override async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

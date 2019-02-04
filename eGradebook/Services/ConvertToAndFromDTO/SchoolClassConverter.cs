@@ -24,7 +24,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO
         }
 
 
-        public static void UpdateSchoolClassWithSchoolClassDTO(SchoolClass schoolClass, SchoolClassBasicDTO schoolClassDTO)
+        public static void UpdateSchoolClassWithSchoolClassDTO(SchoolClass schoolClass, SchoolClassDTO schoolClassDTO)
         {
             schoolClass.Grade = schoolClassDTO.Grade;
             schoolClass.Section = schoolClassDTO.Section;
@@ -51,7 +51,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             schoolClassDTO.Id = schoolClass.Id;
             schoolClassDTO.Grade = schoolClass.Grade;
             schoolClassDTO.Section = schoolClass.Section;
-            schoolClassDTO.SchoolYear = SchoolYearConverter.SchoolYearToSchoolYearDTO(schoolClass.SchoolYear);
+            schoolClassDTO.SchoolYear = schoolClass.SchoolYear.Name;
             return schoolClassDTO;
         }
     }

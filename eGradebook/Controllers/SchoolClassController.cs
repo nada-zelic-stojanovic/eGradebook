@@ -56,7 +56,7 @@ namespace eGradebook.Controllers
         //[Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
-        public IHttpActionResult Put(int id, SchoolClassBasicDTO schoolClassDTO)
+        public IHttpActionResult Put(int id, SchoolClassDTO schoolClassDTO)
         {
             logger.Info("Updating a school class");
 

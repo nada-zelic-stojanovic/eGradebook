@@ -39,5 +39,14 @@ namespace eGradebook.Services.ConvertToAndFromDTO
 
             return stc;
         }
+
+        public static StudentTakesCourseBasicDTO StudentTakesCourseToStudentTakesCourseBasicDTO(StudentTakesCourse stc)
+        {
+            StudentTakesCourseBasicDTO stcDTO = new StudentTakesCourseBasicDTO();
+            stcDTO.Id = stc.Id;
+            stcDTO.CourseName = stc.Course.Subject.Name;
+            stcDTO.Marks = stc.StudentsMarksFromCourse.Select(m => MarkConverter.MarkoToMarkDTO(m));
+            return stcDTO;
+        }
     }
 }
