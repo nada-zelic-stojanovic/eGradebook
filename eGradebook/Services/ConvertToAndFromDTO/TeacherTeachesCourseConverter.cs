@@ -37,7 +37,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             return ttc;
         }
 
-        public TeacherTeachesCourseBasicDTO TeacherTeachesCourseBasicDTO(TeacherTeachesCourse ttc)
+        public static TeacherTeachesCourseBasicDTO TeacherTeachesCourseToTeacherTeachesCourseBasicDTO(TeacherTeachesCourse ttc)
         {
             TeacherTeachesCourseBasicDTO ttcDTO = new TeacherTeachesCourseBasicDTO();
             ttcDTO.Id = ttc.Id;

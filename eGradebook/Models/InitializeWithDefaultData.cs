@@ -214,6 +214,16 @@ namespace eGradebook.Models
                         context.TeacherTeachesCourse.Add(tts0);
                     base.Seed(context);
 
+                    List<TeacherTeachesCourse> teacher1courses = new List<TeacherTeachesCourse>();
+                    teacher1courses.Add(tts1);
+                    teacher1courses.Add(tts2);
+                    teacher1.TeacherTeachesCourses = teacher1courses;
+
+                    List<TeacherTeachesCourse> teacher2courses = new List<TeacherTeachesCourse>();
+                    teacher2courses.Add(tts3);
+                    teacher2courses.Add(tts4);
+                    teacher2.TeacherTeachesCourses = teacher2courses;
+
                     //school classes
                     IList<SchoolClass> sc = new List<SchoolClass>();
 

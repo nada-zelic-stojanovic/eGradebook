@@ -20,6 +20,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             teacherDTO.LastName = teacher.LastName;
             teacherDTO.UserName = teacher.UserName;
             teacherDTO.Email = teacher.Email;
+            teacherDTO.TeacherTeachesCourses = teacher.TeacherTeachesCourses.Select(x => TeacherTeachesCourseConverter.TeacherTeachesCourseToTeacherTeachesCourseBasicDTO(x));
 
             return teacherDTO;
         }

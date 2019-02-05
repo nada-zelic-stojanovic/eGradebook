@@ -20,17 +20,17 @@ namespace eGradebook.Services
             this.schoolYearService = schoolYearService;
         }
 
-        public IEnumerable<SchoolClassDTO> Get()
+        public IEnumerable<SchoolClassBasicDTO> Get()
         {
             var schoolClasses = db.SchoolClassesRepository.Get();
             if (schoolClasses == null)
             {
                 return null;
             }
-            var schoolClassesDTOs = new List<SchoolClassDTO>();
+            var schoolClassesDTOs = new List<SchoolClassBasicDTO>();
             foreach (SchoolClass schoolClass in schoolClasses)
             {
-                schoolClassesDTOs.Add(SchoolClassConverter.SchoolClassToSchoolClassDTO(schoolClass));
+                schoolClassesDTOs.Add(SchoolClassConverter.SchoolClassToSchoolClassBasicDTO(schoolClass));
             }
             return schoolClassesDTOs;
         }

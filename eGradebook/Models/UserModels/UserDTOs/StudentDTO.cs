@@ -14,7 +14,7 @@ namespace eGradebook.Models.UserModels.UserDTOs
         public string UserName { get; set; }
         public string Email { get; set; }
 
-        public ParentDTO Parent { get; set; }
+        public ParentBasicDTO Parent { get; set; }
         public SchoolClassBasicDTO SchoolClass { get; set; }
 
 

@@ -9,7 +9,7 @@ namespace eGradebook.Services.IServices
 {
     public interface ISchoolClassService
     {
-        IEnumerable<SchoolClassDTO> Get();
+        IEnumerable<SchoolClassBasicDTO> Get();
         SchoolClassDTO GetById(int id);
         SchoolClassBasicDTO Update(int id, SchoolClassDTO schoolClassDTO);
         SchoolClassBasicDTO Create(SchoolClassDTO schoolClassDTO);

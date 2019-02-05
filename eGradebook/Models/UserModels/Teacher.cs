@@ -11,7 +11,13 @@ namespace eGradebook.Models.UserModels
 {
     public class Teacher : User
     {
-       // public IEnumerable<Teach>
+        [JsonIgnore]
+        public IEnumerable<TeacherTeachesCourse> TeacherTeachesCourses { get; set; }
+
+        public Teacher()
+        {
+            TeacherTeachesCourses = new List<TeacherTeachesCourse>();
+        }
 
         public override async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

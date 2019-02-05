@@ -36,3 +36,14 @@
 2019-02-05 11:03:18.9680|INFO|eGradebook.Controllers.TeacherTeachesCourseController|Requesting courses info
 2019-02-05 11:03:42.1313|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
 2019-02-05 11:03:59.8073|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher requesting own profile info
+2019-02-05 14:08:06.4490|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-05 14:08:20.4496|INFO|eGradebook.Controllers.TeacherController|Requesting teacher info by id
+2019-02-05 14:18:02.8643|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-05 14:18:16.8205|INFO|eGradebook.Controllers.TeacherController|Requesting teacher info by id
+2019-02-05 14:37:51.8647|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-05 14:38:04.2824|INFO|eGradebook.Controllers.TeacherController|Requesting teacher info by id
+2019-02-05 14:54:42.8708|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-05 14:54:54.5904|INFO|eGradebook.Controllers.TeacherController|Requesting teacher info by id
+2019-02-05 15:01:01.5717|INFO|eGradebook.Controllers.StudentController|Requesting students info
+2019-02-05 15:01:16.5365|INFO|eGradebook.Controllers.StudentController|Requesting student info by id
+2019-02-05 15:03:52.7779|INFO|eGradebook.Controllers.SchoolClassController|Requesting school classes info

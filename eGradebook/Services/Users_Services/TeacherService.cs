@@ -1,4 +1,6 @@
-﻿using eGradebook.Models.UserModels;
+﻿using eGradebook.Models;
+using eGradebook.Models.DTOs;
+using eGradebook.Models.UserModels;
 using eGradebook.Models.UserModels.UserDTOs;
 using eGradebook.Repositories;
 using eGradebook.Services.ConvertToAndFromDTO;
@@ -41,6 +43,18 @@ namespace eGradebook.Services.Users_Services
             {
                 return null;
             }
+
+            var courses = db.TeacherTeachesCourseRepository.Get();
+            var teacherCourses = new List<TeacherTeachesCourse>();
+            foreach (TeacherTeachesCourse course in courses)
+            {
+                if (course.Teacher.Id == id)
+                {
+                    teacherCourses.Add(course);
+                }
+            }
+            teacher.TeacherTeachesCourses = teacherCourses;
+
             return TeacherConverter.TeacherToTeacherDTO(teacher);
         }
 
