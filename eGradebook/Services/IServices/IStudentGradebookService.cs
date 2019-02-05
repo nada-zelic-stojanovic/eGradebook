@@ -9,6 +9,6 @@ namespace eGradebook.Services.IServices
 {
     public interface IStudentGradebookService
     {
-        StudentGradebookDTO GetStudentGradebook(string studentId);
+        StudentGradebookDTO GetStudentCoursesAndMarks(string studentId);
     }
 }

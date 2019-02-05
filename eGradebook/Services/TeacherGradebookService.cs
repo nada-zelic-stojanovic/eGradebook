@@ -37,7 +37,7 @@ namespace eGradebook.Services
 
 
         //get list of classes in which teacher teaches
-        public IEnumerable<SchoolClassBasicDTO> GetTeacherClasses(string teacherId)
+        public IEnumerable<SchoolClassBasicDTO> GetTeacherTeachingClasses(string teacherId)
         {
             var schoolClasses = db.SchoolClassesRepository.Get();
             var teacherClasses = new List<SchoolClass>();
@@ -63,7 +63,7 @@ namespace eGradebook.Services
 
 
         //get list of courses taught by teacher
-        public IEnumerable<TeacherTeachesCourseDTO> GetTeacherCourses(string teacherId)
+        public IEnumerable<TeacherTeachesCourseDTO> GetTeacherTeachingCourses(string teacherId)
         {
             var teacherCourses = db.TeacherTeachesCourseRepository.Get().Where(x => x.Teacher.Id == teacherId);
             var teacherCoursesDTO = new List<TeacherTeachesCourseDTO>();
@@ -84,7 +84,7 @@ namespace eGradebook.Services
         }
         
         //create a student's mark
-        public StudentTakesCourseDTO MarkStudent(string studentId, int courseId, MarkDTO markDTO)
+        public StudentTakesCourseDTO GiveStudentAMark(string studentId, int courseId, MarkDTO markDTO)
         {
             Mark mark = MarkConverter.MarkDTOToMark(markDTO);
             mark.DateAdded = DateTime.Now;

@@ -9,9 +9,9 @@ namespace eGradebook.Services.IServices
 {
     public interface ITeacherGradebookService
     {
-        IEnumerable<SchoolClassBasicDTO> GetTeacherClasses(string teacherId);
+        IEnumerable<SchoolClassBasicDTO> GetTeacherTeachingClasses(string teacherId);
         StudentTakesCourseDTO GetStudentsMarksFromCourse(string studentId, int courseId);
-        IEnumerable<TeacherTeachesCourseDTO> GetTeacherCourses(string teacherId);
-        StudentTakesCourseDTO MarkStudent(string studentId, int courseId, MarkDTO markDTO);
+        IEnumerable<TeacherTeachesCourseDTO> GetTeacherTeachingCourses(string teacherId);
+        StudentTakesCourseDTO GiveStudentAMark(string studentId, int courseId, MarkDTO markDTO);
     }
 }

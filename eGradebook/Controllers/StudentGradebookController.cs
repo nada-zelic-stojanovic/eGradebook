@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 
@@ -25,12 +26,22 @@ namespace eGradebook.Controllers
         }
 
         [Route("profile/{id}")]
-        //[Authorize(Roles = "student")]
+        [Authorize(Roles = "student")]
         [ResponseType(typeof(void))]
         [HttpGet]
-        public IHttpActionResult GetStudentById(string id)
+        public IHttpActionResult GetStudentProfileById(string id)
         {
             logger.Info("Student requesting own profile info");
+
+            //auth for student
+            bool isStudent = RequestContext.Principal.IsInRole("student");
+            bool isAuthenticatedStudent = RequestContext.Principal.Identity.IsAuthenticated;
+            string studentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (studentId != id)
+            {
+                return Unauthorized();
+            }
+
             var student = studentService.GetByID(id);
             if (student == null)
             {
@@ -40,13 +51,23 @@ namespace eGradebook.Controllers
         }
 
         [Route("grades/{studentId}")]
-        //[Authorize(Roles = "student")]
+        [Authorize(Roles = "student")]
         [ResponseType(typeof(void))]
         [HttpGet]
-        public IHttpActionResult GetStudentGradebook(string studentId)
+        public IHttpActionResult GetStudentCoursesAndMarks(string id)
         {
             logger.Info("Student requesting own grades");
-            var sg = sgService.GetStudentGradebook(studentId);
+
+            //auth for student
+            bool isStudent = RequestContext.Principal.IsInRole("student");
+            bool isAuthenticatedStudent = RequestContext.Principal.Identity.IsAuthenticated;
+            string studentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (studentId != id)
+            {
+                return Unauthorized();
+            }
+
+            var sg = sgService.GetStudentCoursesAndMarks(id);
             if (sg == null)
             {
                 return NotFound();

@@ -25,22 +25,22 @@ namespace eGradebook.Controllers
         }
 
         [Route("")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult Get()
         {
-            logger.Info("Admin requesting teachers info");
+            logger.Info("Admin requesting a list of all teachers in school");
             return Ok(teacherService.Get());
         }
 
         [Route("{id}")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(string id)
         {
-            logger.Info("Requesting teacher info by id");
+            logger.Info("ADmin requesting a teacher's profile");
 
             var teacher = teacherService.GetByID(id);
             if (teacher == null)
@@ -51,12 +51,12 @@ namespace eGradebook.Controllers
         }
 
         [Route("{id}")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
         public IHttpActionResult Put(string id, TeacherDTO teacherDTO)
         {
-            logger.Info("Updating teacher");
+            logger.Info("Admin updating a teacher's profile");
 
             if (!ModelState.IsValid)
             {
@@ -72,12 +72,12 @@ namespace eGradebook.Controllers
         }
 
         [Route("{id}")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpDelete]
         public IHttpActionResult Delete(string id)
         {
-            logger.Info("Deleting teacher");
+            logger.Info("Admin deleting a teacher");
 
             TeacherDTO teacher = teacherService.GetByID(id);
             if (teacher == null)

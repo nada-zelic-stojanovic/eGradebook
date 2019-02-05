@@ -27,58 +27,39 @@ namespace eGradebook.Controllers
 
         //DTOs
         [Route("")]
-        //[Authorize(Roles = "admin, teacher")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult Get()
         {
-            logger.Info("Requesting students info");
+            logger.Info("Admin requesting list of all students");
             return Ok(studentService.Get());
         }
 
         [Route("{id}")]
-        //[Authorize(Roles = "admin, teacher, student, parent")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(string id)
         {
-            logger.Info("Requesting student info by id");
+            logger.Info("Admin requesting to see a student profile");
             StudentDTO studentDTO = studentService.GetByID(id);
             if (studentDTO == null)
             {
                 return NotFound();
             }
-            /*
-            //authentification for parent
-            bool isParent = RequestContext.Principal.IsInRole("parent");
-            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
-            string parentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
-            if (parentId != studentDTO.Parent.Id)
-            {
-                return Unauthorized();
-            }
-
-            //auth for student
-            bool isStudent = RequestContext.Principal.IsInRole("student");
-            bool isAuthenticatedStudent = RequestContext.Principal.Identity.IsAuthenticated;
-            string studentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
-            if (studentId != id)
-            {
-                return Unauthorized();
-            }
-            */
 
             return Ok(studentDTO); 
         }
 
 
         [Route("{id}")]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
         public IHttpActionResult Put(string id, StudentUpdateDTO studentDTO)
         {
-            logger.Info("Updating student");
+            logger.Info("Admin updating a student's profile");
 
             if (!ModelState.IsValid)
             {
@@ -93,12 +74,12 @@ namespace eGradebook.Controllers
         }
 
         [Route("{id}")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpDelete]
         public IHttpActionResult Delete(string id)
         {
-            logger.Info("Deleting student");
+            logger.Info("Admin deleting a student");
 
             StudentDTO student = studentService.GetByID(id);
             if (student == null)
@@ -112,12 +93,12 @@ namespace eGradebook.Controllers
 
 
         [Route("{studentId}/parent/{parentId}")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
         public IHttpActionResult PutStudentParent(string studentId, string parentId)
         {
-            logger.Info("Updating Student's Parent");
+            logger.Info("Admin updating a Student's Parent");
 
             if (!ModelState.IsValid)
             {

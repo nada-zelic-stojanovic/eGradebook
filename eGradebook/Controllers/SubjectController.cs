@@ -25,23 +25,23 @@ namespace eGradebook.Controllers
 
         //get
         [Route("")]
-       // [Authorize(Roles = "admin, teacher")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult Get()
         {
-            logger.Info("Requesting subjects info");
+            logger.Info("Admin requesting a list of all school subjects");
             return Ok(subjectService.Get());
         }
 
         //getbyid
         [Route("{id}")]
-       // [Authorize(Roles = "admin, teacher")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(int id)
         {
-            logger.Info("Requesting a subject's info");
+            logger.Info("Admin requesting a subject's details");
 
             var subject = subjectService.GetByID(id);
             if (subject == null)
@@ -53,12 +53,12 @@ namespace eGradebook.Controllers
 
         //put
         [Route("{id}")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
         public IHttpActionResult Put([FromUri]int id, [FromBody] SubjectDTO subjectDTO)
         {
-            logger.Info("Updating a subject");
+            logger.Info("Admin updating a subject");
 
             if (!ModelState.IsValid)
             {
@@ -75,12 +75,12 @@ namespace eGradebook.Controllers
 
         //post
         [Route("")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult Post([FromBody] SubjectDTO subjectDTO)
         {
-            logger.Info("Creating a new subject");
+            logger.Info("Admin creating a new subject");
 
             if (!ModelState.IsValid)
             {
@@ -93,12 +93,12 @@ namespace eGradebook.Controllers
 
         //delete
         [Route("{id}")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
-            logger.Info("Deleting a subject");
+            logger.Info("Admin deleting a subject");
 
             SubjectDTO subject = subjectService.GetByID(id);
             if (subject == null)

@@ -21,7 +21,7 @@ namespace eGradebook.Services
         }
 
         //get own grades
-        public StudentGradebookDTO GetStudentGradebook(string studentId)
+        public StudentGradebookDTO GetStudentCoursesAndMarks(string studentId)
         {
             Student sg = db.StudentsRepository.GetByID(studentId);
             var courses = db.StudentTakesCourseRepository.Get();

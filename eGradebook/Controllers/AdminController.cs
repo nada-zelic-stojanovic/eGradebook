@@ -23,22 +23,22 @@ namespace eGradebook.Controllers
         }
 
         [Route("")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult Get()
         {
-            logger.Info("Requesting admins info");
+            logger.Info("Admin requesting list of admins");
             return Ok(adminService.Get());
         }
 
         [Route("{id}")]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(string id)
         {
-            logger.Info("Requesting admin info by id");
+            logger.Info("Admin requesting an admin's profile");
             var admin = adminService.GetByID(id);
             if (admin == null)
             {
@@ -48,12 +48,12 @@ namespace eGradebook.Controllers
         }
 
         [Route("{id}")]
-      //  [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
         public IHttpActionResult Put(string id, AdminDTO adminDTO)
         {
-            logger.Info("Updating admin");
+            logger.Info("Admin updating an admin's profile");
 
             if (!ModelState.IsValid)
             {
@@ -68,12 +68,12 @@ namespace eGradebook.Controllers
         }
 
         [Route("{id}")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpDelete]
         public IHttpActionResult Delete(string id)
         {
-            logger.Info("Deleting admin");
+            logger.Info("Admin deleting an admin");
 
             AdminDTO admin = adminService.GetByID(id);
             if (admin == null)

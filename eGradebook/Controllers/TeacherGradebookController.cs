@@ -40,13 +40,13 @@ namespace eGradebook.Controllers
 
         //teacher: get own profile info
         [Route("profile/{id}")]
-        //[Authorize(Roles = "teacher")]
+        [Authorize(Roles = "teacher")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(string id)
         {
             logger.Info("Teacher requesting own profile info");
-            /*
+            
             //authentification for teacher
             bool isTeacher = RequestContext.Principal.IsInRole("teacher");
             bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
@@ -55,7 +55,7 @@ namespace eGradebook.Controllers
             {
                 return Unauthorized();
             }
-            */
+            
             var teacher = teacherService.GetByID(id);
             if (teacher == null)
             {
@@ -66,24 +66,13 @@ namespace eGradebook.Controllers
 
         //teacher: get SchoolClasses that he/she teaches
         [Route("schoolclasses/{teacherId}")]
-        //[Authorize(Roles = "teacher")]
+        [Authorize(Roles = "teacher")]
         [ResponseType(typeof(void))]
         [HttpGet]
-        public IHttpActionResult Get(string teacherId)
+        public IHttpActionResult Get(string id)
         {
             logger.Info("Teacher requesting list of schoolclasses that he/she teaches");
-            return Ok(teacherGradebookService.GetTeacherClasses(teacherId));
-        }
 
-        //teacher: get a school class that he/she teaches by class id
-        [Route("schoolClasses/{schoolClassId}")]
-        //[Authorize(Roles = "teacher")]
-        [ResponseType(typeof(void))]
-        [HttpGet]
-        public IHttpActionResult GetById(int id)
-        {
-            logger.Info("Teacher requesting a school class' info");
-            /*
             //authentification for teacher
             bool isTeacher = RequestContext.Principal.IsInRole("teacher");
             bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
@@ -92,8 +81,29 @@ namespace eGradebook.Controllers
             {
                 return Unauthorized();
             }
-            */
-            var schoolClass = schoolClassService.GetById(id);
+
+            return Ok(teacherGradebookService.GetTeacherTeachingClasses(teacherId));
+        }
+
+        //teacher: get a school class that he/she teaches by class id
+        [Route("{id}/schoolClasses/{schoolClassId}")]
+        [Authorize(Roles = "teacher")]
+        [ResponseType(typeof(void))]
+        [HttpGet]
+        public IHttpActionResult GetById(string id, int schoolClassId)
+        {
+            logger.Info("Teacher requesting a school class' info");
+            
+            //authentification for teacher
+            bool isTeacher = RequestContext.Principal.IsInRole("teacher");
+            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
+            string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (teacherId != id)
+            {
+                return Unauthorized();
+            }
+            
+            var schoolClass = schoolClassService.GetById(schoolClassId);
             if (schoolClass == null)
             {
                 return NotFound();
@@ -102,41 +112,71 @@ namespace eGradebook.Controllers
         }
 
         //get courses taught by certain teacher
-        [Route("{teacherId}/courses")]
-        //[Authorize(Roles = "teacher")]
+        [Route("{id}/courses")]
+        [Authorize(Roles = "teacher")]
         [ResponseType(typeof(void))]
         [HttpGet]
-        public IHttpActionResult GetTeacherCourses(string teacherId)
+        public IHttpActionResult GetTeacherCourses(string id)
         {
             logger.Info("Teacher requesting a lis of courses he/she teaches");
-            return Ok(teacherGradebookService.GetTeacherCourses(teacherId));
+
+            //authentification for teacher
+            bool isTeacher = RequestContext.Principal.IsInRole("teacher");
+            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
+            string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (teacherId != id)
+            {
+                return Unauthorized();
+            }
+
+            return Ok(teacherGradebookService.GetTeacherTeachingCourses(id));
         }
 
         //teacher: get student marks 
-        [Route("student/{studentId}/course/{courseId}")]
-        //[Authorize(Roles = "teacher")]
+        [Route("{id}/student/{studentId}/course/{courseId}")]
+        [Authorize(Roles = "teacher")]
         [ResponseType(typeof(void))]
         [HttpGet]
-        public IHttpActionResult GetStudentsMarksFromCourse(string studentId, int courseId)
+        public IHttpActionResult GetStudentsMarksFromCourse(string id, string studentId, int courseId)
         {
             logger.Info("Teacher requesting list of a student's marks from a course");
+
+            //authentification for teacher
+            bool isTeacher = RequestContext.Principal.IsInRole("teacher");
+            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
+            string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (teacherId != id)
+            {
+                return Unauthorized();
+            }
+
             var studentMarks = teacherGradebookService.GetStudentsMarksFromCourse(studentId, courseId);
             return Ok(studentMarks);
         }
 
         //create a student's mark
-        [Route("student/{studentId}/course/{courseId}")]
-        //[Authorize(Roles = "teacher")]
+        [Route("{id}/student/{studentId}/course/{courseId}")]
+        [Authorize(Roles = "teacher")]
         [ResponseType(typeof(void))]
         [HttpPost]
-        public IHttpActionResult PostStudentMark(string studentId, int courseId, MarkDTO markDTO)
+        public IHttpActionResult PostStudentMark(string id, string studentId, int courseId, MarkDTO markDTO)
         {
             logger.Info("Teacher giving student a mark");
+
+            //authentification for teacher
+            bool isTeacher = RequestContext.Principal.IsInRole("teacher");
+            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
+            string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (teacherId != id)
+            {
+                return Unauthorized();
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var result = teacherGradebookService.MarkStudent(studentId, courseId, markDTO);
+            var result = teacherGradebookService.GiveStudentAMark(studentId, courseId, markDTO);
             if (result == null)
             {
                 return BadRequest();
@@ -145,13 +185,22 @@ namespace eGradebook.Controllers
         }
 
         //put/ update a mark
-        [Route("{markId}")]
-        //[Authorize(Roles = "teacher")]
+        [Route("{id}/mark/{markId}")]
+        [Authorize(Roles = "teacher")]
         [ResponseType(typeof(void))]
         [HttpPut]
-        public IHttpActionResult Put(int markId, MarkDTO markUpdate)
+        public IHttpActionResult Put(string id, int markId, MarkDTO markUpdate)
         {
             logger.Info("Teacher updating a mark");
+
+            //authentification for teacher
+            bool isTeacher = RequestContext.Principal.IsInRole("teacher");
+            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
+            string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (teacherId != id)
+            {
+                return Unauthorized();
+            }
 
             if (!ModelState.IsValid)
             {
@@ -167,15 +216,24 @@ namespace eGradebook.Controllers
         }
 
         //teacher deletes a mark
-        [Route("{id}")]
-        //[Authorize(Roles = "teacher")]
+        [Route("{id}/mark/{markid}")]
+        [Authorize(Roles = "teacher")]
         [ResponseType(typeof(void))]
         [HttpDelete]
-        public IHttpActionResult DeleteMark(int id)
+        public IHttpActionResult DeleteMark(string id, int markId)
         {
             logger.Info("Teacher deleting a mark");
 
-            MarkDTO mark = markService.GetByID(id);
+            //authentification for teacher
+            bool isTeacher = RequestContext.Principal.IsInRole("teacher");
+            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
+            string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (teacherId != id)
+            {
+                return Unauthorized();
+            }
+
+            MarkDTO mark = markService.GetByID(markId);
             if (mark == null)
             {
                 return NotFound();

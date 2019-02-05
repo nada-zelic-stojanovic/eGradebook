@@ -30,27 +30,18 @@ namespace eGradebook.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            logger.Info("Requesting parents info");
+            logger.Info("Admin requesting list of all parents");
             return Ok(parentService.Get());
         }
 
         [Route("{id}")]
-        [Authorize(Roles = "admin, parent")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(string id)
         {
-            logger.Info("Requesting parent info by id");
-            /*
-            //authentification for parent
-            bool isParent = RequestContext.Principal.IsInRole("parent");
-            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
-            string parentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
-            if (parentId != id)
-            {
-                return Unauthorized();
-            }
-            */
+            logger.Info("Admin requesting to see a parent's profile");
+
             var parent = parentService.GetByID(id);
             if (parent == null)
             {
@@ -65,7 +56,7 @@ namespace eGradebook.Controllers
         [HttpPut]
         public IHttpActionResult Put(string id, ParentUpdateDTO parentDTO)
         {
-            logger.Info("Updating parent");
+            logger.Info("Admin updating a parent's profile");
 
             if (!ModelState.IsValid)
             {
@@ -85,7 +76,7 @@ namespace eGradebook.Controllers
         [HttpDelete]
         public IHttpActionResult Delete(string id)
         {
-            logger.Info("Deleting parent");
+            logger.Info("Admin deleting a parent");
 
             ParentDTO parent = parentService.GetByID(id);
             if (parent == null)

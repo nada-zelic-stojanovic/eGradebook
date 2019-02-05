@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 
@@ -28,12 +29,21 @@ namespace eGradebook.Controllers
 
         //get own profile
         [Route("profile/{id}")]
-        //[Authorize(Roles = "parent")]
+        [Authorize(Roles = "parent")]
         [ResponseType(typeof(void))]
         [HttpGet]
-        public IHttpActionResult GetById(string id)
+        public IHttpActionResult GetParentProfileById(string id)
         {
-            logger.Info("Parent requesting own profile info");
+            logger.Info("Parent requesting to see own profile");
+
+            //authentification for parent
+            bool isParent = RequestContext.Principal.IsInRole("parent");
+            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
+            string parentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (parentId != id)
+            {
+                return Unauthorized();
+            }
 
             var parent = parentService.GetByID(id);
             if (parent == null)
@@ -46,14 +56,25 @@ namespace eGradebook.Controllers
 
         //parent/get a child's grades
         [Route("grades/{studentId}")]
-        //[Authorize(Roles = "parent")]
+        [Authorize(Roles = "parent")]
         [ResponseType(typeof(void))]
         [HttpGet]
-        public IHttpActionResult GetStudentGrades(string studentId)
+        public IHttpActionResult GetStudentCoursesAndMarks(string studentId)
         {
-            logger.Info("Parent requesting to see his/her child's grades");
+            logger.Info("Parent requesting to see a student's grades");
 
-            var sg = sgService.GetStudentGradebook(studentId);
+            var student = studentService.GetByID(studentId);
+
+            //authentification for parent
+            bool isParent = RequestContext.Principal.IsInRole("parent");
+            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
+            string parentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (parentId != student.Parent.Id)
+            {
+                return Unauthorized();
+            }
+
+            var sg = sgService.GetStudentCoursesAndMarks(studentId);
             if (sg == null)
             {
                 return NotFound();

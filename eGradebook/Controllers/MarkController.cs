@@ -25,23 +25,23 @@ namespace eGradebook.Controllers
 
         //get
         [Route("")]
-        //[Authorize(Roles = "admin, teacher")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult Get()
         {
-            logger.Info("Requesting marks info");
+            logger.Info("Admin requesting list of marks given");
             return Ok(markService.Get());
         }
 
         //getbyid
         [Route("{id}")]
-        //[Authorize(Roles = "admin, teacher")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(int id)
         {
-            logger.Info("Requesting a mark's info");
+            logger.Info("Admin requesting a mark's details");
 
             MarkDTO mark = markService.GetByID(id);
             if (mark == null)
@@ -53,12 +53,12 @@ namespace eGradebook.Controllers
 
         //put
         [Route("{id}")]
-        //[Authorize(Roles = "admin, teacher")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
         public IHttpActionResult Put(int id, MarkDTO markUpdate)
         {
-            logger.Info("Updating a mark");
+            logger.Info("Admin updating a mark's details");
 
             if (!ModelState.IsValid)
             {
@@ -75,12 +75,12 @@ namespace eGradebook.Controllers
 
         //post
         [Route("")]
-        //[Authorize(Roles = "admin, teacher")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult Post(MarkDTO newMark)
         {
-            logger.Info("Creating a new mark");
+            logger.Info("Admin creating a new mark");
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -92,12 +92,12 @@ namespace eGradebook.Controllers
 
         //delete
         [Route("{id}")]
-        //[Authorize(Roles = "admin, teacher")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpDelete]
-        public IHttpActionResult DeleteMark(int id)
+        public IHttpActionResult Delete(int id)
         {
-            logger.Info("Deleting a mark");
+            logger.Info("Admin deleting a mark");
 
             MarkDTO mark = markService.GetByID(id);
             if (mark == null)

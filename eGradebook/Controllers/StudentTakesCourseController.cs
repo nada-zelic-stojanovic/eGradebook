@@ -24,23 +24,23 @@ namespace eGradebook.Controllers
 
         //get
         [Route("")]
-        //[Authorize(Roles = "admin, teacher")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult Get()
         {
-            logger.Info("Requesting list of students with the courses they are taking");
+            logger.Info("Admin requesting list of students with the courses they are taking");
             return Ok(studentCourseService.Get());
         }
 
         //getbyid
         [Route("{id}")]
-        //[Authorize(Roles = "admin, teacher")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(int id)
         {
-            logger.Info("Requesting a student's course info");
+            logger.Info("Admin requesting a student's course info");
 
             var studentCourse = studentCourseService.GetByID(id);
             if (studentCourse == null)
@@ -52,12 +52,12 @@ namespace eGradebook.Controllers
 
         //put
         [Route("{id}")]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
         public IHttpActionResult Put(int id, StudentTakesCourseDTO studentCourseDTO)
         {
-            logger.Info("Updating a student' course info");
+            logger.Info("Admin updating a student' course info");
 
             if (!ModelState.IsValid)
             {
@@ -74,12 +74,12 @@ namespace eGradebook.Controllers
 
         //post
         [Route("")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult Post(StudentTakesCourseDTO studentCourseDTO)
         {
-            logger.Info("Creating a new student's course");
+            logger.Info("Admin creating a new student's course");
 
             if (!ModelState.IsValid)
             {
@@ -91,12 +91,12 @@ namespace eGradebook.Controllers
 
         //delete
         [Route("{id}")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
-            logger.Info("Deleting a student's course");
+            logger.Info("Admin deleting a student's course");
 
             StudentTakesCourseDTO studentCourse = studentCourseService.GetByID(id);
             if (studentCourse == null)

@@ -30,7 +30,7 @@ namespace eGradebook.Controllers
         [HttpGet]
         public IHttpActionResult GetSchoolYears()
         {
-            logger.Info("Requesting school years' info");
+            logger.Info("Admin requesting list of school years");
 
             return Ok(schoolYearService.Get());
         }
@@ -42,7 +42,7 @@ namespace eGradebook.Controllers
         [HttpGet]
         public IHttpActionResult GetById(int id)
         {
-            logger.Info("Requesting a school year's info");
+            logger.Info("Admin requesting a school year's details");
 
             var schoolYear = schoolYearService.GetById(id);
             if (schoolYear == null)
@@ -59,7 +59,7 @@ namespace eGradebook.Controllers
         [HttpPut]
         public IHttpActionResult Put(int id, SchoolYearDTO schoolYearDTO)
         {
-            logger.Info("Updating school year");
+            logger.Info("Admin updating a school year's details");
 
             if (!ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace eGradebook.Controllers
         [HttpPost]
         public IHttpActionResult Post(SchoolYearDTO schoolYearDTO)
         {
-            logger.Info("Creating a new school year");
+            logger.Info("Admin creating a new school year");
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -96,7 +96,7 @@ namespace eGradebook.Controllers
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
-            logger.Warn("Deleting a school year");
+            logger.Warn("Admin deleting a school year");
             SchoolYearDTO schoolYear = schoolYearService.GetById(id);
             if (schoolYear == null)
             {
