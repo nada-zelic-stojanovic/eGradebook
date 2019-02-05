@@ -1,19 +1,5 @@
-2019-01-31 11:41:14.5243|INFO|eGradebook.Controllers.AdminController|Requesting admins info
-2019-01-31 11:47:13.8572|INFO|eGradebook.Controllers.AdminController|Requesting admins info
-2019-01-31 11:55:49.7192|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
-2019-01-31 11:56:03.8007|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher requesting own profile info
-2019-01-31 15:36:00.1082|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
-2019-01-31 15:43:11.3519|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
-2019-01-31 15:48:07.4869|INFO|eGradebook.Controllers.TeacherTeachesCourseController|Requesting courses info
-2019-01-31 15:48:43.9329|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
-2019-01-31 16:16:03.0987|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
-2019-01-31 16:16:23.7559|INFO|eGradebook.Controllers.TeacherTeachesCourseController|Requesting courses info
-2019-01-31 16:16:55.5777|INFO|eGradebook.Controllers.SchoolClassController|Requesting school classes info
-2019-01-31 16:31:08.6605|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
-2019-01-31 16:31:21.2462|INFO|eGradebook.Controllers.TeacherTeachesCourseController|Requesting courses info
-2019-01-31 16:31:30.1707|INFO|eGradebook.Controllers.SchoolClassController|Requesting school classes info
-2019-01-31 17:32:42.5338|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
-2019-01-31 17:41:07.7397|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
-2019-01-31 17:42:31.4964|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
-2019-01-31 17:44:52.7195|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
-2019-01-31 17:48:12.0259|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-01 14:02:07.6994|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-01 14:05:56.0625|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-01 14:08:35.0100|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-01 14:10:06.4549|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-01 14:12:05.6506|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
