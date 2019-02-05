@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\MarkController.cs" />
     <Compile Include="Controllers\ParentController.cs" />
+    <Compile Include="Controllers\ParentGradebookController.cs" />
     <Compile Include="Controllers\SchoolClassController.cs" />
     <Compile Include="Controllers\StudentGradebookController.cs" />
     <Compile Include="Controllers\TeacherGradebookController.cs" />

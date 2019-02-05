@@ -13,6 +13,6 @@ namespace eGradebook.Models.UserModels.UserDTOs
         public string UserName { get; set; }
         public string Email { get; set; }
 
-        public IEnumerable<StudentDTO> Children { get; set; }
+        public IEnumerable<StudentBasicDTO> Children { get; set; }
     }
 }

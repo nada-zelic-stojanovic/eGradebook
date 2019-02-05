@@ -11,6 +11,7 @@ namespace eGradebook.Models.UserModels
 {
     public class Teacher : User
     {
+       // public IEnumerable<Teach>
 
         public override async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

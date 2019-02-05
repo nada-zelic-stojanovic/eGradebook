@@ -18,7 +18,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             parentDTO.LastName = parent.LastName;
             parentDTO.UserName = parent.UserName;
             parentDTO.Email = parent.Email;
-            parentDTO.Children = parent.Children.Select(c=> StudentConverter.StudentToStudentDTO(c));
+            parentDTO.Children = parent.Children.Select(c=> StudentConverter.StudentToStudentBasicDTO(c));
 
             return parentDTO;
         }

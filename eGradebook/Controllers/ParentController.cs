@@ -40,7 +40,7 @@ namespace eGradebook.Controllers
         [HttpGet]
         public IHttpActionResult GetById(string id)
         {
-            logger.Info("Requesting student info by id");
+            logger.Info("Requesting parent info by id");
             /*
             //authentification for parent
             bool isParent = RequestContext.Principal.IsInRole("parent");

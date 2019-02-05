@@ -93,6 +93,7 @@ namespace eGradebook.Models
                     parent3.FirstName = "Monica";
                     parent3.LastName = "Granger";
                     parent3.UserName = "monicagranger";
+                    parent3.Email = "monicagranger@muggle.com";
                     userManager.Create(parent3, "monicapass");
                     userManager.AddToRole(parent3.Id, "parent");
 
@@ -145,6 +146,8 @@ namespace eGradebook.Models
                     userManager.Create(student5, "ginnyweasley");
                     userManager.AddToRole(student5.Id, "student");
 
+                    parent1.Children.Add(student3);
+                    parent1.Children.Add(student5);
 
                     //school year
                     SchoolYear sy1 = new SchoolYear();

@@ -3,3 +3,36 @@
 2019-02-05 10:04:50.0543|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
 2019-02-05 10:08:34.6301|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
 2019-02-05 10:08:50.1070|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher giving student a mark
+2019-02-05 10:17:26.1005|INFO|eGradebook.Controllers.ParentController|Requesting parents info
+2019-02-05 10:18:21.1807|INFO|eGradebook.Controllers.ParentGradebookController|Parent requesting own profile info
+2019-02-05 10:20:06.7597|INFO|eGradebook.Controllers.ParentController|Requesting parents info
+2019-02-05 10:20:25.3528|INFO|eGradebook.Controllers.ParentGradebookController|Parent requesting own profile info
+2019-02-05 10:22:20.7904|INFO|eGradebook.Controllers.ParentController|Requesting parents info
+2019-02-05 10:22:35.0672|INFO|eGradebook.Controllers.ParentGradebookController|Parent requesting own profile info
+2019-02-05 10:26:00.5209|INFO|eGradebook.Controllers.ParentController|Requesting parents info
+2019-02-05 10:26:17.3879|INFO|eGradebook.Controllers.ParentController|Requesting parent info by id
+2019-02-05 10:31:07.6065|INFO|eGradebook.Controllers.ParentController|Requesting parents info
+2019-02-05 10:31:19.3402|INFO|eGradebook.Controllers.ParentController|Requesting parent info by id
+2019-02-05 10:37:03.2128|INFO|eGradebook.Controllers.ParentController|Requesting parents info
+2019-02-05 10:37:04.7589|INFO|eGradebook.Controllers.ParentController|Requesting parents info
+2019-02-05 10:37:18.9707|INFO|eGradebook.Controllers.ParentController|Requesting parent info by id
+2019-02-05 10:42:22.9371|INFO|eGradebook.Controllers.ParentController|Requesting parents info
+2019-02-05 10:42:40.9172|INFO|eGradebook.Controllers.ParentController|Requesting parent info by id
+2019-02-05 10:54:22.9643|INFO|eGradebook.Controllers.ParentController|Requesting parents info
+2019-02-05 10:54:41.4344|INFO|eGradebook.Controllers.ParentGradebookController|Parent requesting own profile info
+2019-02-05 10:55:10.2820|INFO|eGradebook.Controllers.ParentGradebookController|Parent requesting to see his/her child's grades
+2019-02-05 10:58:16.3537|INFO|eGradebook.Controllers.AdminController|Requesting admins info
+2019-02-05 10:58:32.9776|INFO|eGradebook.Controllers.AdminController|Requesting admin info by id
+2019-02-05 10:58:48.7665|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-05 10:59:02.8013|INFO|eGradebook.Controllers.TeacherController|Requesting teacher info by id
+2019-02-05 11:00:19.0337|INFO|eGradebook.Controllers.StudentController|Requesting students info
+2019-02-05 11:00:36.4067|INFO|eGradebook.Controllers.StudentController|Requesting student info by id
+2019-02-05 11:01:27.5156|INFO|eGradebook.Controllers.ParentController|Requesting parents info
+2019-02-05 11:01:40.7804|INFO|eGradebook.Controllers.ParentController|Requesting parent info by id
+2019-02-05 11:01:48.7908|INFO|eGradebook.Controllers.SchoolYearController|Requesting school years' info
+2019-02-05 11:01:56.6593|INFO|eGradebook.Controllers.SchoolYearController|Requesting a school year's info
+2019-02-05 11:02:02.3486|INFO|eGradebook.Controllers.SchoolClassController|Requesting school classes info
+2019-02-05 11:03:05.3262|INFO|eGradebook.Controllers.SchoolClassController|Requesting a school class' info
+2019-02-05 11:03:18.9680|INFO|eGradebook.Controllers.TeacherTeachesCourseController|Requesting courses info
+2019-02-05 11:03:42.1313|INFO|eGradebook.Controllers.StudentTakesCourseController|Requesting list of students with the courses they are taking
+2019-02-05 11:03:59.8073|INFO|eGradebook.Controllers.TeacherGradebookController|Teacher requesting own profile info
