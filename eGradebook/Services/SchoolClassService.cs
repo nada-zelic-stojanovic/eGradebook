@@ -80,7 +80,7 @@ namespace eGradebook.Services
         }
 
 
-        public SchoolClassDTO UpdateSchoolYearWithSchoolClass(int schoolClassId, int schoolYearId)
+        public SchoolClassDTO UpdateSchoolClassWithSchoolYear(int schoolClassId, int schoolYearId)
         {
             SchoolClass schoolClass = db.SchoolClassesRepository.GetByID(schoolClassId);
             SchoolYear schoolYear = db.SchoolYearsRepository.GetByID(schoolYearId);

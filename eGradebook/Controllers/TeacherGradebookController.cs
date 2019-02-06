@@ -53,12 +53,14 @@ namespace eGradebook.Controllers
             string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
             if (teacherId != id)
             {
+                logger.Error("Unauthorized access");
                 return Unauthorized();
             }
             
             var teacher = teacherService.GetByID(id);
             if (teacher == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(teacher);
@@ -79,10 +81,16 @@ namespace eGradebook.Controllers
             string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
             if (teacherId != id)
             {
+                logger.Error("Unauthorized access");
                 return Unauthorized();
             }
-
-            return Ok(teacherGradebookService.GetTeacherTeachingClasses(teacherId));
+            var schoolClasses = teacherGradebookService.GetTeacherTeachingClasses(teacherId);
+            if (schoolClasses == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
+            return Ok();
         }
 
         //teacher: get a school class that he/she teaches by class id
@@ -100,12 +108,14 @@ namespace eGradebook.Controllers
             string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
             if (teacherId != id)
             {
+                logger.Error("Unauthorized access");
                 return Unauthorized();
             }
             
             var schoolClass = schoolClassService.GetById(schoolClassId);
             if (schoolClass == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(schoolClass);
@@ -126,10 +136,17 @@ namespace eGradebook.Controllers
             string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
             if (teacherId != id)
             {
+                logger.Error("Unauthorized access");
                 return Unauthorized();
             }
+            var courses = teacherGradebookService.GetTeacherTeachingCourses(id);
+            if (courses == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
 
-            return Ok(teacherGradebookService.GetTeacherTeachingCourses(id));
+            return Ok();
         }
 
         //teacher: get student marks 
@@ -147,10 +164,16 @@ namespace eGradebook.Controllers
             string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
             if (teacherId != id)
             {
+                logger.Error("Unauthorized access");
                 return Unauthorized();
             }
 
             var studentMarks = teacherGradebookService.GetStudentsMarksFromCourse(studentId, courseId);
+            if (studentMarks == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
             return Ok(studentMarks);
         }
 
@@ -169,6 +192,7 @@ namespace eGradebook.Controllers
             string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
             if (teacherId != id)
             {
+                logger.Error("Unauthorized access");
                 return Unauthorized();
             }
 
@@ -179,6 +203,7 @@ namespace eGradebook.Controllers
             var result = teacherGradebookService.GiveStudentAMark(studentId, courseId, markDTO);
             if (result == null)
             {
+                logger.Error("Action failed");
                 return BadRequest();
             }
             return Ok(result);
@@ -199,6 +224,7 @@ namespace eGradebook.Controllers
             string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
             if (teacherId != id)
             {
+                logger.Error("Unauthorized access");
                 return Unauthorized();
             }
 
@@ -210,6 +236,7 @@ namespace eGradebook.Controllers
             MarkDTO mark = markService.Update(markId, markUpdate);
             if (mark == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(mark);
@@ -230,12 +257,14 @@ namespace eGradebook.Controllers
             string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
             if (teacherId != id)
             {
+                logger.Error("Unauthorized access");
                 return Unauthorized();
             }
 
             MarkDTO mark = markService.GetByID(markId);
             if (mark == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             markService.Delete(mark.Id);

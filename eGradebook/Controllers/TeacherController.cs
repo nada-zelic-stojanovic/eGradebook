@@ -31,7 +31,13 @@ namespace eGradebook.Controllers
         public IHttpActionResult Get()
         {
             logger.Info("Admin requesting a list of all teachers in school");
-            return Ok(teacherService.Get());
+            var teachers = teacherService.Get();
+            if (teachers == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
+            return Ok(teachers);
         }
 
         [Route("{id}")]
@@ -40,11 +46,12 @@ namespace eGradebook.Controllers
         [HttpGet]
         public IHttpActionResult GetById(string id)
         {
-            logger.Info("ADmin requesting a teacher's profile");
+            logger.Info("Admin requesting a teacher's profile");
 
             var teacher = teacherService.GetByID(id);
             if (teacher == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(teacher);
@@ -60,12 +67,14 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Action failed due to invalid input");
                 return BadRequest();
             }
 
             TeacherDTO teacherUpdated = teacherService.Update(id, teacherDTO);
             if (teacherUpdated == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(teacherUpdated);
@@ -82,6 +91,7 @@ namespace eGradebook.Controllers
             TeacherDTO teacher = teacherService.GetByID(id);
             if (teacher == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             teacherService.Delete(teacher.Id);

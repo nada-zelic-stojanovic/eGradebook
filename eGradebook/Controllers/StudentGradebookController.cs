@@ -39,6 +39,7 @@ namespace eGradebook.Controllers
             string studentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
             if (studentId != id)
             {
+                logger.Error("Unauthorized access");
                 return Unauthorized();
             }
 
@@ -64,6 +65,7 @@ namespace eGradebook.Controllers
             string studentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
             if (studentId != id)
             {
+                logger.Error("Unauthorized access");
                 return Unauthorized();
             }
 

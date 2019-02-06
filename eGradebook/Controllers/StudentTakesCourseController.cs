@@ -30,7 +30,13 @@ namespace eGradebook.Controllers
         public IHttpActionResult Get()
         {
             logger.Info("Admin requesting list of students with the courses they are taking");
-            return Ok(studentCourseService.Get());
+            var studentCourses = studentCourseService.Get();
+            if (studentCourses == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
+            return Ok(studentCourses);
         }
 
         //getbyid
@@ -45,6 +51,7 @@ namespace eGradebook.Controllers
             var studentCourse = studentCourseService.GetByID(id);
             if (studentCourse == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(studentCourse);
@@ -61,12 +68,14 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Update failed due to invalid input");
                 return BadRequest(ModelState);
             }
 
             StudentTakesCourseDTO studentCourse = studentCourseService.Update(studentCourseId, courseId);
             if (studentCourse == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(studentCourse);
@@ -83,6 +92,7 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Update failed due to invalid input");
                 return BadRequest(ModelState);
             }
             StudentTakesCourseDTO studentCourse = studentCourseService.Create(studentId, courseId);
@@ -101,6 +111,7 @@ namespace eGradebook.Controllers
             StudentTakesCourseDTO studentCourse = studentCourseService.GetByID(id);
             if (studentCourse == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok();

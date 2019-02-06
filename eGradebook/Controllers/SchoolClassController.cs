@@ -31,7 +31,13 @@ namespace eGradebook.Controllers
         public IHttpActionResult Get()
         {
             logger.Info("Admin requesting list of all school classes");
-            return Ok(schoolClassService.Get());
+            var schoolClasses = schoolClassService.Get();
+            if (schoolClasses == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
+            return Ok(schoolClasses);
         }
 
         //getbyid
@@ -46,6 +52,7 @@ namespace eGradebook.Controllers
             var schoolClass = schoolClassService.GetById(id);
             if (schoolClass == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(schoolClass);
@@ -62,12 +69,14 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Update failed due to invalid input");
                 return BadRequest(ModelState);
             }
 
             SchoolClassBasicDTO schoolClass = schoolClassService.Update(id, schoolClassDTO);
             if (schoolClass == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(schoolClass);
@@ -83,6 +92,7 @@ namespace eGradebook.Controllers
             logger.Info("Admin creating a new school class");
             if (!ModelState.IsValid)
             {
+                logger.Error("Update failed due to invalid input");
                 return BadRequest(ModelState);
             }
             SchoolClassCreateAndUpdateDTO schoolClass = schoolClassService.Create(schoolClassDTO);
@@ -100,6 +110,7 @@ namespace eGradebook.Controllers
             SchoolClassDTO schoolClass = schoolClassService.GetById(id);
             if (schoolClass == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             schoolClassService.Delete(schoolClass.Id);
@@ -116,10 +127,11 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Update failed due to invalid input");
                 return BadRequest();
             }
 
-            schoolClassService.UpdateSchoolYearWithSchoolClass(schoolClassId, schoolYearId);
+            schoolClassService.UpdateSchoolClassWithSchoolYear(schoolClassId, schoolYearId);
 
             return Ok();
         }

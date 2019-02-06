@@ -31,7 +31,13 @@ namespace eGradebook.Controllers
         public IHttpActionResult Get()
         {
             logger.Info("Admin requesting a list of all school subjects");
-            return Ok(subjectService.Get());
+            var subjects = subjectService.Get();
+            if (subjects == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
+            return Ok();
         }
 
         //getbyid
@@ -46,6 +52,7 @@ namespace eGradebook.Controllers
             var subject = subjectService.GetByID(id);
             if (subject == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(subject);
@@ -62,12 +69,14 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Action failed due to invalid input");
                 return BadRequest(ModelState);
             }
 
             SubjectDTO subject = subjectService.Update(id, subjectDTO);
             if (subject == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(subject);
@@ -84,6 +93,7 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Action failed due to invalid input");
                 return BadRequest(ModelState);
             }
 
@@ -103,6 +113,7 @@ namespace eGradebook.Controllers
             SubjectDTO subject = subjectService.GetByID(id);
             if (subject == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             subjectService.Delete(subject.Id);

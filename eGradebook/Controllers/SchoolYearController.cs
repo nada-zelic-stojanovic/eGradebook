@@ -31,8 +31,13 @@ namespace eGradebook.Controllers
         public IHttpActionResult GetSchoolYears()
         {
             logger.Info("Admin requesting list of school years");
-
-            return Ok(schoolYearService.Get());
+            var schoolYears = schoolYearService.Get();
+            if (schoolYears == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
+            return Ok(schoolYears);
         }
 
         //get by id
@@ -47,6 +52,7 @@ namespace eGradebook.Controllers
             var schoolYear = schoolYearService.GetById(id);
             if (schoolYear == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(schoolYear);
@@ -63,11 +69,13 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Update failed due to invalid input");
                 return BadRequest(ModelState);
             }
             SchoolYearDTO schoolYear = schoolYearService.Update(id, schoolYearDTO);
             if (schoolYear == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(schoolYear);
@@ -83,6 +91,7 @@ namespace eGradebook.Controllers
             logger.Info("Admin creating a new school year");
             if (!ModelState.IsValid)
             {
+                logger.Error("Action failed due to invalid input");
                 return BadRequest(ModelState);
             }
             SchoolYearDTO schoolYear = schoolYearService.Create(schoolYearDTO);
@@ -100,6 +109,7 @@ namespace eGradebook.Controllers
             SchoolYearDTO schoolYear = schoolYearService.GetById(id);
             if (schoolYear == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             schoolYearService.Delete(schoolYear.Id);

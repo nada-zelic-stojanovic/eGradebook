@@ -42,12 +42,14 @@ namespace eGradebook.Controllers
             string parentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
             if (parentId != id)
             {
+                logger.Warn("Unauthorized access");
                 return Unauthorized();
             }
 
             var parent = parentService.GetByID(id);
             if (parent == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(parent);
@@ -71,12 +73,14 @@ namespace eGradebook.Controllers
             string parentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
             if (parentId != student.Parent.Id)
             {
+                logger.Warn("Unauthorized access");
                 return Unauthorized();
             }
 
             var sg = sgService.GetStudentCoursesAndMarks(studentId);
             if (sg == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(sg);

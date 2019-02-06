@@ -31,7 +31,13 @@ namespace eGradebook.Controllers
         public IHttpActionResult Get()
         {
             logger.Info("Admin requesting list of marks given");
-            return Ok(markService.Get());
+            var marks = markService.Get();
+            if (marks == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
+            return Ok(marks);
         }
 
         //getbyid
@@ -46,6 +52,7 @@ namespace eGradebook.Controllers
             MarkDTO mark = markService.GetByID(id);
             if (mark == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(mark);
@@ -62,12 +69,14 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Update failed due to invalid input");
                 return BadRequest(ModelState);
             }
 
             MarkDTO mark = markService.Update(id, markUpdate);
             if (mark == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(mark);
@@ -83,6 +92,7 @@ namespace eGradebook.Controllers
             logger.Info("Admin creating a new mark");
             if (!ModelState.IsValid)
             {
+                logger.Error("Creating a mark failed due to invalid input");
                 return BadRequest(ModelState);
             }
 
@@ -102,6 +112,7 @@ namespace eGradebook.Controllers
             MarkDTO mark = markService.GetByID(id);
             if (mark == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             markService.Delete(mark.Id);

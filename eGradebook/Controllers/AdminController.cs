@@ -64,7 +64,7 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
-                logger.Error("Update failed due to invalid input");
+                logger.Error("Action failed due to invalid input");
                 return BadRequest();
             }
             AdminDTO adminUpdated = adminService.Update(id, adminDTO);

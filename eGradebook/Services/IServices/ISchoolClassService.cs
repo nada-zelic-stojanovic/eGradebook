@@ -15,6 +15,6 @@ namespace eGradebook.Services.IServices
         SchoolClassCreateAndUpdateDTO Create(SchoolClassCreateAndUpdateDTO schoolClassDTO);
         void Delete(int id);
 
-        SchoolClassDTO UpdateSchoolYearWithSchoolClass(int schoolClassId, int schoolYearId);
+        SchoolClassDTO UpdateSchoolClassWithSchoolYear(int schoolClassId, int schoolYearId);
     }
 }

@@ -36,6 +36,7 @@ namespace eGradebook.Controllers
             var students = studentService.Get();
             if (students == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(students);
@@ -51,6 +52,7 @@ namespace eGradebook.Controllers
             StudentDTO studentDTO = studentService.GetByID(id);
             if (studentDTO == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
 
@@ -68,11 +70,13 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Update failed due to invalid input");
                 return BadRequest();
             }
             StudentUpdateDTO studentUpdated = studentService.Update(id, studentDTO);
             if (studentUpdated == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(studentUpdated);
@@ -89,6 +93,7 @@ namespace eGradebook.Controllers
             StudentDTO student = studentService.GetByID(id);
             if (student == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             studentService.Delete(id);
@@ -107,6 +112,7 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Update failed due to invalid input");
                 return BadRequest();
             }
 
@@ -124,6 +130,7 @@ namespace eGradebook.Controllers
             logger.Info("Admin updating a student's school-class details");
             if (!ModelState.IsValid)
             {
+                logger.Error("Update failed due to invalid input");
                 return BadRequest();
             }
             studentService.UpdateStudentSchoolClass(studentId, schoolClassId);

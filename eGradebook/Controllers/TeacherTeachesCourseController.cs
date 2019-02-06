@@ -30,7 +30,13 @@ namespace eGradebook.Controllers
         public IHttpActionResult Get()
         {
             logger.Info("Admin requesting a list of all courses");
-            return Ok(courseService.Get());
+            var courses = courseService.Get();
+            if (courses == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
+            return Ok(courses);
         }
 
         //getbyid
@@ -45,6 +51,7 @@ namespace eGradebook.Controllers
             var course = courseService.GetByID(id);
             if (course == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(course);
@@ -61,12 +68,14 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Action failed due to invalid input");
                 return BadRequest(ModelState);
             }
 
             TeacherTeachesCourseDTO course = courseService.Update(id, teacherId);
             if (course == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(course);
@@ -83,6 +92,7 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Action failed due to invalid input");
                 return BadRequest(ModelState);
             }
             TeacherTeachesCourseDTO courseDTO = courseService.Create(teacherId, subjectId);
@@ -103,6 +113,7 @@ namespace eGradebook.Controllers
             TeacherTeachesCourseDTO course = courseService.GetByID(id);
             if (course == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             courseService.Delete(course.Id);

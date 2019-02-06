@@ -142,3 +142,6 @@
 2019-02-06 21:22:14.1972|INFO|eGradebook.Controllers.TeacherTeachesCourseController|Admin requesting a course's details
 2019-02-06 21:22:21.6317|INFO|eGradebook.Controllers.TeacherTeachesCourseController|Admin requesting a list of all courses
 2019-02-06 21:22:55.5265|INFO|eGradebook.Controllers.TeacherTeachesCourseController|Admin updating a course
+2019-02-06 21:51:30.9132|INFO|eGradebook.Controllers.SchoolClassController|Admin requesting list of all school classes
+2019-02-06 21:51:45.7290|INFO|eGradebook.Controllers.SchoolClassController|Admin updating a school class' details
+2019-02-06 21:51:54.5976|INFO|eGradebook.Controllers.SchoolClassController|Admin requesting list of all school classes
