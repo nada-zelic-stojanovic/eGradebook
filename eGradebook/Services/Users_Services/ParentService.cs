@@ -49,6 +49,10 @@ namespace eGradebook.Services.Users_Services
         public ParentUpdateDTO Update(string id, ParentUpdateDTO parentDTO)
         {
             Parent parent = db.ParentsRepository.GetByID(id);
+            if (parent == null)
+            {
+                return null;
+            }
             ParentConverter.UpdateParentWithParentDTO(parent, parentDTO);
             db.ParentsRepository.Update(parent);
             db.Save();

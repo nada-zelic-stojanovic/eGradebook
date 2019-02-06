@@ -65,7 +65,7 @@ namespace eGradebook.Controllers
         }
 
         //teacher: get SchoolClasses that he/she teaches
-        [Route("schoolclasses/{teacherId}")]
+        [Route("{id}/schoolclasses")]
         [Authorize(Roles = "teacher")]
         [ResponseType(typeof(void))]
         [HttpGet]

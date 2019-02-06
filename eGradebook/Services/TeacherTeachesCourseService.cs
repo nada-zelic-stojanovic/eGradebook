@@ -1,5 +1,6 @@
 ﻿using eGradebook.Models;
 using eGradebook.Models.DTOs;
+using eGradebook.Models.UserModels;
 using eGradebook.Models.UserModels.UserDTOs;
 using eGradebook.Repositories;
 using eGradebook.Services.ConvertToAndFromDTO;
@@ -49,29 +50,26 @@ namespace eGradebook.Services
             return TeacherTeachesCourseConverter.TeacherTeachescourseToTeacherTeachesCourseDTO(course);
         }
 
-        public TeacherTeachesCourseDTO CreateFromExisting(string teacherId, int subjectId)
+        public TeacherTeachesCourseDTO Create(string teacherId, int subjectId)
         {
             TeacherTeachesCourse course = new TeacherTeachesCourse();
-            course.Teacher = TeacherConverter.TeacherDTOToTeacher(teacherService.GetByID(teacherId));
-            course.Subject = SubjectConverter.SubjectDTOToSubject(subjectService.GetByID(subjectId));
+
+            Teacher teacher = db.TeachersRepository.GetByID(teacherId);
+            Subject subject = db.SubjectsRepository.GetByID(subjectId);
+
+            course.Teacher = teacher;
+            course.Subject = subject;
 
             db.TeacherTeachesCourseRepository.Insert(course);
             db.Save();
             return TeacherTeachesCourseConverter.TeacherTeachescourseToTeacherTeachesCourseDTO(course);
         }
 
-        public TeacherTeachesCourseDTO Create(TeacherTeachesCourseDTO courseDTO)
-        {
-            TeacherTeachesCourse course = TeacherTeachesCourseConverter.TeacherTeachesCourseDTOtoTeacherTeachesCourse(courseDTO);
-            db.TeacherTeachesCourseRepository.Insert(course);
-            db.Save();
-            return TeacherTeachesCourseConverter.TeacherTeachescourseToTeacherTeachesCourseDTO(course);
-        }
 
-        public TeacherTeachesCourseDTO Update(int id, TeacherTeachesCourseDTO courseDTO)
+        public TeacherTeachesCourseDTO Update(int courseId, string teacherId)
         {
-            TeacherTeachesCourse course = db.TeacherTeachesCourseRepository.GetByID(id);
-            TeacherTeachesCourseConverter.UpdateTeacherTeachesCourseWithTeacherTeachesCourseDTO(course, courseDTO);
+            TeacherTeachesCourse course = db.TeacherTeachesCourseRepository.GetByID(courseId);
+            course.Teacher = db.TeachersRepository.GetByID(teacherId);
             db.TeacherTeachesCourseRepository.Update(course);
             db.Save();
             return TeacherTeachesCourseConverter.TeacherTeachescourseToTeacherTeachesCourseDTO(course);

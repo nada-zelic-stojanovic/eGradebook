@@ -1,4 +1,5 @@
 ﻿using eGradebook.Models.DTOs;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace eGradebook.Models.UserModels.UserDTOs
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
+       
         public SchoolClassBasicDTO SchoolClass { get; set; }
     }
 }

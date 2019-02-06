@@ -50,12 +50,12 @@ namespace eGradebook.Controllers
             return Ok(course);
         }
 
-        //put
-        [Route("{id}")]
+        //put -- change teacher
+        [Route("{id}/teacher/{teacherId}")]
         [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
-        public IHttpActionResult Put(int id, TeacherTeachesCourseDTO courseDTO)
+        public IHttpActionResult Put(int id, string teacherId)
         {
             logger.Info("Admin updating a course");
 
@@ -64,7 +64,7 @@ namespace eGradebook.Controllers
                 return BadRequest(ModelState);
             }
 
-            TeacherTeachesCourseDTO course = courseService.Update(id, courseDTO);
+            TeacherTeachesCourseDTO course = courseService.Update(id, teacherId);
             if (course == null)
             {
                 return NotFound();
@@ -73,11 +73,11 @@ namespace eGradebook.Controllers
         }
 
         //post - from existing teacher and subject
-        [Route("existing")]
+        [Route("teacher/{teacherId}/subject/{subjectId}")]
         [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPost]
-        public IHttpActionResult PostFromExisting(string teacherId, int subjectId)
+        public IHttpActionResult Post(string teacherId, int subjectId)
         {
             logger.Info("Admin creating a new course with existing teacher and subject");
 
@@ -85,26 +85,11 @@ namespace eGradebook.Controllers
             {
                 return BadRequest(ModelState);
             }
-            TeacherTeachesCourseDTO courseDTO = courseService.CreateFromExisting(teacherId, subjectId);
+            TeacherTeachesCourseDTO courseDTO = courseService.Create(teacherId, subjectId);
+
             return Ok(courseDTO);
         }
 
-        //post
-        [Route("")]
-        [Authorize(Roles = "admin")]
-        [ResponseType(typeof(void))]
-        [HttpPost]
-        public IHttpActionResult Post(TeacherTeachesCourseDTO courseDTO)
-        {
-            logger.Info("Admin creating a new course");
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            TeacherTeachesCourseDTO course = courseService.Create(courseDTO);
-            return Ok(course);
-        }
 
         //delete
         [Route("{id}")]

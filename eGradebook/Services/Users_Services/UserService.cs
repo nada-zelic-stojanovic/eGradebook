@@ -52,6 +52,17 @@ namespace eGradebook.Services.Users_Services
                 LastName = userModel.LastName,
                 Email = userModel.Email
             };
+            user.SchoolClass = new Models.SchoolClass()
+            {
+                Grade = Models.Grade.UNSORTED,
+                Section = "0",
+                SchoolYear = new Models.SchoolYear()
+                {
+                    Name = "SchoolYear to be added",
+                    StartDate = DateTime.Now,
+                    EndDate = new DateTime(3000, 12, 31)
+                }
+            };
             return await db.AuthRepository.RegisterStudent(user, userModel.Password);
         }
 
@@ -84,7 +95,18 @@ namespace eGradebook.Services.Users_Services
                 UserName = studentModel.UserName,
                 FirstName = studentModel.FirstName,
                 LastName = studentModel.LastName,
-                Email = studentModel.Email,
+                Email = studentModel.Email
+            };
+            student.SchoolClass = new Models.SchoolClass()
+            {
+                Grade = Models.Grade.UNSORTED,
+                Section = "0",
+                SchoolYear = new Models.SchoolYear()
+                {
+                    Name = "SchoolYear to be added",
+                    StartDate = DateTime.Now,
+                    EndDate = new DateTime(3000, 12, 31)
+                }
             };
             IdentityResult result = await db.AuthRepository.RegisterStudent(student, studentModel.Password);
 

@@ -1,5 +1,6 @@
 ﻿using eGradebook.Models;
 using eGradebook.Models.DTOs;
+using eGradebook.Models.UserModels;
 using eGradebook.Repositories;
 using eGradebook.Services.ConvertToAndFromDTO;
 using eGradebook.Services.IServices;
@@ -50,19 +51,25 @@ namespace eGradebook.Services
         }
 
 
-        public StudentTakesCourseDTO Create(StudentTakesCourseDTO studentCourseDTO)
+        public StudentTakesCourseDTO Create(string studentId, int courseId)
         {
-            StudentTakesCourse studentCourse = StudentTakesCourseConverter.StudentTakesCourseDTOToStudentTakesCourse(studentCourseDTO);
+            Student student = db.StudentsRepository.GetByID(studentId);
+            TeacherTeachesCourse course = db.TeacherTeachesCourseRepository.GetByID(courseId);
+            StudentTakesCourse studentCourse = new StudentTakesCourse();
+            studentCourse.Student = student;
+            studentCourse.Course = course;
+
             db.StudentTakesCourseRepository.Insert(studentCourse);
             db.Save();
             return StudentTakesCourseConverter.StudentTakesCourseToStudentTakesCourseDTO(studentCourse);
         }
 
 
-        public StudentTakesCourseDTO Update(int id, StudentTakesCourseDTO studentCourseDTO)
+        public StudentTakesCourseDTO Update(int studentCourseId, int courseId)
         {
-            StudentTakesCourse studentCourse = db.StudentTakesCourseRepository.GetByID(id);
-            StudentTakesCourseConverter.UpdateStudentTakesCourseWithStudentTakesCourseDTO(studentCourse, studentCourseDTO);
+            StudentTakesCourse studentCourse = db.StudentTakesCourseRepository.GetByID(studentCourseId);
+            TeacherTeachesCourse course = db.TeacherTeachesCourseRepository.GetByID(courseId);
+            studentCourse.Course = course;
             db.StudentTakesCourseRepository.Update(studentCourse);
             db.Save();
             return StudentTakesCourseConverter.StudentTakesCourseToStudentTakesCourseDTO(studentCourse);
@@ -76,6 +83,5 @@ namespace eGradebook.Services
             db.Save();
         }
 
-        //public StudentTakesCourseDTO UpdateWithCourse(int id, int courseId)
     }
 }

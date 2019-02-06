@@ -12,9 +12,8 @@ namespace eGradebook.Services.IServices
     {
         IEnumerable<TeacherTeachesCourseDTO> Get();
         TeacherTeachesCourseDTO GetByID(int id);
-        TeacherTeachesCourseDTO CreateFromExisting(string teacherId, int subjectId);
-        TeacherTeachesCourseDTO Create(TeacherTeachesCourseDTO courseDTO);
-        TeacherTeachesCourseDTO Update(int id, TeacherTeachesCourseDTO courseDTO);
+        TeacherTeachesCourseDTO Create(string teacherId, int subjectId);
+        TeacherTeachesCourseDTO Update(int courseId, string teacherId);
         void Delete(int id);
     }
 }

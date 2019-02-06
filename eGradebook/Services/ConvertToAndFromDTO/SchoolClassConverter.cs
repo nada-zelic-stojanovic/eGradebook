@@ -24,14 +24,14 @@ namespace eGradebook.Services.ConvertToAndFromDTO
         }
 
 
-        public static void UpdateSchoolClassWithSchoolClassDTO(SchoolClass schoolClass, SchoolClassDTO schoolClassDTO)
+        public static void UpdateSchoolClassWithSchoolClassDTO(SchoolClass schoolClass, SchoolClassCreateAndUpdateDTO schoolClassDTO)
         {
             schoolClass.Grade = schoolClassDTO.Grade;
             schoolClass.Section = schoolClassDTO.Section;
-            schoolClass.SchoolYear = SchoolYearConverter.SchoolYearDTOToSchoolYear(schoolClassDTO.SchoolYear);
+            //schoolClass.SchoolYear = SchoolYearConverter.SchoolYearDTOToSchoolYear(schoolClassDTO.SchoolYear);
         }
 
-        public static SchoolClass SchoolClassDTOToSchoolClass(SchoolClassDTO schoolClassDTO)
+        public static SchoolClass SchoolClassDTOToSchoolClass(SchoolClassCreateAndUpdateDTO schoolClassDTO)
         {
             SchoolClass schoolClass = new SchoolClass();
 
@@ -52,6 +52,23 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             schoolClassDTO.Grade = schoolClass.Grade;
             schoolClassDTO.Section = schoolClass.Section;
             schoolClassDTO.SchoolYear = schoolClass.SchoolYear.Name;
+            return schoolClassDTO;
+        }
+
+        public static SchoolClass SchoolClassCreateAndUpdateDTOToSchoolClass(SchoolClassCreateAndUpdateDTO schoolClassDTO)
+        {
+            SchoolClass schoolClass = new SchoolClass();
+            schoolClass.Grade = schoolClassDTO.Grade;
+            schoolClass.Section = schoolClassDTO.Section;
+            return schoolClass;
+        }
+
+        public static SchoolClassCreateAndUpdateDTO SchoolClassToSchoolClassCreateAndUpdateDTO(SchoolClass schoolClass)
+        {
+            SchoolClassCreateAndUpdateDTO schoolClassDTO = new SchoolClassCreateAndUpdateDTO();
+            schoolClassDTO.Id = schoolClass.Id;
+            schoolClassDTO.Grade = schoolClass.Grade;
+            schoolClassDTO.Section = schoolClass.Section;
             return schoolClassDTO;
         }
     }

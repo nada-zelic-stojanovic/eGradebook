@@ -56,7 +56,7 @@ namespace eGradebook.Controllers
         [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
-        public IHttpActionResult Put(int id, SchoolClassDTO schoolClassDTO)
+        public IHttpActionResult Put(int id, SchoolClassCreateAndUpdateDTO schoolClassDTO)
         {
             logger.Info("Admin updating a school class' details");
 
@@ -78,14 +78,14 @@ namespace eGradebook.Controllers
         [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPost]
-        public IHttpActionResult Post(SchoolClassDTO schoolClassDTO)
+        public IHttpActionResult Post(SchoolClassCreateAndUpdateDTO schoolClassDTO)
         {
             logger.Info("Admin creating a new school class");
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            SchoolClassBasicDTO schoolClass = schoolClassService.Create(schoolClassDTO);
+            SchoolClassCreateAndUpdateDTO schoolClass = schoolClassService.Create(schoolClassDTO);
             return Ok(schoolClass);
         }
 

@@ -47,6 +47,10 @@ namespace eGradebook.Services.Users_Services
         public AdminDTO Update(string id, AdminDTO adminDTO)
         {
             Admin admin = db.AdminsRepository.GetByID(id);
+            if (admin == null)
+            {
+                return null;
+            }
             AdminConverter.UpdateAdminWithAdminDTO(admin, adminDTO);
 
             db.AdminsRepository.Update(admin);
@@ -57,6 +61,7 @@ namespace eGradebook.Services.Users_Services
         public void Delete(string id)
         {
             Admin admin = db.AdminsRepository.GetByID(id);
+
             db.AdminsRepository.Delete(admin);
             db.Save();
         }

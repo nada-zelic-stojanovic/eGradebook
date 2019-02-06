@@ -227,6 +227,12 @@ namespace eGradebook.Models
                     //school classes
                     IList<SchoolClass> sc = new List<SchoolClass>();
 
+                    /*SchoolClass sc0 = new SchoolClass();
+                    sc0.Grade = Grade.UNSORTED;
+                    sc0.Section = "0";
+                    sc0.SchoolYear = sy1;
+                    sc.Add(sc0);*/
+
                     SchoolClass sc1 = new SchoolClass();
                     sc1.Grade = Grade.FIFTH;
                     sc1.Section = "A";
@@ -263,8 +269,8 @@ namespace eGradebook.Models
                     sc.Add(sc3);
                     
 
-                    foreach (SchoolClass sc0 in sc)
-                        context.SchoolClasses.Add(sc0);
+                    foreach (SchoolClass schoolClass in sc)
+                        context.SchoolClasses.Add(schoolClass);
                     base.Seed(context);
 
                     /*

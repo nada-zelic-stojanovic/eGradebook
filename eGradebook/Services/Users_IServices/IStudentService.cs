@@ -15,5 +15,6 @@ namespace eGradebook.Services.Users_IServices
         void Delete(string id);
 
         StudentDTO UpdateStudentWithParent(string studentId, string parentId);
+        StudentDTO UpdateStudentSchoolClass(string studentId, int schoolClassId);
     }
 }

@@ -32,17 +32,18 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Register unsuccessful due to invalid data input.");
                 return BadRequest(ModelState);
             }
 
             var result = await userService.RegisterAdmin(userModel);
 
-            if (result == null)
-            {
-                return BadRequest(ModelState);
-            }
+                if (result == null)
+                {
+                    return BadRequest(ModelState);
+                }
 
-            return Ok(result);
+                return Ok(result);
         }
 
         [Authorize(Roles = "admin")]
@@ -54,6 +55,7 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Register unsuccessful due to invalid data input.");
                 return BadRequest(ModelState);
             }
 
@@ -77,6 +79,7 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Register unsuccessful due to invalid data input.");
                 return BadRequest(ModelState);
             }
 
@@ -100,6 +103,7 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Register unsuccessful due to invalid data input.");
                 return BadRequest(ModelState);
             }
 
@@ -122,6 +126,7 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Register unsuccessful due to invalid data input.");
                 return BadRequest(ModelState);
             }
 

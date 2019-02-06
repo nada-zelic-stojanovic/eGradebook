@@ -51,11 +51,11 @@ namespace eGradebook.Controllers
         }
 
         //put
-        [Route("{id}")]
+        [Route("{studentCourseId}/course/{courseId}")]
         [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
-        public IHttpActionResult Put(int id, StudentTakesCourseDTO studentCourseDTO)
+        public IHttpActionResult Put(int studentCourseId, int courseId)
         {
             logger.Info("Admin updating a student' course info");
 
@@ -64,7 +64,7 @@ namespace eGradebook.Controllers
                 return BadRequest(ModelState);
             }
 
-            StudentTakesCourseDTO studentCourse = studentCourseService.Update(id, studentCourseDTO);
+            StudentTakesCourseDTO studentCourse = studentCourseService.Update(studentCourseId, courseId);
             if (studentCourse == null)
             {
                 return NotFound();
@@ -73,11 +73,11 @@ namespace eGradebook.Controllers
         }
 
         //post
-        [Route("")]
+        [Route("student/{studentId}/course/{courseId}")]
         [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPost]
-        public IHttpActionResult Post(StudentTakesCourseDTO studentCourseDTO)
+        public IHttpActionResult Post(string studentId, int courseId)
         {
             logger.Info("Admin creating a new student's course");
 
@@ -85,7 +85,7 @@ namespace eGradebook.Controllers
             {
                 return BadRequest(ModelState);
             }
-            StudentTakesCourseDTO studentCourse = studentCourseService.Create(studentCourseDTO);
+            StudentTakesCourseDTO studentCourse = studentCourseService.Create(studentId, courseId);
             return Ok(studentCourse);
         }
 

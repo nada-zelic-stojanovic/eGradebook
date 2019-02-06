@@ -33,7 +33,12 @@ namespace eGradebook.Controllers
         public IHttpActionResult Get()
         {
             logger.Info("Admin requesting list of all students");
-            return Ok(studentService.Get());
+            var students = studentService.Get();
+            if (students == null)
+            {
+                return NotFound();
+            }
+            return Ok(students);
         }
 
         [Route("{id}")]
@@ -107,6 +112,21 @@ namespace eGradebook.Controllers
 
             studentService.UpdateStudentWithParent(studentId, parentId);
 
+            return Ok();
+        }
+
+        [Route("{studentId}/schoolClass/{schoolClassId}")]
+        [Authorize(Roles = "admin")]
+        [ResponseType(typeof(void))]
+        [HttpPut]
+        public IHttpActionResult PutStudentToSchoolClass(string studentId, int schoolClassId)
+        {
+            logger.Info("Admin updating a student's school-class details");
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            studentService.UpdateStudentSchoolClass(studentId, schoolClassId);
             return Ok();
         }
     }

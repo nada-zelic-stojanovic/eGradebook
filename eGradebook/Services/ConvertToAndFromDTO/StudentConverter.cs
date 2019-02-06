@@ -68,6 +68,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             studentDTO.FirstName = student.FirstName;
             studentDTO.LastName = student.LastName;
             studentDTO.SchoolClass = SchoolClassConverter.SchoolClassToSchoolClassBasicDTO(student.SchoolClass);
+           
             return studentDTO;
         }
 

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using eGradebook.Models.DTOs;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -18,6 +19,7 @@ namespace eGradebook.Models.UserModels.UserDTOs
 
         [Required]
         public string LastName { get; set; }
+
 
         [Required]
         public ParentRegisterDTO Parent { get; set; }

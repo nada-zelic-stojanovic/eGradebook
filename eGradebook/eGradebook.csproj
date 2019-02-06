@@ -186,6 +186,7 @@
     </Compile>
     <Compile Include="Infrastructure\eGradebookContext.cs" />
     <Compile Include="Models\DTOs\SchoolClassBasicDTO.cs" />
+    <Compile Include="Models\DTOs\SchoolClassCreateAndUpdateDTO.cs" />
     <Compile Include="Models\DTOs\StudentGradebookDTO.cs" />
     <Compile Include="Models\DTOs\StudentTakesCourseBasicDTO.cs" />
     <Compile Include="Models\DTOs\SubjectDTO.cs" />

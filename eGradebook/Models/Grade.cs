@@ -7,6 +7,6 @@ namespace eGradebook.Models
 {
     public enum Grade
     {
-        FIRST = 1, SECOND, THIRD, FOURTH, FIFTH, SIXTH, SEVENTH, EIGHTH
+        UNSORTED, FIRST, SECOND, THIRD, FOURTH, FIFTH, SIXTH, SEVENTH, EIGHTH
     }
 }

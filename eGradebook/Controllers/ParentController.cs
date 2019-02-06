@@ -31,7 +31,13 @@ namespace eGradebook.Controllers
         public IHttpActionResult Get()
         {
             logger.Info("Admin requesting list of all parents");
-            return Ok(parentService.Get());
+            var parents = parentService.Get();
+            if (parents == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
+            return Ok(parents);
         }
 
         [Route("{id}")]
@@ -45,6 +51,7 @@ namespace eGradebook.Controllers
             var parent = parentService.GetByID(id);
             if (parent == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(parent);
@@ -60,11 +67,13 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Update failed due to invalid input");
                 return BadRequest();
             }
             ParentUpdateDTO parentUpdated = parentService.Update(id, parentDTO);
             if (parentUpdated == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(parentUpdated);
@@ -81,6 +90,7 @@ namespace eGradebook.Controllers
             ParentDTO parent = parentService.GetByID(id);
             if (parent == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             parentService.Delete(id);

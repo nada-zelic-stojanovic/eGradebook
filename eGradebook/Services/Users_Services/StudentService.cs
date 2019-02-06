@@ -1,4 +1,5 @@
-﻿using eGradebook.Models.UserModels;
+﻿using eGradebook.Models;
+using eGradebook.Models.UserModels;
 using eGradebook.Models.UserModels.UserDTOs;
 using eGradebook.Repositories;
 using eGradebook.Services.ConvertToAndFromDTO;
@@ -67,7 +68,21 @@ namespace eGradebook.Services.Users_Services
             Student student = db.StudentsRepository.GetByID(studentId);
             Parent parent = db.ParentsRepository.GetByID(parentId);
             student.Parent = parent;
+            parent.Children.Add(student);
             db.StudentsRepository.Update(student);
+            db.ParentsRepository.Update(parent);
+            db.Save();
+            return StudentConverter.StudentToStudentDTO(student);
+        }
+
+        public StudentDTO UpdateStudentSchoolClass(string studentId, int schoolClassId)
+        {
+            Student student = db.StudentsRepository.GetByID(studentId);
+            SchoolClass schoolClass = db.SchoolClassesRepository.GetByID(schoolClassId);
+            student.SchoolClass = schoolClass;
+            schoolClass.Students.Add(student);
+            db.StudentsRepository.Update(student);
+            db.SchoolClassesRepository.Update(schoolClass);
             db.Save();
             return StudentConverter.StudentToStudentDTO(student);
         }

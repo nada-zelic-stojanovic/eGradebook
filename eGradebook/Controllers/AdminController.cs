@@ -29,7 +29,13 @@ namespace eGradebook.Controllers
         public IHttpActionResult Get()
         {
             logger.Info("Admin requesting list of admins");
-            return Ok(adminService.Get());
+            var admins = adminService.Get();
+            if (admins == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
+            return Ok(admins);
         }
 
         [Route("{id}")]
@@ -42,6 +48,7 @@ namespace eGradebook.Controllers
             var admin = adminService.GetByID(id);
             if (admin == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(admin);
@@ -57,11 +64,13 @@ namespace eGradebook.Controllers
 
             if (!ModelState.IsValid)
             {
+                logger.Error("Update failed due to invalid input");
                 return BadRequest();
             }
             AdminDTO adminUpdated = adminService.Update(id, adminDTO);
             if (adminUpdated == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             return Ok(adminUpdated);
@@ -78,6 +87,7 @@ namespace eGradebook.Controllers
             AdminDTO admin = adminService.GetByID(id);
             if (admin == null)
             {
+                logger.Error("Data not found");
                 return NotFound();
             }
             adminService.Delete(admin.Id);

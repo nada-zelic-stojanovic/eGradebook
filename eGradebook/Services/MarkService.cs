@@ -53,6 +53,7 @@ namespace eGradebook.Services
         {
             Mark mark = db.MarksRepository.GetByID(id);
             MarkConverter.UpdateMarkWithMarkDTO(mark, markDTO);
+            mark.DateAdded = DateTime.Now;
             db.MarksRepository.Update(mark);
             return MarkConverter.MarkoToMarkDTO(mark);
         }
@@ -61,6 +62,7 @@ namespace eGradebook.Services
         public MarkDTO Create(MarkDTO markDTO)
         {
             Mark mark = MarkConverter.MarkDTOToMark(markDTO);
+            mark.DateAdded = DateTime.Now;
             db.MarksRepository.Insert(mark);
             db.Save();
             return MarkConverter.MarkoToMarkDTO(mark);

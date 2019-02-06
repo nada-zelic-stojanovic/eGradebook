@@ -14,6 +14,7 @@ namespace eGradebook.Models.UserModels
 
         public virtual Parent Parent { get; set; }
 
+        //[JsonProperty(Required = Required.AllowNull)]
         public virtual SchoolClass SchoolClass { get; set; }
 
         [JsonIgnore]

@@ -47,7 +47,7 @@ namespace eGradebook.Services
         }
 
 
-        public SchoolClassBasicDTO Update(int id, SchoolClassDTO schoolClassDTO)
+        public SchoolClassBasicDTO Update(int id, SchoolClassCreateAndUpdateDTO schoolClassDTO)
         {
             SchoolClass schoolClass = db.SchoolClassesRepository.GetByID(id);
             SchoolClassConverter.UpdateSchoolClassWithSchoolClassDTO(schoolClass, schoolClassDTO);
@@ -57,12 +57,18 @@ namespace eGradebook.Services
         }
 
 
-        public SchoolClassBasicDTO Create(SchoolClassDTO schoolClassDTO)
+        public SchoolClassCreateAndUpdateDTO Create(SchoolClassCreateAndUpdateDTO schoolClassDTO)
         {
-            SchoolClass schoolClass = SchoolClassConverter.SchoolClassDTOToSchoolClass(schoolClassDTO);
+            SchoolClass schoolClass = SchoolClassConverter.SchoolClassCreateAndUpdateDTOToSchoolClass(schoolClassDTO);
             db.SchoolClassesRepository.Insert(schoolClass);
+            schoolClass.SchoolYear = new SchoolYear()
+            {
+                Name = "SchoolYear to be added",
+                StartDate = DateTime.Now,
+                EndDate = new DateTime(3000, 12, 31)
+            };
             db.Save();
-            return SchoolClassConverter.SchoolClassToSchoolClassBasicDTO(schoolClass);
+            return SchoolClassConverter.SchoolClassToSchoolClassCreateAndUpdateDTO(schoolClass);
         }
 
 

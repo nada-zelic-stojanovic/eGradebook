@@ -50,7 +50,7 @@ namespace eGradebook.Controllers
             return Ok(student);
         }
 
-        [Route("grades/{studentId}")]
+        [Route("grades/{id}")]
         [Authorize(Roles = "student")]
         [ResponseType(typeof(void))]
         [HttpGet]
