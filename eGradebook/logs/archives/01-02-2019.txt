@@ -1,0 +1,5 @@
+2019-02-01 14:02:07.6994|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-01 14:05:56.0625|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-01 14:08:35.0100|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-01 14:10:06.4549|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info
+2019-02-01 14:12:05.6506|INFO|eGradebook.Controllers.TeacherController|Admin requesting teachers info

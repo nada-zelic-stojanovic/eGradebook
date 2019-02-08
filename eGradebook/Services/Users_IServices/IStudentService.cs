@@ -16,5 +16,6 @@ namespace eGradebook.Services.Users_IServices
 
         StudentDTO UpdateStudentWithParent(string studentId, string parentId);
         StudentDTO UpdateStudentSchoolClass(string studentId, int schoolClassId);
+        IEnumerable<StudentDTO> GetWithParentData();
     }
 }

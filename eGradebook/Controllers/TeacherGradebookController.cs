@@ -90,7 +90,7 @@ namespace eGradebook.Controllers
                 logger.Error("Data not found");
                 return NotFound();
             }
-            return Ok();
+            return Ok(schoolClasses);
         }
 
         //teacher: get a school class that he/she teaches by class id
@@ -146,7 +146,7 @@ namespace eGradebook.Controllers
                 return NotFound();
             }
 
-            return Ok();
+            return Ok(courses);
         }
 
         //teacher: get student marks 

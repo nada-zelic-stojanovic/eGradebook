@@ -168,6 +168,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\LoggingController.cs" />
     <Compile Include="Controllers\MarkController.cs" />
     <Compile Include="Controllers\ParentController.cs" />
     <Compile Include="Controllers\ParentGradebookController.cs" />

@@ -17,9 +17,11 @@ namespace eGradebook.Controllers
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
         private IStudentTakesCourseService studentCourseService;
-        public StudentTakesCourseController(IStudentTakesCourseService studentCourseService)
+        private IStudentGradebookService sgService;
+        public StudentTakesCourseController(IStudentTakesCourseService studentCourseService, IStudentGradebookService sgService)
         {
             this.studentCourseService = studentCourseService;
+            this.sgService = sgService;
         }
 
         //get
@@ -99,6 +101,7 @@ namespace eGradebook.Controllers
             return Ok(studentCourse);
         }
 
+        /*
         //delete
         [Route("{id}")]
         [Authorize(Roles = "admin")]
@@ -115,6 +118,24 @@ namespace eGradebook.Controllers
                 return NotFound();
             }
             return Ok();
+        }
+        */
+
+        //get student's courses
+        [Route("student/{id}")]
+        [Authorize(Roles = "admin")]
+        [ResponseType(typeof(void))]
+        [HttpGet]
+        public IHttpActionResult GetStudentCoursesAndMarks(string studentId)
+        {
+            logger.Info("Admin requesting to see a student's  courses and marks");
+
+            var sg = sgService.GetStudentCoursesAndMarks(studentId);
+            if (sg == null)
+            {
+                return NotFound();
+            }
+            return Ok(sg);
         }
     }
 }

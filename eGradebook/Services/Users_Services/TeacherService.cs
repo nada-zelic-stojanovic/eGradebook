@@ -70,6 +70,11 @@ namespace eGradebook.Services.Users_Services
         public void Delete(string id)
         {
             Teacher teacher = db.TeachersRepository.GetByID(id);
+            var courses = db.TeacherTeachesCourseRepository.Get().Where(x => x.Teacher.Id == id);
+            if (courses != null)
+            {
+                throw new Exception("Cannot remove teacher because he/she has courses attached to them. First you have to update course info or delete course altogether, than delete teacher.");
+            }
             db.TeachersRepository.Delete(teacher);
             db.Save();
         }

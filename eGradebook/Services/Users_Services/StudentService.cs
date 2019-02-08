@@ -37,6 +37,21 @@ namespace eGradebook.Services.Users_Services
             return studentDTOs;
         }
 
+        public IEnumerable<StudentDTO> GetWithParentData()
+        {
+            var students = db.StudentsRepository.Get();
+            if (students == null)
+            {
+                return null;
+            }
+            var studentDTOs = new List<StudentDTO>();
+            foreach (Student student in students)
+            {
+                studentDTOs.Add(StudentConverter.StudentToStudentDTO(student));
+            }
+            return studentDTOs;
+        }
+
         public StudentDTO GetByID(string id)
         {
             Student student = db.StudentsRepository.GetByID(id);
@@ -59,6 +74,25 @@ namespace eGradebook.Services.Users_Services
         public void Delete(string id)
         {
             Student student = db.StudentsRepository.GetByID(id);
+
+            /*
+            var studentCourses = db.StudentTakesCourseRepository.Get().Where(x => x.Student.Id == id);
+
+            if (studentCourses != null)
+            {
+                foreach (StudentTakesCourse studentCourse in studentCourses)
+                {
+                    var marks = db.MarksRepository.Get().Where(x => x.Student_Course.Id == studentCourse.Id);
+                    foreach (Mark mark in marks)
+                    {
+                        db.MarksRepository.Delete(mark);
+                    }
+                    db.StudentTakesCourseRepository.Delete(studentCourse.Id);
+                }
+            }
+            //var studentParent = db.ParentsRepository.Get().FirstOrDefault(x => x.Id == student.Parent.Id);
+            */
+
             db.StudentsRepository.Delete(student);
             db.Save();
         }

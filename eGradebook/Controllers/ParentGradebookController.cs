@@ -1,4 +1,5 @@
-﻿using eGradebook.Services.IServices;
+﻿using eGradebook.Models.UserModels.UserDTOs;
+using eGradebook.Services.IServices;
 using eGradebook.Services.Users_IServices;
 using NLog;
 using System;
@@ -53,6 +54,29 @@ namespace eGradebook.Controllers
                 return NotFound();
             }
             return Ok(parent);
+        }
+
+        [Route("children/{parentId}")]
+        [Authorize(Roles = "parent")]
+        [ResponseType(typeof(void))]
+        [HttpGet]
+        public IHttpActionResult GetChildren(string parentId)
+        {
+            logger.Info("Parent requesting to see a list of his children attending the school");
+            var students = studentService.GetWithParentData();
+            var children = new List<StudentDTO>();
+            foreach (StudentDTO student in students)
+            {
+                if (student.Parent.Id == parentId)
+                {
+                    children.Add(student);
+                }
+            }
+            if (children == null)
+            {
+                return NotFound();
+            }
+            return Ok(children);
         }
 
 

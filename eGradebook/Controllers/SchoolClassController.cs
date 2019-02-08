@@ -98,7 +98,7 @@ namespace eGradebook.Controllers
             SchoolClassCreateAndUpdateDTO schoolClass = schoolClassService.Create(schoolClassDTO);
             return Ok(schoolClass);
         }
-
+        /*
         //delete
         [Route("{id}")]
         [Authorize(Roles = "admin")]
@@ -116,6 +116,7 @@ namespace eGradebook.Controllers
             schoolClassService.Delete(schoolClass.Id);
             return Ok();
         }
+        */
 
         [Route("{schoolClassId}/schoolYear/{schoolYearId}")]
         [Authorize(Roles = "admin")]
@@ -135,5 +136,6 @@ namespace eGradebook.Controllers
 
             return Ok();
         }
+        
     }
 }

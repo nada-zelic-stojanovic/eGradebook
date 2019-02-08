@@ -25,7 +25,7 @@ namespace eGradebook.Controllers
 
         //get
         [Route("")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetSchoolYears()
@@ -42,7 +42,7 @@ namespace eGradebook.Controllers
 
         //get by id
         [Route("{id}")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetById(int id)
@@ -60,7 +60,7 @@ namespace eGradebook.Controllers
 
         //put
         [Route("{id}")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPut]
         public IHttpActionResult Put(int id, SchoolYearDTO schoolYearDTO)
@@ -83,7 +83,7 @@ namespace eGradebook.Controllers
 
         //post
         [Route("")]
-       // [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult Post(SchoolYearDTO schoolYearDTO)
@@ -98,6 +98,7 @@ namespace eGradebook.Controllers
             return Ok(schoolYear);
         }
 
+        /*
         //delete
         [Route("{id}")]
        // [Authorize(Roles = "admin")]
@@ -115,5 +116,6 @@ namespace eGradebook.Controllers
             schoolYearService.Delete(schoolYear.Id);
             return Ok();
         }
+        */
     }
 }

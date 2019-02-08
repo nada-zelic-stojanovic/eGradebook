@@ -100,7 +100,7 @@ namespace eGradebook.Controllers
             return Ok(courseDTO);
         }
 
-
+        /*
         //delete
         [Route("{id}")]
         [Authorize(Roles = "admin")]
@@ -119,5 +119,6 @@ namespace eGradebook.Controllers
             courseService.Delete(course.Id);
             return Ok();
         }
+        */
     }
 }

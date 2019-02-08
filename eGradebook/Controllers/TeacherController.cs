@@ -80,6 +80,7 @@ namespace eGradebook.Controllers
             return Ok(teacherUpdated);
         }
 
+        /*
         [Route("{id}")]
         [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
@@ -97,5 +98,6 @@ namespace eGradebook.Controllers
             teacherService.Delete(teacher.Id);
             return Ok();
         }
+        */
     }
 }

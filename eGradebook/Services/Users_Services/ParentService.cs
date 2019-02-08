@@ -63,6 +63,13 @@ namespace eGradebook.Services.Users_Services
         public void Delete(string id)
         {
             Parent parent = db.ParentsRepository.GetByID(id);
+            var children = db.StudentsRepository.Get().Where(x => x.Parent.Id == id);
+            if (children != null)
+            {
+                throw new Exception("Cannot delete parent - user, because he/she has one or more students attached. One option is to update student's parent info - there has to be a parent or a legal guardian named.");
+
+            }
+         
             db.ParentsRepository.Delete(parent);
             db.Save();
         }
