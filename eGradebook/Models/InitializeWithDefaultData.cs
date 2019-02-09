@@ -10,7 +10,7 @@ using System.Web;
 
 namespace eGradebook.Models
 {
-    public class InitializeWithDefaultData : DropCreateDatabaseAlways<eGradebookContext>
+    public class InitializeWithDefaultData : DropCreateDatabaseIfModelChanges<eGradebookContext>
     {
         protected override void Seed(eGradebookContext context)
         {

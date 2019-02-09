@@ -80,12 +80,25 @@ namespace eGradebook.Services
             StudentTakesCourse stc = db.StudentTakesCourseRepository
                 .Get()
                 .FirstOrDefault(x => x.Course.Id == courseId && x.Student.Id == studentId);
+
             return StudentTakesCourseConverter.StudentTakesCourseToStudentTakesCourseDTO(stc);
         }
         
         //create a student's mark
         public StudentTakesCourseDTO GiveStudentAMark(string studentId, int courseId, MarkDTO markDTO)
         {
+            /*
+            var course = db.TeacherTeachesCourseRepository.Get().FirstOrDefault(x=> x.Id == courseId);
+            var teacherCourses = db.TeacherTeachesCourseRepository.Get().Where(x => x.Teacher.Id == course.Teacher.Id);
+            foreach (var teacherCourse in teacherCourses)
+            {
+                if (teacherCourse.Id != course.Id)
+                {
+                    throw new Exception("You are not listed as the teacher for the course you entered. Check your input.");
+                }
+            }
+            */
+
             Mark mark = MarkConverter.MarkDTOToMark(markDTO);
             mark.DateAdded = DateTime.Now;
             db.MarksRepository.Insert(mark);

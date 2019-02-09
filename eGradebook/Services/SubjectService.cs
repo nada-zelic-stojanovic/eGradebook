@@ -64,6 +64,12 @@ namespace eGradebook.Services
         public void Delete(int id)
         {
             Subject subject = db.SubjectsRepository.GetByID(id);
+
+            var courses = db.TeacherTeachesCourseRepository.Get().Where(x => x.Subject.Id == id);
+            if (courses != null)
+            {
+                throw new Exception("Cannot delete subject.");
+            }
             db.SubjectsRepository.Delete(subject);
             db.Save();
         }
