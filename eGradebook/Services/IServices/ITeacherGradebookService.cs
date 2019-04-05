@@ -13,5 +13,7 @@ namespace eGradebook.Services.IServices
         StudentTakesCourseDTO GetStudentsMarksFromCourse(string studentId, int courseId);
         IEnumerable<TeacherTeachesCourseDTO> GetTeacherTeachingCourses(string teacherId);
         StudentTakesCourseDTO GiveStudentAMark(string studentId, int courseId, MarkDTO markDTO);
+        IEnumerable<SchoolClassDTO> GetSchoolClassesByTeacher(string teacherId);
+        IEnumerable<SchoolClassDTO> GetClassesByTeacherTeachingCourse(string teacherId, int courseId);
     }
 }

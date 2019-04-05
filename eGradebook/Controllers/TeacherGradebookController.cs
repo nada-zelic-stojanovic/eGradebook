@@ -46,7 +46,7 @@ namespace eGradebook.Controllers
         public IHttpActionResult GetById(string id)
         {
             logger.Info("Teacher requesting own profile info");
-            
+
             //authentification for teacher
             bool isTeacher = RequestContext.Principal.IsInRole("teacher");
             bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
@@ -56,7 +56,7 @@ namespace eGradebook.Controllers
                 logger.Error("Unauthorized access");
                 return Unauthorized();
             }
-            
+
             var teacher = teacherService.GetByID(id);
             if (teacher == null)
             {
@@ -101,7 +101,7 @@ namespace eGradebook.Controllers
         public IHttpActionResult GetById(string id, int schoolClassId)
         {
             logger.Info("Teacher requesting a school class' info");
-            
+
             //authentification for teacher
             bool isTeacher = RequestContext.Principal.IsInRole("teacher");
             bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
@@ -111,7 +111,7 @@ namespace eGradebook.Controllers
                 logger.Error("Unauthorized access");
                 return Unauthorized();
             }
-            
+
             var schoolClass = schoolClassService.GetById(schoolClassId);
             if (schoolClass == null)
             {
@@ -148,6 +148,97 @@ namespace eGradebook.Controllers
 
             return Ok(courses);
         }
+
+        //get schoolclasses with courses list
+        
+        [Route("{id}/schoolclasseswithcourses")]
+        [Authorize(Roles = "teacher")]
+        [ResponseType(typeof(void))]
+        [HttpGet]
+        public IHttpActionResult GetSchoolClassesWithCourses(string id)
+        {
+            //authentification for teacher
+            bool isTeacher = RequestContext.Principal.IsInRole("teacher");
+            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
+            string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (teacherId != id)
+            {
+                logger.Error("Unauthorized access");
+                return Unauthorized();
+            }
+            var schoolClasses = teacherGradebookService.GetSchoolClassesByTeacher(teacherId);
+            if (schoolClasses == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
+            return Ok(schoolClasses);
+
+        }
+
+        //get list of classes he teaches by course
+        [Route("{id}/course/{courseId}")]
+        [Authorize(Roles = "teacher")]
+        [ResponseType(typeof(void))]
+        [HttpGet]
+        public IHttpActionResult GetClassesByTeacherAndCourse(string id, int courseId)
+        {
+            bool isTeacher = RequestContext.Principal.IsInRole("teacher");
+            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
+            string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (teacherId != id)
+            {
+                logger.Error("Unauthorized access");
+                return Unauthorized();
+            }
+            /*
+            var courses = teacherGradebookService.GetTeacherTeachingCourses(id);
+            foreach(TeacherTeachesCourseDTO course in courses)
+            {
+                if (course.Teacher.Id != id)
+                {
+                    return Unauthorized();
+                }
+            }
+            */
+
+            var schoolClasses = teacherGradebookService.GetClassesByTeacherTeachingCourse(id, courseId);
+            if (schoolClasses == null)
+            {
+                logger.Error("Data not found");
+                return NotFound();
+            }
+            return Ok(schoolClasses);
+        }
+
+        //get a class to which a teacher teaches certain course: teacher id, course id, class id
+        [Route("{id}/course/{courseId}/class/{classId}")]
+        [Authorize(Roles = "teacher")]
+        [ResponseType(typeof(void))]
+        [HttpGet]
+        public IHttpActionResult GetClassByTeacherAndCourse (string id, int courseId, int classId)
+        {
+            bool isTeacher = RequestContext.Principal.IsInRole("teacher");
+            bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
+            string teacherId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
+            if (teacherId != id)
+            {
+                logger.Error("Unauthorized access");
+                return Unauthorized();
+            }
+            var foundClass = schoolClassService.GetById(classId);
+            var schoolClasses = teacherGradebookService.GetClassesByTeacherTeachingCourse(id, courseId);
+            foreach(var schoolClass in schoolClasses)
+            {
+                if(classId != schoolClass.Id)
+                {
+                    return BadRequest();
+                }
+            }
+
+            return Ok(foundClass);
+        }
+
 
         //teacher: get student marks 
         [Route("{id}/student/{studentId}/course/{courseId}")]

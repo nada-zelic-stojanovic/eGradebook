@@ -30,7 +30,7 @@ namespace eGradebook.Controllers
 
         //get own profile
         [Route("profile/{id}")]
-        [Authorize(Roles = "parent")]
+        //[Authorize(Roles = "parent")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetParentProfileById(string id)
@@ -38,6 +38,7 @@ namespace eGradebook.Controllers
             logger.Info("Parent requesting to see own profile");
 
             //authentification for parent
+            
             bool isParent = RequestContext.Principal.IsInRole("parent");
             bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
             string parentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
@@ -46,6 +47,7 @@ namespace eGradebook.Controllers
                 logger.Warn("Unauthorized access");
                 return Unauthorized();
             }
+            
 
             var parent = parentService.GetByID(id);
             if (parent == null)
@@ -57,7 +59,7 @@ namespace eGradebook.Controllers
         }
 
         [Route("children/{parentId}")]
-        [Authorize(Roles = "parent")]
+        //[Authorize(Roles = "parent")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetChildren(string parentId)
@@ -82,7 +84,7 @@ namespace eGradebook.Controllers
 
         //parent/get a child's grades
         [Route("grades/{studentId}")]
-        [Authorize(Roles = "parent")]
+        //[Authorize(Roles = "parent")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetStudentCoursesAndMarks(string studentId)
@@ -92,6 +94,7 @@ namespace eGradebook.Controllers
             var student = studentService.GetByID(studentId);
 
             //authentification for parent
+            
             bool isParent = RequestContext.Principal.IsInRole("parent");
             bool isAuthenticated = RequestContext.Principal.Identity.IsAuthenticated;
             string parentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
@@ -100,6 +103,7 @@ namespace eGradebook.Controllers
                 logger.Warn("Unauthorized access");
                 return Unauthorized();
             }
+            
 
             var sg = sgService.GetStudentCoursesAndMarks(studentId);
             if (sg == null)

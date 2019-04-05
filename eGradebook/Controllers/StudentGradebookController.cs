@@ -26,7 +26,7 @@ namespace eGradebook.Controllers
         }
 
         [Route("profile/{id}")]
-        [Authorize(Roles = "student")]
+        //[Authorize(Roles = "student")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetStudentProfileById(string id)
@@ -34,6 +34,7 @@ namespace eGradebook.Controllers
             logger.Info("Student requesting own profile info");
 
             //auth for student
+            
             bool isStudent = RequestContext.Principal.IsInRole("student");
             bool isAuthenticatedStudent = RequestContext.Principal.Identity.IsAuthenticated;
             string studentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
@@ -42,6 +43,7 @@ namespace eGradebook.Controllers
                 logger.Error("Unauthorized access");
                 return Unauthorized();
             }
+            
 
             var student = studentService.GetByID(id);
             if (student == null)
@@ -52,7 +54,7 @@ namespace eGradebook.Controllers
         }
 
         [Route("grades/{id}")]
-        [Authorize(Roles = "student")]
+        //[Authorize(Roles = "student")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetStudentCoursesAndMarks(string id)
@@ -60,6 +62,7 @@ namespace eGradebook.Controllers
             logger.Info("Student requesting own grades");
 
             //auth for student
+            
             bool isStudent = RequestContext.Principal.IsInRole("student");
             bool isAuthenticatedStudent = RequestContext.Principal.Identity.IsAuthenticated;
             string studentId = ((ClaimsPrincipal)RequestContext.Principal).FindFirst(x => x.Type == "UserId").Value;
@@ -68,6 +71,7 @@ namespace eGradebook.Controllers
                 logger.Error("Unauthorized access");
                 return Unauthorized();
             }
+            
 
             var sg = sgService.GetStudentCoursesAndMarks(id);
             if (sg == null)

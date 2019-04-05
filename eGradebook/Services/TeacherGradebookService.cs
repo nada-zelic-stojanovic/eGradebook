@@ -61,6 +61,31 @@ namespace eGradebook.Services
             return teacherClassesDTO;
         }
 
+        public IEnumerable<SchoolClassDTO> GetSchoolClassesByTeacher(string teacherId)
+        {
+            var schoolClasses = db.SchoolClassesRepository.Get();
+            var teacherClasses = new List<SchoolClass>();
+            foreach (SchoolClass schoolClass in schoolClasses)
+            {
+                foreach (TeacherTeachesCourse tc in schoolClass.Courses)
+                {
+                    if (tc.Teacher.Id == teacherId)
+                    {
+                        teacherClasses.Add(schoolClass);
+                    }
+                }
+            }
+            var teacherClassesDTO = new List<SchoolClassDTO>();
+            foreach (SchoolClass tc in teacherClasses)
+            {
+                teacherClassesDTO.Add(SchoolClassConverter.SchoolClassToSchoolClassDTO(tc));
+            }
+
+
+            return teacherClassesDTO;
+        }
+    
+
 
         //get list of courses taught by teacher
         public IEnumerable<TeacherTeachesCourseDTO> GetTeacherTeachingCourses(string teacherId)
@@ -73,6 +98,38 @@ namespace eGradebook.Services
             }
             return teacherCoursesDTO;
         }
+
+        //get classes to which a teacher teaches certain course: teacher id, course id
+        public IEnumerable<SchoolClassDTO> GetClassesByTeacherTeachingCourse(string teacherId, int courseId)
+        {
+            var schoolClasses = db.SchoolClassesRepository.Get();
+            var teacherClasses = new List<SchoolClass>();
+        
+            foreach (SchoolClass schoolClass in schoolClasses)
+            {
+                foreach (TeacherTeachesCourse tc in schoolClass.Courses)
+                {
+                    if (tc.Teacher.Id == teacherId && tc.Id == courseId)
+                    {
+                        teacherClasses.Add(schoolClass);
+                    }
+                }
+            }
+
+            var teacherClassesDTO = new List<SchoolClassDTO>();
+            foreach (SchoolClass tc in teacherClasses)
+            {
+                teacherClassesDTO.Add(SchoolClassConverter.SchoolClassToSchoolClassDTO(tc));
+            }
+
+
+            return teacherClassesDTO;
+        }
+
+       
+        //get a class to which a teacher teaches certain course: teacher id, course id, class id
+      
+
 
         //get student's marks from certain course
         public StudentTakesCourseDTO GetStudentsMarksFromCourse(string studentId, int courseId)

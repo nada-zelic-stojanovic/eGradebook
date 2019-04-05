@@ -37,7 +37,7 @@ namespace eGradebook.Controllers
                 logger.Error("Data not found");
                 return NotFound();
             }
-            return Ok();
+            return Ok(subjects);
         }
 
         //getbyid
