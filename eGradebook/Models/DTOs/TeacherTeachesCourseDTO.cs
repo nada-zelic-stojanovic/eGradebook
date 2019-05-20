@@ -13,5 +13,7 @@ namespace eGradebook.Models.DTOs
         public virtual TeacherBasicDTO Teacher { get; set; }
 
         public virtual SubjectDTO Subject { get; set; }
+
+        public virtual IEnumerable<SchoolClassBasicDTO> SchoolClasses { get; set; }
     }
 }

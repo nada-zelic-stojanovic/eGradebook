@@ -16,7 +16,7 @@ namespace eGradebook.Services.ConvertToAndFromDTO
             ttcDTO.Id = ttc.Id;
             ttcDTO.Teacher = TeacherConverter.TeacherToTeacherBasicDTO(ttc.Teacher);
             ttcDTO.Subject = SubjectConverter.SubjectToSubjectDTO(ttc.Subject);
-            //ttcDTO.subjectName = ttc.Subject.Name;
+            ttcDTO.SchoolClasses = ttc.SchoolClasses.Select(sc => SchoolClassConverter.SchoolClassToSchoolClassBasicDTO(sc));
 
             return ttcDTO;
         }

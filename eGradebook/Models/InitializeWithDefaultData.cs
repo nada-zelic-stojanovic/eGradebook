@@ -72,6 +72,14 @@ namespace eGradebook.Models
                     userManager.Create(teacher4, "gryffindor");
                     userManager.AddToRole(teacher4.Id, "teacher");
 
+                    Teacher teacher5 = new Teacher();
+                    teacher5.FirstName = "Sybill";
+                    teacher5.LastName = "Trelawney";
+                    teacher5.Email = "sybill@hogwarts.com";
+                    teacher5.UserName = "professortrelawney";
+                    userManager.Create(teacher5, "sybillpass");
+                    userManager.AddToRole(teacher5.Id, "teacher");
+
                     //parents
                     Parent parent1 = new Parent();
                     parent1.FirstName = "Molly";
@@ -104,6 +112,14 @@ namespace eGradebook.Models
                     parent4.Email = "xeno@thequibbler.com";
                     userManager.Create(parent4, "xenopass");
                     userManager.AddToRole(parent4.Id, "parent");
+
+                    Parent parent5 = new Parent();
+                    parent5.FirstName = "Amos";
+                    parent5.LastName = "Diggory";
+                    parent5.UserName = "amosdiggory";
+                    parent5.Email = "amos@diggory.com";
+                    userManager.Create(parent5, "amospass");
+                    userManager.AddToRole(parent5.Id, "parent");
 
                     //students
                     Student student1 = new Student();
@@ -149,6 +165,14 @@ namespace eGradebook.Models
                     parent1.Children.Add(student3);
                     parent1.Children.Add(student5);
 
+                    Student student6 = new Student();
+                    student6.FirstName = "Cedric";
+                    student6.LastName = "Diggory";
+                    student6.UserName = "cedricdiggory";
+                    student6.Parent = parent5;
+                    userManager.Create(student6, "cedricpass");
+                    userManager.AddToRole(student5.Id, "student");
+
                     //school year
                     SchoolYear sy1 = new SchoolYear();
                     sy1.Name = "2018/2019";
@@ -160,28 +184,46 @@ namespace eGradebook.Models
                     IList<Subject> subjects = new List<Subject>();
 
                     Subject subject1 = new Subject();
-                    subject1.Name = "English";
+                    subject1.Name = "English V";
                     subject1.Grade = Grade.FIFTH;
                     subject1.ClassesPerWeek = 5;
                     subjects.Add(subject1);
 
                     Subject subject2 = new Subject();
-                    subject2.Name = "English";
+                    subject2.Name = "English VII";
                     subject2.Grade = Grade.SEVENTH;
                     subject2.ClassesPerWeek = 4;
                     subjects.Add(subject2);
 
                     Subject subject3 = new Subject();
-                    subject3.Name = "Mathematics";
+                    subject3.Name = "Mathematics V";
                     subject3.Grade = Grade.FIFTH;
                     subject3.ClassesPerWeek = 5;
                     subjects.Add(subject3);
 
                     Subject subject4 = new Subject();
-                    subject4.Name = "Chemistry";
+                    subject4.Name = "Chemistry VII";
                     subject4.Grade = Grade.SEVENTH;
                     subject4.ClassesPerWeek = 2;
                     subjects.Add(subject4);
+
+                    Subject subject5 = new Subject();
+                    subject5.Name = "Physics VIII";
+                    subject5.Grade = Grade.EIGHTH;
+                    subject5.ClassesPerWeek = 2;
+                    subjects.Add(subject5);
+
+                    Subject subject6 = new Subject();
+                    subject6.Name = "Biology V";
+                    subject6.Grade = Grade.FIFTH;
+                    subject6.ClassesPerWeek = 2;
+                    subjects.Add(subject6);
+
+                    Subject subject7 = new Subject();
+                    subject7.Name = "English I";
+                    subject7.Grade = Grade.FIRST;
+                    subject7.ClassesPerWeek = 5;
+                    subjects.Add(subject7);
 
                     foreach (Subject subject in subjects)
                         context.Subjects.Add(subject);
@@ -209,6 +251,21 @@ namespace eGradebook.Models
                     tts4.Teacher = teacher2;
                     tts4.Subject = subject2;
                     tts.Add(tts4);
+
+                    TeacherTeachesCourse tts5 = new TeacherTeachesCourse();
+                    tts5.Teacher = teacher3;
+                    tts5.Subject = subject6;
+                    tts.Add(tts5);
+
+                    TeacherTeachesCourse tts6 = new TeacherTeachesCourse();
+                    tts6.Teacher = teacher4;
+                    tts6.Subject = subject7;
+                    tts.Add(tts6);
+
+                    TeacherTeachesCourse tts7 = new TeacherTeachesCourse();
+                    tts7.Teacher = teacher5;
+                    tts7.Subject = subject5;
+                    tts.Add(tts7);
 
                     foreach (TeacherTeachesCourse tts0 in tts)
                         context.TeacherTeachesCourse.Add(tts0);
@@ -267,7 +324,15 @@ namespace eGradebook.Models
                     sc3.Courses.Add(tts2);
                     sc3.Courses.Add(tts4);
                     sc.Add(sc3);
-                    
+
+                    SchoolClass sc4 = new SchoolClass();
+                    sc4.Grade = Grade.EIGHTH;
+                    sc4.Section = "C";
+                    sc4.SchoolYear = sy1;
+                    sc4.Students.Add(student6);
+                    sc4.Courses.Add(tts7);
+                    sc.Add(sc4);
+
 
                     foreach (SchoolClass schoolClass in sc)
                         context.SchoolClasses.Add(schoolClass);
@@ -306,6 +371,42 @@ namespace eGradebook.Models
                     shs4.Course = tts4;
                     studentTakesCourses.Add(shs4);
 
+                    StudentTakesCourse shs5 = new StudentTakesCourse();
+                    shs5.Student = student2;
+                    shs5.Course = tts2;
+                    studentTakesCourses.Add(shs5);
+
+                    StudentTakesCourse shs6 = new StudentTakesCourse();
+                    shs6.Student = student2;
+                    shs6.Course = tts4;
+                    studentTakesCourses.Add(shs6);
+
+
+                    StudentTakesCourse shs7 = new StudentTakesCourse();
+                    shs7.Student = student3;
+                    shs7.Course = tts2;
+                    studentTakesCourses.Add(shs7);
+
+                    StudentTakesCourse shs8 = new StudentTakesCourse();
+                    shs8.Student = student3;
+                    shs8.Course = tts4;
+                    studentTakesCourses.Add(shs8);
+
+                    StudentTakesCourse shs9 = new StudentTakesCourse();
+                    shs9.Student = student5;
+                    shs9.Course = tts1;
+                    studentTakesCourses.Add(shs9);
+
+                    StudentTakesCourse shs10 = new StudentTakesCourse();
+                    shs10.Student = student5;
+                    shs10.Course = tts3;
+                    studentTakesCourses.Add(shs10);
+
+                    StudentTakesCourse shs11 = new StudentTakesCourse();
+                    shs11.Student = student6;
+                    shs11.Course = tts7;
+                    studentTakesCourses.Add(shs11);
+
                     foreach (StudentTakesCourse shs0 in studentTakesCourses)
                         context.StudentTakesCourse.Add(shs0);
 
@@ -314,13 +415,36 @@ namespace eGradebook.Models
                     student1Courses.Add(shs2);
                     student1.StudentTakesCourses = student1Courses;
 
+                    List<StudentTakesCourse> student2Courses = new List<StudentTakesCourse>();
+                    student2Courses.Add(shs6);
+                    student2Courses.Add(shs5);
+                    student2.StudentTakesCourses = student2Courses;
+
+                    List<StudentTakesCourse> student3Courses = new List<StudentTakesCourse>();
+                    student3Courses.Add(shs7);
+                    student3Courses.Add(shs8);
+                    student3.StudentTakesCourses = student3Courses;
+
                     List<StudentTakesCourse> student4Courses = new List<StudentTakesCourse>();
                     student4Courses.Add(shs3);
                     student4Courses.Add(shs4);
                     student4.StudentTakesCourses = student4Courses;
 
+                    List<StudentTakesCourse> student5Courses = new List<StudentTakesCourse>();
+                    student5Courses.Add(shs9);
+                    student5Courses.Add(shs10);
+                    student5.StudentTakesCourses = student5Courses;
+
+                    List<StudentTakesCourse> student6Courses = new List<StudentTakesCourse>();
+                    student6Courses.Add(shs11);
+                    student6.StudentTakesCourses = student6Courses;
+
                     context.Students.Attach(student1);
+                    context.Students.Attach(student2);
+                    context.Students.Attach(student3);
                     context.Students.Attach(student4);
+                    context.Students.Attach(student5);
+                    context.Students.Attach(student6);
                     context.SaveChanges();
                     base.Seed(context);
 

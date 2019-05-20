@@ -226,15 +226,17 @@ namespace eGradebook.Controllers
                 logger.Error("Unauthorized access");
                 return Unauthorized();
             }
-            var foundClass = schoolClassService.GetById(classId);
+            //var foundClass = schoolClassService.GetById(classId);
+            var foundClass = new SchoolClassDTO();
             var schoolClasses = teacherGradebookService.GetClassesByTeacherTeachingCourse(id, courseId);
             foreach(var schoolClass in schoolClasses)
             {
-                if(classId != schoolClass.Id)
+                if(classId == schoolClass.Id)
                 {
-                    return BadRequest();
+                    foundClass = schoolClass;
                 }
             }
+            
 
             return Ok(foundClass);
         }

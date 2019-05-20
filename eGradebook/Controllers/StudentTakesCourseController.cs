@@ -122,7 +122,7 @@ namespace eGradebook.Controllers
         */
 
         //get student's courses
-        [Route("student/{id}")]
+        [Route("student/{studentId}")]
         [Authorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [HttpGet]

@@ -59,7 +59,7 @@ namespace eGradebook.Controllers
         }
 
         [Route("children/{parentId}")]
-        //[Authorize(Roles = "parent")]
+        [Authorize(Roles = "parent")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetChildren(string parentId)
@@ -84,7 +84,7 @@ namespace eGradebook.Controllers
 
         //parent/get a child's grades
         [Route("grades/{studentId}")]
-        //[Authorize(Roles = "parent")]
+        [Authorize(Roles = "parent")]
         [ResponseType(typeof(void))]
         [HttpGet]
         public IHttpActionResult GetStudentCoursesAndMarks(string studentId)

@@ -1,4 +1,5 @@
-﻿using eGradebook.Models.UserModels.UserDTOs;
+﻿using eGradebook.Models.UserModels;
+using eGradebook.Models.UserModels.UserDTOs;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;

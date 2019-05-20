@@ -101,7 +101,7 @@ namespace eGradebook.Controllers
             return Ok(subject);
         }
 
-        /*
+        
         //delete
         [Route("{id}")]
         [Authorize(Roles = "admin")]
@@ -120,6 +120,6 @@ namespace eGradebook.Controllers
             subjectService.Delete(subject.Id);
             return Ok();
         }
-        */
+        
     }
 }

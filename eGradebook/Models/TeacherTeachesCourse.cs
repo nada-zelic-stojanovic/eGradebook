@@ -1,4 +1,5 @@
 ﻿using eGradebook.Models.UserModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,12 @@ namespace eGradebook.Models
 
         public virtual Subject Subject { get; set; }
 
-        public TeacherTeachesCourse() { }
+        [JsonIgnore]
+        public virtual ICollection<SchoolClass> SchoolClasses { get; set; }
+
+        public TeacherTeachesCourse()
+        {
+            SchoolClasses = new List<SchoolClass>();
+        }
     }
 }
